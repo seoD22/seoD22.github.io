@@ -9,7 +9,7 @@
 }
 
 header {
-  background-image: url(/img/common/main.banner.png);
+  background-image: url(./img/common/main.banner.png);
   height: 1000px;
   top: -200px;
   right: 0;
@@ -43,7 +43,7 @@ header .col-lg-6 .masthead-device-mockup .circle defs linearGradient stop.gradie
 }
 
 section.cta {
-  background-image: url(/img/review/bg_review.jpg);
+  background-image: url(./img/review/bg_review.jpg);
 }
 section.cta p {
   font-family: var(--ysh-font-strong);
