@@ -1,0 +1,11 @@
+*.ai
+*.psd
+*.scss
+*.pdf
+.vscode/
+img/
+data/
+*.xml
+*.json
+*.cvs
+*.hwp
