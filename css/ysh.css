@@ -9,7 +9,7 @@
 }
 
 header {
-  background-image: url(/sirboard/Portfolio_2/img/common/main.banner.png);
+  background-image: url(/img/common/main.banner.png);
   height: 1000px;
   top: -200px;
   right: 0;
@@ -37,13 +37,13 @@ header .col-lg-6 .masthead-device-mockup .circle defs linearGradient stop.gradie
 }
 
 #features .screen.bg-black {
-  background-image: url(/sirboard/Portfolio_2/img/insta.jpg);
+  background-image: url(./img/insta.jpg);
   background-repeat: repeat-y;
   background-position: center 0;
 }
 
 section.cta {
-  background-image: url(/sirboard/Portfolio_2/img/review/bg_review.jpg);
+  background-image: url(/img/review/bg_review.jpg);
 }
 section.cta p {
   font-family: var(--ysh-font-strong);
