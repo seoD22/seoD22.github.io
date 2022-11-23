@@ -3,7 +3,6 @@
 *.scss
 *.pdf
 .vscode/
-img/
 data/
 *.xml
 *.json
