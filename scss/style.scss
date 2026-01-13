@@ -1,0 +1,39 @@
+@use "./mixin.scss" as *;
+@use './component/header.scss';
+@use './component/footer.scss';
+
+// Common
+html,
+body {
+  font-size: 10px;
+}
+h1 {
+  font-size: 10rem;
+  color: red;
+}
+
+
+// LightMode
+html.lightMode {
+
+}
+
+// DarkMode
+html.darkMode {
+  
+}
+
+// max-width 1024
+@include tablet {
+
+}
+
+// max-width 768
+@include mobile {
+
+}
+
+// max-width 320
+@include fold {
+
+}

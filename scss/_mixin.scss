@@ -1,0 +1,40 @@
+@use "./variables" as * ;
+
+@mixin tablet {
+	@media (max-width: #{$breakpoint-tablet}) {
+		@content;
+	}
+}
+
+@mixin fold {
+	@media (max-width: #{$breakpoint-fold}) {
+		@content;
+	}
+}
+
+@mixin hover-device {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+
+// 예시
+// @mixin layer_width ($max-width: 1200px) {
+// 	max-width: $max-width;
+// 	margin:0 auto;
+// }
+
+@mixin content_wrap {
+	width: 100%;
+	max-width: 120rem;
+	margin: 0 auto;
+	@media screen and (max-width: 1200px) {
+		max-width: 102.5rem;
+	}
+	@media screen and (max-width: 1045px) {
+		padding: 0 2rem;
+	}
+}

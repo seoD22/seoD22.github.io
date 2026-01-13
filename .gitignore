@@ -1,10 +1,1 @@
-*.ai
-*.psd
-*.scss
-*.pdf
-.vscode/
-data/
-*.xml
-*.json
-*.cvs
-*.hwp
+/node_modules
