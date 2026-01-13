@@ -1,7 +1,13 @@
-@use "./variables" as * ;
+@use "./variables" as *;
 
 @mixin tablet {
 	@media (max-width: #{$breakpoint-tablet}) {
+		@content;
+	}
+}
+
+@mixin mobile {
+	@media (max-width: #{$breakpoint-mobile}) {
 		@content;
 	}
 }
@@ -13,11 +19,11 @@
 }
 
 @mixin hover-device {
-  @media (hover: hover) {
-    &:hover {
-      @content;
-    }
-  }
+	@media (hover: hover) {
+		&:hover {
+			@content;
+		}
+	}
 }
 
 
@@ -31,10 +37,12 @@
 	width: 100%;
 	max-width: 120rem;
 	margin: 0 auto;
-	@media screen and (max-width: 1200px) {
-		max-width: 102.5rem;
-	}
-	@media screen and (max-width: 1045px) {
-		padding: 0 2rem;
-	}
+
+	// @media screen and (max-width: 1200px) {
+	// 	max-width: 102.5rem;
+	// }
+
+	// @media screen and (max-width: 1045px) {
+	// 	padding: 0 2rem;
+	// }
 }

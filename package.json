@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "sass scss/style.scss css/style.css --no-source-map",
-    "sass:watch": "sass scss/style.scss css/style.css --watch --no-source-map",
-    "postcss": "postcss css/style.css -o css/style.css --no-map",
+    "sass": "sass assets/scss/style.scss assets/css/style.css --no-source-map",
+    "sass:watch": "sass assets/scss/style.scss assets/css/style.css --watch --no-source-map",
+    "postcss": "postcss assets/css/style.css -o assets/css/style.css --no-map",
     "build": "npm run sass && npm run postcss"
   },
   "keywords": [],

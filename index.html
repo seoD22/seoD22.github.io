@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,27 +11,58 @@
   <meta property="og:title" content="윤서희 이력서 및 경력기술서">
   <meta property="og:description" content="안녕하세요, 퍼블리셔 윤서희입니다.">
   <meta property="og:image" content="https://example.com/og/1200x630.jpg">
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <link rel="icon" href="/favicon.ico" sizes="any">
   <!-- style -->
-  <link rel="stylesheet" href="/default/swiper.min.css">
-  <link rel="stylesheet" href="/default/font.css">
-  <link rel="stylesheet" href="/default/reset.css">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/assets/default/swiper.min.css">
+  <link rel="stylesheet" href="/assets/default/font.css">
+  <link rel="stylesheet" href="/assets/default/reset.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
   <!-- script -->
   <script type="text/javascript" src="/js/jquery-3.7.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script type="text/javascript" src="/js/swiper-bundle.min.js"></script>
   <script type="text/javascript" src="/js/default.js"></script>
 </head>
 
 <body>
-  <header id="header"></header>
-
-  <main>
-    <section class="_01"></section>
-  </main>
+  <!-- <header id="header"></header> -->
+  <div class="wrap home">
+    <main>
+      <aside class="quick_menu">
+        <nav aria-label="퀵 메뉴">
+          <ul>
+            <li><a href="#basic">기본 정보</a></li>
+            <li><a href="#work_experience">경력</a></li>
+            <li><a href="#project">프로젝트</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="content">
+        <section id="basic" class="_01">
+          <div class="wrap">
+            <h2>기본 정보</h2>
+          </div>
+          
+        </section>
+        <section id="work_experience" class="_02">
+          <div class="wrap">
+            <h2>기본 정보</h2>
+          </div>
+        </section>
+        <section id="project" class="_03">
+          <div class="wrap">
+            <h2>기본 정보</h2>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
 
   <footer id="footer"></footer>
 </body>
+
 </html>
