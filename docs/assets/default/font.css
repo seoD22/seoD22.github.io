@@ -3,6 +3,7 @@
   font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 300;
+  font-display: swap;
   src: url("../fonts/noto-sans-kr-v25-latin_korean/noto-sans-kr-v25-latin_korean-300.eot"); /* IE9 Compat Modes */
   src: local("Noto Sans KR"),
     url("../fonts/noto-sans-kr-v25-latin_korean/noto-sans-kr-v25-latin_korean-300.eot?#iefix")
@@ -25,6 +26,7 @@
   font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url("../fonts/noto-sans-kr-v25-latin_korean/noto-sans-kr-v25-latin_korean-regular.eot"); /* IE9 Compat Modes */
   src: local("Noto Sans KR"),
     url("../fonts/noto-sans-kr-v25-latin_korean/noto-sans-kr-v25-latin_korean-regular.eot?#iefix")
@@ -47,6 +49,7 @@
   font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 500;
+  font-display: swap;
   src: url("../fonts/noto-sans-kr-v25-latin_korean/noto-sans-kr-v12-latin_korean-500.eot"); /* IE9 Compat Modes */
   src: local("Noto Sans KR"),
     url("../fonts/noto-sans-kr-v25-latin_korean/noto-sans-kr-v12-latin_korean-500.eot?#iefix")
@@ -63,6 +66,7 @@
   font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
   src: url("../fonts/noto-sans-kr-v25-latin_korean/noto-sans-kr-v25-latin_korean-700.eot"); /* IE9 Compat Modes */
   src: local("Noto Sans KR"),
     url("../fonts/noto-sans-kr-v25-latin_korean/noto-sans-kr-v25-latin_korean-700.eot?#iefix")
@@ -86,6 +90,7 @@
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url("../fonts/roboto-v29-latin/roboto-v29-latin-regular.eot"); /* IE9 Compat Modes */
   src: local("Roboto"),
     url("../fonts/roboto-v29-latin/roboto-v29-latin-regular.eot?#iefix")
@@ -108,6 +113,7 @@
   font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
+  font-display: swap;
   src: url("../fonts/roboto-v29-latin/roboto-v29-latin-500.eot"); /* IE9 Compat Modes */
   src: local("Roboto"),
     url("../fonts/roboto-v29-latin/roboto-v29-latin-500.eot?#iefix")
@@ -128,6 +134,7 @@
   font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
   src: url("../fonts/roboto-v29-latin/roboto-v29-latin-700.eot"); /* IE9 Compat Modes */
   src: local("Roboto"),
     url("../fonts/roboto-v29-latin/roboto-v29-latin-700.eot?#iefix")
