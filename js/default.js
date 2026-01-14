@@ -14,11 +14,11 @@ $(function() {
       } 
       if (status === "success") {
         if (selector === "#header") {
-          // initNavigation();
-          console.log("헤더 로드 완료 및 이벤트 바인딩");
+          initNavigation();
+          // console.log("헤더 로드 완료 및 이벤트 바인딩");
         }
         if (selector === "#footer") {
-          console.log("푸터 로드 완료");
+          // console.log("푸터 로드 완료");
         }
       }
     });
@@ -30,17 +30,29 @@ function initNavigation() {
   $('.btn-menu').on('click', function() {
     $('.gnb').toggleClass('active');
   });
+
+  // 다크모드 전환 버튼
+  $('.theme_toggle').on('click', function() {
+    if ($('html').hasClass('darkMode')) {
+      $('html').removeClass('darkMode')
+      $('.theme_toggle').attr('aria-label', '라이트 모드로 전환');
+    } else {
+      $('html').addClass('darkMode')
+      $('.theme_toggle').attr('aria-label', '다크 모드로 전환');
+    }
+  })
 }
 
 // 퀵메뉴
 function quickMenu() {
+  const headerHeight = $('#header').outerHeight();
   // 1. 섹션 이동
   $('aside a').on('click', function(e) {
     e.preventDefault();
     const target = $(this).attr('href');
     gsap.to(window, {
       duration: 0.5, 
-      scrollTo: { y: target, offsetY: 80 },
+      scrollTo: { y: target, offsetY: headerHeight + 100},
       ease: "power2.inOut"
     });
   });

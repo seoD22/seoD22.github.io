@@ -46,3 +46,10 @@
 	// 	padding: 0 2rem;
 	// }
 }
+
+@mixin text_color {
+  color: #000;
+  html.darkMode & {
+    color: #FFF;
+  }
+}

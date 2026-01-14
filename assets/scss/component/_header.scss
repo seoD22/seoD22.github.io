@@ -1,3 +1,48 @@
+@use "../mixin" as *;
+@use "../variables" as *;
+
+html.darkMode {
+  header {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  .theme_toggle {
+    .icon-moon { display: none; }
+    .icon-sun { display: block; }
+  }
+}
+
 header {
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transform: translateY(0);
+  transition: all 0.5s;
+  backdrop-filter: blur(1rem);
+  background: rgba(255, 255, 255, 0.2);
+  .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6rem;
+    height: $header-height;
+  }
+  nav ul {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    a {
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: -0.01rem;
+      @include text_color;
+    }
+  }
+}
+
+.theme_toggle {
+  margin-left: auto;
+  .icon-moon {display: block;}
+  .icon-sun {display: none;}
 }

@@ -9,40 +9,44 @@ body {
   font-size: 10px;
 }
 h1 {
-  font-size: 10rem;
+  // font-size: 10rem;
 }
 
-
-// LightMode
-html.lightMode {
-
-}
 // DarkMode
 html.darkMode {
   
 }
 
 body {
-  background-color: #000;
+  background-color: $color-grey;
+  // background-color: #000;
+}
+.wrap {
+  @include content_wrap;
 }
 
-.home {
+.about {
   main {
+
+  }
+  .container {
     display: flex;
     flex-direction: row-reverse;
-    margin-top: 10rem;
-    background: #000;
+    margin-top: calc(10rem + $header-height);
+    padding: 10rem 0 10rem 10rem;
+    background: #fff;
     border-radius: 0.6rem;
   }
   aside {
-    position: fixed;
+    position: sticky;
     height: fit-content;
     right: 0;
-    top: 10rem;
+    top: calc(10rem + $header-height);
     li {
       position: relative;
       border-radius: 5rem 0 0 5rem;
       background: $bg-graGrey;
+      overflow: hidden;
       &::before {
         content: "";
         display: block;
@@ -51,9 +55,9 @@ body {
         left: 0;
         width: 100%;
         height: 100%;
-        border: 2px solid transparent;
+        border: 0.2rem solid transparent;
         border-radius: 5rem 0 0 5rem;
-        background-image: $bg-graGreen, linear-gradient(130deg, rgba(3, 188, 142, 1) 0%, rgba(0, 0, 0, 0) 20%);
+        background-image: $bg-graGrey, $bg-graGreen;
         pointer-events: none;
         background-origin: border-box;
         background-clip: content-box, border-box;
@@ -68,11 +72,13 @@ body {
         display: block;
         width: 18rem;
         padding: 1rem 0 1rem 2rem;
-        color: #FFF;
         font-size: 1.6rem;
         line-height: 2.5rem;
-        @include hover-device {
-          color: #fff;
+        @include text_color;
+      }
+      @include hover-device {
+        &::before {
+          opacity: 1;
         }
       }
       &.active {
@@ -80,7 +86,7 @@ body {
           opacity: 1;
         }
         a {
-          color: #fff;
+          @include text_color;
         }
       }
     }
@@ -90,13 +96,12 @@ body {
   }
   section {
     min-height: 100vh;
-    .wrap {
-      @include content_wrap;
-    }
     h2 {
-      color: #FFF;
+      @include text_color;
       font-size: 4rem;
-      font-weight: 500;
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.05rem;
     }
   }
 }
