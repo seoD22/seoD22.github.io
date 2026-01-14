@@ -19,20 +19,18 @@ html.darkMode {
 
 body {
   background-color: $color-grey;
-  // background-color: #000;
 }
 .wrap {
   @include content_wrap;
 }
+.container {
+  margin-top: calc(10rem + $header-height);
+}
 
 .about {
-  main {
-
-  }
   .container {
     display: flex;
     flex-direction: row-reverse;
-    margin-top: calc(10rem + $header-height);
     padding: 10rem 0 10rem 10rem;
     background: #fff;
     border-radius: 0.6rem;
@@ -96,6 +94,9 @@ body {
   }
   section {
     min-height: 100vh;
+    .section_wrap {
+      
+    }
     h2 {
       @include text_color;
       font-size: 4rem;

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
-@@include('./inc/head.html')
+@@include('./inc/head.html', { "path": "." })
 <body>
   @@include('./inc/header.html')
   
@@ -18,18 +18,18 @@
         </aside>
         <div class="content">
           <section id="basic" class="_01">
-            <div class="wrap">
+            <div class="section_wrap">
               <h2>기본 정보</h2>
             </div>
             
           </section>
           <section id="work_experience" class="_02">
-            <div class="wrap">
+            <div class="section_wrap">
               <h2>기본 정보</h2>
             </div>
           </section>
           <section id="project" class="_03">
-            <div class="wrap">
+            <div class="section_wrap">
               <h2>기본 정보</h2>
             </div>
           </section>
@@ -37,7 +37,6 @@
       </div>
     </main>
   </div>
-
   @@include('./inc/footer.html')
 </body>
 

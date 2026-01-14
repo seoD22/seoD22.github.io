@@ -13,18 +13,26 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <link rel="icon" href="/favicon.ico" sizes="any">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('darkMode');
+      }
+    })();
+  </script>
   <!-- style -->
-  <link rel="stylesheet" href="/assets/default/swiper.min.css">
-  <link rel="stylesheet" href="/assets/default/font.css">
-  <link rel="stylesheet" href="/assets/default/reset.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="../assets/default/swiper.min.css">
+  <link rel="stylesheet" href="../assets/default/font.css">
+  <link rel="stylesheet" href="../assets/default/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
   <!-- script -->
-  <script type="text/javascript" src="/js/jquery-3.7.1.min.js"></script>
+  <script type="text/javascript" src="../js/jquery-3.7.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script type="text/javascript" src="/js/swiper-bundle.min.js"></script>
-  <script type="text/javascript" src="/js/default.js"></script>
+  <script type="text/javascript" src="../js/swiper-bundle.min.js"></script>
+  <script type="text/javascript" src="../js/default.js"></script>
 </head>
 <body>
   <header id="header">
@@ -37,7 +45,7 @@
     <nav aria-label="메인 메뉴">
       <ul>
         <li><a href="/about/about.html">ABOUT</a></li>
-        <li><a href="#">BLOG</a></li>
+        <li><a href="#" onclick="alertText()">BLOG</a></li>
       </ul>
     </nav>
 
@@ -67,18 +75,18 @@
         </aside>
         <div class="content">
           <section id="basic" class="_01">
-            <div class="wrap">
+            <div class="section_wrap">
               <h2>기본 정보</h2>
             </div>
             
           </section>
           <section id="work_experience" class="_02">
-            <div class="wrap">
+            <div class="section_wrap">
               <h2>기본 정보</h2>
             </div>
           </section>
           <section id="project" class="_03">
-            <div class="wrap">
+            <div class="section_wrap">
               <h2>기본 정보</h2>
             </div>
           </section>
@@ -87,9 +95,11 @@
     </main>
   </div>
 
+  <footer>
   <div class="wrap">
-  <p>© copyright 웹 페이지</p>
-</div>
+    <p>© copyright 웹 페이지</p>
+  </div>
+</footer>
 </body>
 
 </html>
