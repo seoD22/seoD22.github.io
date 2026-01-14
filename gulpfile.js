@@ -11,7 +11,7 @@ const browserSync = require('browser-sync').create();
 gulp.task('html', function() {
   return gulp.src(['src/**/*.html', '!src/inc/**/*.html'])
     .pipe(fileinclude({ prefix: '@@', basepath: '@file' }))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('docs'))
     .pipe(browserSync.stream());
 });
 
@@ -25,19 +25,24 @@ gulp.task('scss', function() {
   return gulp.src('src/scss/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss(plugins))
-    .pipe(gulp.dest('dist/css'))
+    .pipe(gulp.dest('docs/css'))
     .pipe(browserSync.stream());
 });
 
 // [3] JS 및 Assets 복사
 gulp.task('copy', function() {
-  gulp.src('src/js/**/*').pipe(gulp.dest('dist/js'));
-  return gulp.src('src/assets/**/*').pipe(gulp.dest('dist/assets'));
+  gulp.src('src/js/**/*').pipe(gulp.dest('docs/js'));
+  return gulp.src('src/assets/**/*').pipe(gulp.dest('docs/assets'));
 });
 
 // [4] 실시간 감시 및 서버
 gulp.task('serve', function() {
-  browserSync.init({ server: { baseDir: "./dist" } });
+  browserSync.init({
+    server: { 
+      baseDir: "./docs" 
+    },
+    notify: false 
+  });
   gulp.watch('src/**/*.html', gulp.series('html'));
   gulp.watch('src/scss/**/*.scss', gulp.series('scss'));
   gulp.watch(['src/js/**/*', 'src/assets/**/*'], gulp.series('copy')).on('change', browserSync.reload);
