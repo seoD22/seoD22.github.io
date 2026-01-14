@@ -1,26 +1,29 @@
 {
-  "name": "buro",
+  "name": "seohee",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "sass assets/scss/style.scss assets/css/style.css --no-source-map",
-    "sass:watch": "sass assets/scss/style.scss assets/css/style.css --watch --no-source-map",
-    "postcss": "postcss assets/css/style.css -o assets/css/style.css --no-map",
-    "build": "npm run sass && npm run postcss"
+    "dev": "gulp",
+    "build": "gulp build",
+    "test-sass": "sass src/scss/style.scss dist/css/style.css --no-source-map"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
-
   "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "cssnano": "^7.0.6",
+    "autoprefixer": "^10.4.23",
+    "browser-sync": "^3.0.4",
+    "cssnano": "^7.1.2",
+    "gulp": "^5.0.1",
+    "gulp-file-include": "^2.3.0",
+    "gulp-postcss": "^10.0.0",
+    "gulp-sass": "^6.0.1",
     "postcss": "^8.5.1",
     "postcss-cli": "^11.0.0",
     "postcss-combine-media-query": "^1.0.1",
-    "sass": "^1.84.0"
+    "sass": "^1.97.2"
   },
   "browserslist": [
     "last 2 versions",

@@ -1,0 +1,166 @@
+:root {
+  --bg-gra-grey: linear-gradient(123deg, #f3f3f3 0%, #e0e0e0 100%);
+  --color-grey: #e0e0e0;
+}
+
+html.darkMode {
+  --bg-gra-grey: linear-gradient(123deg, #050505 0%, #222 100%);
+  --color-grey: #666;
+}
+
+html.darkMode header {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+html.darkMode .theme_toggle .icon-moon {
+  display: none;
+}
+html.darkMode .theme_toggle .icon-sun {
+  display: block;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transform: translateY(0);
+  transition: all 0.5s;
+  backdrop-filter: blur(1rem);
+  background: rgba(255, 255, 255, 0.2);
+}
+header .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6rem;
+  height: 85px;
+}
+header nav ul {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+header nav ul a {
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -0.01rem;
+  color: #000;
+}
+html.darkMode header nav ul a {
+  color: #FFF;
+}
+
+.theme_toggle {
+  margin-left: auto;
+}
+.theme_toggle .icon-moon {
+  display: block;
+}
+.theme_toggle .icon-sun {
+  display: none;
+}
+
+footer {
+  color: red;
+}
+
+html,
+body {
+  font-size: 10px;
+}
+
+body {
+  background-color: var(--color-grey);
+}
+
+.wrap {
+  width: 100%;
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+.about .container {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: calc(10rem + 85px);
+  padding: 10rem 0 10rem 10rem;
+  background: #fff;
+  border-radius: 0.6rem;
+}
+.about aside {
+  position: sticky;
+  height: fit-content;
+  right: 0;
+  top: calc(10rem + 85px);
+}
+.about aside li {
+  position: relative;
+  border-radius: 5rem 0 0 5rem;
+  background: var(--bg-gra-grey);
+  overflow: hidden;
+}
+.about aside li::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0.2rem solid transparent;
+  border-radius: 5rem 0 0 5rem;
+  background-image: var(--bg-gra-grey), linear-gradient(170deg, rgb(3, 188, 142) 0%, rgba(0, 0, 0, 0) 40%);
+  pointer-events: none;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  opacity: 0;
+  transition: 0.5s opacity;
+}
+.about aside li + li {
+  margin-top: 1rem;
+}
+.about aside li a {
+  position: relative;
+  display: block;
+  width: 18rem;
+  padding: 1rem 0 1rem 2rem;
+  font-size: 1.6rem;
+  line-height: 2.5rem;
+  color: #000;
+}
+html.darkMode .about aside li a {
+  color: #FFF;
+}
+@media (hover: hover) {
+  .about aside li:hover::before {
+    opacity: 1;
+  }
+}
+.about aside li.active::before {
+  opacity: 1;
+}
+.about aside li.active a {
+  color: #000;
+}
+html.darkMode .about aside li.active a {
+  color: #FFF;
+}
+.about .content {
+  flex: 1;
+}
+.about section {
+  min-height: 100vh;
+}
+.about section h2 {
+  color: #000;
+}
+html.darkMode .about section h2 {
+  color: #FFF;
+}
+.about section h2 {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.05rem;
+}
