@@ -15,13 +15,9 @@ gulp.task('html', function() {
     .pipe(browserSync.stream());
 });
 
-// [2] SCSS 컴파일 + PostCSS(Autoprefixer 등)
+// [2] SCSS 컴파일
 gulp.task('scss', function() {
-  const plugins = [
-    cmq(),
-    autoprefixer(),
-    cssnano()
-  ];
+  const plugins = [ cmq(), autoprefixer(), cssnano() ];
   return gulp.src('src/scss/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss(plugins))
@@ -29,24 +25,22 @@ gulp.task('scss', function() {
     .pipe(browserSync.stream());
 });
 
-// [3] JS 및 Assets 복사
-gulp.task('copy', function() {
+// [3] 정적 파일 복사 (문제의 구간 수정!)
+gulp.task('copy', function(done) {
   gulp.src('src/js/**/*').pipe(gulp.dest('docs/js'));
-  return gulp.src('src/assets/**/*').pipe(gulp.dest('docs/assets'));
+  done(); 
 });
 
-// [4] 실시간 감시 및 서버
+// [4] 서버
 gulp.task('serve', function() {
   browserSync.init({
-    server: { 
-      baseDir: "./docs" 
-    },
+    server: { baseDir: "./docs" },
     notify: false 
   });
   gulp.watch('src/**/*.html', gulp.series('html'));
   gulp.watch('src/scss/**/*.scss', gulp.series('scss'));
-  gulp.watch(['src/js/**/*', 'src/assets/**/*'], gulp.series('copy')).on('change', browserSync.reload);
+  gulp.watch('src/js/**/*', gulp.series('copy')).on('change', browserSync.reload);
 });
 
-// 실행: npm run dev
+// 실행
 gulp.task('default', gulp.series(gulp.parallel('html', 'scss', 'copy'), 'serve'));
