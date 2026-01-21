@@ -16,11 +16,14 @@ $breakpoint-fold: 320px;
 
 // Main Color
 $color-primary: #008868;
+$color-deepPrimary: #015d47;
 $color-grey : var(--color-grey);
+$color-textBlack: #21252a;
+$color-textGrey: #6b6b6b;
 
 $bg-graGreen: linear-gradient(170deg, rgba(3, 188, 142, 1) 0%, rgba(0, 0, 0, 0) 40%);
 $bg-graGrey: var(--bg-gra-grey);
 
 // etc
-$transition: 0.5s;
+$transition: 0.3s;
 $header-height: 50px;

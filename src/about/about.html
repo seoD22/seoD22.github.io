@@ -9,39 +9,153 @@
         <aside class="quick_menu">
           <nav aria-label="퀵 메뉴">
             <ul>
-              <li><a href="#basic">기본 정보</a></li>
+              <li class="active"><a href="#basic">기본 정보</a></li>
               <li><a href="#work_experience">경력</a></li>
               <li><a href="#project">프로젝트</a></li>
             </ul>
           </nav>
         </aside>
-        <div class="content">
-          <div class="profile">
-            <div class="_txt">
+        <div class="content_area">
+          <div class="profile" id="basic">
+            <div class="profile_txt">
               <h2>기본 정보</h2>
               <p>윤서희</p>
+              <dl>
+                <dt>이메일</dt>
+                <dd>cobbt258@naver.com</dd>
             </div>
-            <div class="_img">
+            <div class="profile_img">
               <img src="/assets/images/dot_profile.png" alt="프로필 사진">
             </div>
             
 
           </div>
           
-          <section id="basic" class="_01">
+          <section class="_01">
             <div class="sec_wrap">
-              <h3>기본 정보</h3>
+              <div class="">안녕하세요, <em>긍정적인 커뮤니케이션</em>으로 기술적 제약을 <em>가능성</em>으로 바꾸는 퍼블리셔 윤서희입니다.</div>
+
+              <div class="list_wrap">
+                <p class="list_tit">핵심역량</p>
+                <ul>
+                  <li></li>
+                </ul>
+              </div>
+
+              <div class="list_wrap">
+                <p class="list_tit">기술 스택</p>
+                <ul>
+                  <li>퍼블리싱: <span>HTML5, CSS3, SCSS</span></li>
+                  <li>스크립트: <span>JS, jQuery</span></li>
+                  <li>디자인/협업: <span>Figma, Adobe XD, Photoshop</span></li>
+                  <li>운영/관리: <span>GitLab/GitHub, npm, gulp</span></li>
+                </ul>
+              </div>
+
             </div>
             
           </section>
           <section id="work_experience" class="_02">
             <div class="sec_wrap">
-              <h3>기본 정보</h3>
+              <h3>경력</h3>
+            
+              <div class="content">
+                <ul class="cont_list">
+                  <li>
+                    <div class="list_tag">
+                      웹에이전시
+                    </div>
+                    <div class="list_tit">
+                      <span>2024.09 ~ 재직중</span> (주)엘루오씨앤씨 / 퍼블리셔 / 사원
+                    </div>
+
+                    <div class="list_desc">
+                      <div class="desc_box">
+                        <strong>주요업무</strong>
+                        <p>웹 퍼블리싱 (조직 구성 및 역할 명기)</p>
+                      </div>
+                      <div class="desc_box">
+                        <strong>기술 스택</strong>
+                        <ul class="dotted_list">(태그로 넣어볼까? 고민중)
+                          <li>퍼블리싱: <span>HTML5, CSS3, SCSS</span></li>
+                          <li>스크립트: <span>JS, jQuery</span></li>
+                          <li>디자인/협업: <span>Figma, Adobe XD</span></li>
+                          <li>운영/관리: <span>GitLab/GitHub, npm</span></li>
+                        </ul>
+                      </div>
+                      <div class="desc_box">
+                        <strong>진행 프로젝트</strong>
+                        <ul class="dotted_list">
+                          <li>KT MVNO(마이알뜰폰) 운영, 개선<br> (2025.02 ~ 진행 중)</li>
+                          <li>KT 엔터프라이즈 운영, 개선<br> (2024.09 ~ 2025.01)</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                
+              </div>
             </div>
           </section>
           <section id="project" class="_03">
             <div class="sec_wrap">
-              <h3>기본 정보</h3>
+              <h3>프로젝트</h3>
+              <p class="add">기술 스택 - HTML, CSS, JS, JQuery 생략</p>
+
+              <div class="content">
+                <ul class="pj_list">
+                  <li>
+                    <div class="card_inner">
+                      <div class="card_front">
+                        <div class="list_head">
+                          <div class="pj_tag">
+                            <div class="pj_date">2025.02 ~ 진행중</div>
+                            <div class="pj_type">B2B2C</div>
+                          </div>
+                          <div class="pj_tit">KT MVNO(마이알뜰폰)</div>
+                        </div>
+                        <div class="list_body">
+                          <div class="pj_tech"><span class="tag">GitLab/GitHub</span><span class="tag">NPM</span><span class="tag">SASS</span></div>
+                          <img class="icon" src="/assets/images/common/icon_arr_downRight.svg" alt="상세업무 자세히 보기 아이콘">
+                        </div>
+                      </div>
+
+                      <div class="card_back">
+                        <strong>상세 업무</strong>
+                        <ul class="pj_desc">
+                          <li>운영, 보수</li>
+                          <li>메인, 마이알뜰폰 홈, 셀프개통 등 주요 FO/BO 페이지 개선</li>
+                          <li>웹접근성, 웹표준성 보수</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="card_inner">
+                      <div class="card_front">
+                        <div class="list_head">
+                          <div class="pj_tag">
+                            <div class="pj_date">2024.09 ~ 2025.01</div>
+                            <div class="pj_type">B2B</div>
+                          </div>
+                          <div class="pj_tit">KT 엔터프라이즈</div>
+                        </div>
+                        <div class="list_body">
+                          <div class="pj_tech"><span class="tag">VPN</span></div>
+                          <img class="icon" src="/assets/images/common/icon_arr_downRight.svg" alt="자세히 보기">
+                        </div>
+                      </div>
+                      <div class="card_back">
+                        <strong>상세 업무</strong>
+                        <ul class="pj_desc">
+                          <li>운영, 보수</li>
+                          <li>상품 페이지 개선</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
           </section>
         </div>

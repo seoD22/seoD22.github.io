@@ -33,6 +33,7 @@ samp,
 small,
 strike,
 strong,
+em,
 tt,
 var,
 b,
@@ -138,4 +139,7 @@ button {
 }
 a {
   text-decoration: none;
+}
+em {
+  font-style: normal;
 }

@@ -1,8 +1,11 @@
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 $(function() {
-  quickMenu();
   initNavigation();
+
+  //about 페이지
+  quickMenu();
+  activeToggle('.about #project .pj_list > li', '.about #project .pj_list > li', 'active');
 });
 
 // alert 이벤트
@@ -73,3 +76,10 @@ function quickMenu() {
   });
 }
 
+// 범용 이벤트
+// 토글
+function activeToggle(selector, target, className) {
+  $(selector).on('click', function() {
+    $(this).toggleClass(className);
+  });
+}
