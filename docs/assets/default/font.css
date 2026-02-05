@@ -1,3 +1,22 @@
+/* 둥근모꼴 + Fixedsys */
+@font-face {
+  font-family: "DungGeunMo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("DungGeunMo"), local("DungGeunMo"),
+    url("../fonts/dungGeunMo/DungGeunMo.woff2") format("woff2"),
+}
+
+/* Thin 둥근모꼴 */
+@font-face {
+  font-family: "ThinDungGeunMo";
+  font-style: normal;
+  font-display: swap;
+  src: local("ThinDungGeunMo"), local("ThinDungGeunMo"),
+    url("../fonts/thinDungGeunMo/ThinDungGeunMo.ttf") format("ttf"),
+}
+
 /* 300 - Light */
 @font-face {
   font-family: "Noto Sans KR";

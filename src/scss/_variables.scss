@@ -1,10 +1,10 @@
 :root {
-  --bg-gra-grey: linear-gradient(123deg, #f3f3f3 0%, #e0e0e0 100%);
+  // --bg-gra-grey: linear-gradient(123deg, #f3f3f3 0%, #e0e0e0 100%);
   --color-grey: #e0e0e0;
 }
 
 html.darkMode {
-  --bg-gra-grey: linear-gradient(123deg, #050505 0%, #222 100%);
+  // --bg-gra-grey: linear-gradient(123deg, #050505 0%, #222 100%);
   --color-grey: #666;
 }
 
@@ -14,18 +14,33 @@ $breakpoint-tablet: 1024px;
 $breakpoint-mobile: 768px;
 $breakpoint-fold: 320px;
 
-// Main Color
-$color-primary: #008868;
-$color-deepPrimary: #015d47;
-$color-highlightPrimary: #0088682e;
-$color-grey : var(--color-grey);
-$color-textBlack: #21252a;
-$color-textGrey: #6b6b6b;
-$color-hightlightGrey: #00000014;
+// Color
+$color-green: #008080;
+$color-blue: #000080;
+$color-black: #000000;
+$color-white: #FFFFFF;
+$color-grey: #C0C0C0;
+$color-monoGrey: #C3C3C3;
+$color-deepGrey: #7F7F7F;
+$color-lightGrey: #DFDFDF;
 
-$bg-graGreen: linear-gradient(170deg, rgba(3, 188, 142, 1) 0%, rgba(0, 0, 0, 0) 40%);
-$bg-graGrey: var(--bg-gra-grey);
+
+// $color-primary: #008868;
+// $color-deepPrimary: #015d47;
+// $color-highlightPrimary: #0088682e;
+// $color-grey : var(--color-grey);
+// $color-textBlack: #21252a;
+// $color-textGrey: #6b6b6b;
+// $color-hightlightGrey: #00000014;
+
+// $bg-graGreen: linear-gradient(170deg, rgba(3, 188, 142, 1) 0%, rgba(0, 0, 0, 0) 40%);
+// $bg-graGrey: var(--bg-gra-grey);
+
+//font-family
+$fontFamily-1: "DungGeunMo", "Pretendard", "Roboto", "Noto Sans KR", sans-serif;
+$fontFamily-2: "ThinDungGeunMo", "Pretendard", "Roboto", "Noto Sans KR", sans-serif;
 
 // etc
 $transition: 0.3s;
 $header-height: 50px;
+$bottomBar-height: 35px;

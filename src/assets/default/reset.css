@@ -85,7 +85,6 @@ video {
   font: inherit;
   vertical-align: baseline;
   box-sizing: border-box;
-  font-family: "Pretendard", "Roboto", "Noto Sans KR", sans-serif;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -135,7 +134,6 @@ button {
   cursor: pointer;
   background-color: transparent;
   padding: 0;
-  font-family: "Pretendard", "Roboto", "Noto Sans KR", sans-serif;
 }
 a {
   text-decoration: none;

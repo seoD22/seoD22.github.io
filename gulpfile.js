@@ -26,9 +26,13 @@ gulp.task('scss', function() {
 });
 
 // [3] 정적 파일 복사 (문제의 구간 수정!)
-gulp.task('copy', function(done) {
-  gulp.src('src/js/**/*').pipe(gulp.dest('docs/js'));
-  done(); 
+gulp.task('copy', function() {
+  return gulp.src([
+    'src/assets/**/*', 
+    'src/js/**/*'
+  ], { base: 'src' })
+  .pipe(gulp.dest('docs'))
+  .pipe(browserSync.stream());
 });
 
 // [4] 서버
