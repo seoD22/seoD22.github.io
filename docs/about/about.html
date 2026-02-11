@@ -64,8 +64,9 @@
 
 
   <main>
-    <div class="wrap about">
-      <div class="container window">
+    <div class="wrap about window">
+      <div id="cursor" class="_text"><span style="--text-color: #009CFF">c</span><span style="--text-color: #FF3100">l</span><span style="--text-color: #6BCE39">i</span><span style="--text-color: #FFCE00">c</span><span style="--text-color: #009CFF">k</span></div>
+      <div class="container window_container">
         <div class="bar">
           <div class="title">
             <i class="desctop"></i>
@@ -86,10 +87,84 @@
         </ul>
         <div class="inner green">
           <div class="board">
-            <div class="icon_box">
-              <img src="../assets/images/about/" alt="">
-              <p>My Computer</p>
+            <button class="icon_box" data-target="win-computer">
+              <img src="../assets/images/about/windowIcon/myComputer.png" alt="내컴퓨터">
+              <p>내 컴퓨터</p>
+            </button>
+            <button class="icon_box" data-target="win-computer">
+              <img src="../assets/images/about/windowIcon/resume.png" alt="기본 정보">
+              <p>기본 정보</p>
+            </button>
+
+            <!-- 팝업 -->
+            <div id="win-intro" class="window_container _min">
+              <div class="bar">
+                <div class="title">
+                  <i class="desctop"></i>
+                  <h3>Welcome!</h3>
+                </div>
+                <div class="bar_btns">
+                  <button class="btn_box close">close</button>
+                </div>
+              </div>
+              <div class="inner">
+                <div class="content">
+                  <img class="window_logo" src="../assets/images/about/logo_window98.png" alt="Microsoft Windows98 이미지">
+                
+                  <div class="cont_body">
+                    <div class="_l button_list">
+                      <p>CONTENT</p>
+                      <ul>
+                        <li style="--folder-color: #009CFF;"><button class="clickable" aria-label="윤서희 간략소개 보기">Who is Seohee</button></li>
+                        <li style="--folder-color: #FF3100;"><button class="clickable" aria-label="윤서희와 연락하기">Connection to me</button></li>
+                        <li style="--folder-color: #6BCE39;"><button class="clickable" aria-label="기술 스택">Discover My Skills</button></li>
+                        <li style="--folder-color: #FFCE00;"><button class="clickable" aria-label="내가 좋아하는 것들">Favorite Things</button></li>
+                      </ul>
+                    </div>
+
+                    <div class="_r text_wrap">
+                      <strong>Welcome</strong>
+                      <p>Welcome to the exciting new world of Windows 98,
+                      where your computer desktop meets the Internet!
+                      <br><br>
+                      Sit back and relax as you take a brief tour of the options available on this screen.
+                      <br><br>
+                      If your want to explore an option, just click it.</p>
+                    </div>
+                  </div>
+
+                  <div class="cont_footer">
+                    <form action="" class="popup_form">
+                      <input type="checkbox" id="show_startup">
+                      <label for="show_startup">
+                        Show this screen each time Windows 98 starts.
+                      </label>
+                    </form>
+
+                    <button class="common_btn cheched_btn" disabled><span class="underLine">C</span>lose</button>
+                  </div>
+
+                
+                </div>
+                
+              </div>
             </div>
+
+            <!-- 폴더 -->
+            <!-- <div id="win-computer" class="window_container _min">
+              <div class="bar">
+                <div class="title">
+                  <i class="desctop"></i>
+                  <h3>My Computer</h3>
+                </div>
+                <div class="bar_btns">
+                  <button class="btn_box close">close</button>
+                </div>
+              </div>
+              <div class="inner">
+              </div>
+            </div> -->
+
 
             <aside>
               <p id="speech" class="speech">안녕하세요!</p>
@@ -97,8 +172,36 @@
               <img class="puppy" src="../assets/images/about/puppy.gif" alt="꼬리 흔드는 강아지">
             </aside>
           </div>
+
           <div class="bottom_bar">
             <button class="btn_box start">start</button>
+
+            <div class="nav_bar">
+              <div class="tab"></div>
+            </div>
+
+            <div class="clock">
+              <div class="time">
+                <div class="icon">
+                  <svg class="day" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                    <path class="line" d="M6 11H1V13H6V11Z" fill="#FFFF00"/>
+                    <path class="line" d="M4 5H3V4H4V3H5V4H6V5H7V6H8V7H7V8H6V7H5V6H4V5Z" fill="#FFFF00"/>
+                    <path class="line" d="M7 17H8V18H7V19H6V20H5V21H4V20H3V19H4V18H5V17H6V16H7V17Z" fill="#FFFF00"/>
+                    <path class="line" d="M13 18H11V23H13V18Z" fill="#FFFF00"/>
+                    <path class="line" d="M13 1H11V6H13V1Z" fill="#FFFF00"/>
+                    <path class="line" d="M20 19H21V20H20V21H19V20H18V19H17V18H16V17H17V16H18V17H19V18H20V19Z" fill="#FFFF00"/>
+                    <path class="line" d="M23 11H18V13H23V11Z" fill="#FFFF00"/>
+                    <path class="line" d="M17 7H16V6H17V5H18V4H19V3H20V4H21V5H20V6H19V7H18V8H17V7Z" fill="#FFFF00"/>
+                    <path d="M16 16H14V17H10V16H8V14H7V10H8V8H10V7H14V8H16V10H17V14H16V16Z" fill="#FFFF00"/>
+                  </svg>
+                  <svg class="night" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                    <path d="M14 21H17V22H15V23H9V22H7V21H5V20H4V19H3V17H2V15H1V9H2V7H3V5H4V4H5V3H7V2H9V1H15V2H17V3H14V4H12V5H10V6H9V8H8V10H7V14H8V16H9V18H10V19H12V20H14V21Z" fill="#FFFF00"/>
+                    <path class="star" d="M23 10V11H22V12H21V14H22V17H21V16H20V15H19V14H18V15H17V16H16V17H15V14H16V12H15V11H14V10H17V8H18V7H19V8H20V10H23Z" fill="#FFFF00"/>
+                  </svg>
+                </div>
+
+                <span id="hour">00</span><span class="colon">:</span><span id="minute">00AM</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -113,18 +216,98 @@
 </body>
 
 <script>
-function playTyping() {
+  // 커서
+  mouseCursorEvent();
+  // 시계
+  realTime();
+  setInterval(realTime, 1000);
+  // 타이핑 효과 
+  resetAndPlay();
+  const typingTimer = setInterval(resetAndPlay, 4000);
+  // 체크박스 확인 시 버튼 활성화
+  checkedBtn();
+
+
+  //////////
+  function mouseCursorEvent() {
+    const $cursor = $('#cursor');
+
+    $(document).on('mousemove', function(e) {
+      $cursor.css({
+        left: e.clientX - 5 + 'px',
+        top: e.clientY - 3 + 'px'
+      });
+    });
+
+    $('button.clickable').on({
+      'mouseenter': function() {
+        $cursor.stop().fadeIn(100);
+      },
+      'mouseleave': function() {
+        $cursor.stop().fadeOut(100);
+      }
+    });
+  };
+
+  function resetAndPlay() {
     const target = document.querySelector('#speech');
+    if (!target) return;
+
+    target.innerText = '';
     
     TypeHangul.type('#speech', {
-        intervalType: 80,
-        humanize: 1
+      text: '안녕하세요!', 
+      intervalType: 80,
+      humanize: 1
     });
-}
+  }
 
-playTyping();
+  function realTime() {
+    const now = new Date();
 
-setInterval(playTyping, 5000);
+    let hours = now.getHours();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+  
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    
+    const h = String(now.getHours()).padStart(2, '0');
+    const m = String(now.getMinutes()).padStart(2, '0');
+    
+    document.getElementById('hour').innerText = `${h}`;
+    document.getElementById('minute').innerText = `${m}${ampm}`;
+
+    const dayIcon = document.querySelector('.day');
+    const nightIcon = document.querySelector('.night');
+
+    if (ampm === 'AM') {
+      dayIcon.style.display = 'block';
+      nightIcon.style.display = 'none';
+    } else {
+      dayIcon.style.display = 'none';
+      nightIcon.style.display = 'block';
+    }
+  }
+
+  function checkedBtn() {
+    const $checkbox = $('#show_startup');
+    const $closeBtn = $('.cheched_btn');
+
+    $checkbox.on('change', function() {
+      // 체크가 되어 있다면(true) disabled 속성을 제거(false), 아니면 추가(true)
+      if ($(this).is(':checked')) {
+        $closeBtn.prop('disabled', false);
+      } else {
+        $closeBtn.prop('disabled', true);
+      }
+    });
+
+    // 초기 상태 로드 (HTML에 checked가 이미 있으니 한 번 확인)
+    if ($checkbox.is(':checked')) {
+      $closeBtn.prop('disabled', false);
+    }
+  }
+
 </script>
 
 </html>

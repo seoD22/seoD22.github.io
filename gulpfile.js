@@ -25,10 +25,10 @@ gulp.task('scss', function() {
     .pipe(browserSync.stream());
 });
 
-// [3] 정적 파일 복사 (문제의 구간 수정!)
+// [3] 정적 파일 복사
 gulp.task('copy', function() {
   return gulp.src([
-    'src/assets/**/*', 
+    // 'src/assets/**/*', 
     'src/js/**/*'
   ], { base: 'src' })
   .pipe(gulp.dest('docs'))
