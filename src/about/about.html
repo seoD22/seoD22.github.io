@@ -36,6 +36,30 @@
               <p>기본 정보</p>
             </button>
 
+            <!-- 인트로 부팅 -->
+            <div class="boot_screen">
+              <div id="win-boot" class="window_container _min">
+                <div class="bar">
+                  <div class="title">
+                    <i class="desctop"></i>
+                    <h3>Windows 98 Setup</h3>
+                  </div>
+                  <div class="bar_btns">
+                    <button class="btn_box close" disabled>close</button>
+                  </div>
+                </div>
+                <div class="inner">
+                  <div class="boot_top">
+                    <img src="../assets/images/about/img_dino.png" alt="픽셀 공룡 이미지">
+                    <p>Updating..<span>.</span></p>
+                  </div>
+                  <div class="loading_bar">
+                    <div class="block"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <!-- 팝업 -->
             <div id="win-intro" class="window_container _min">
               <div class="bar">
@@ -44,13 +68,12 @@
                   <h3>Welcome!</h3>
                 </div>
                 <div class="bar_btns">
-                  <button class="btn_box close">close</button>
+                  <button class="btn_box close" disabled>close</button>
                 </div>
               </div>
               <div class="inner">
                 <div class="content">
                   <img class="window_logo" src="../assets/images/about/logo_window98.png" alt="Microsoft Windows98 이미지">
-                
                   <div class="cont_body">
                     <div class="_l button_list">
                       <p>CONTENT</p>
@@ -64,12 +87,11 @@
 
                     <div class="_r text_wrap">
                       <strong>Welcome</strong>
-                      <p>Welcome to the exciting new world of Windows 98,
-                      where your computer desktop meets the Internet!
+                      <p>윤서희의 통합 경력 관리 시스템에 접속하신 여러분, 환영합니다!
                       <br><br>
-                      Sit back and relax as you take a brief tour of the options available on this screen.
+                      본 페이지는 윤서희의 퍼블리셔로서의 경력 데이터와 함께, 시스템의 원동력이 되는 개인적인 취향들을 효율적으로 탐색할 수 있도록 구성되었습니다.
                       <br><br>
-                      If your want to explore an option, just click it.</p>
+                      준비된 메뉴를 통해 저의 다채로운 매력과 전문 지식을 자유롭게 둘러보시기 바랍니다.</p>
                     </div>
                   </div>
 
@@ -77,11 +99,11 @@
                     <form action="" class="popup_form">
                       <input type="checkbox" id="show_startup">
                       <label for="show_startup">
-                        Show this screen each time Windows 98 starts.
+                        윤서희의 통합 경력 관리 시스템 접속 동의하기.
                       </label>
                     </form>
 
-                    <button class="common_btn cheched_btn" disabled><span class="underLine">C</span>lose</button>
+                    <button class="common_btn cheched_btn" disabled><span class="underLine">E</span>nter</button>
                   </div>
 
                 
@@ -152,6 +174,11 @@
 </body>
 
 <script>
+  const $wrap = $('.wrap');
+
+  // 초기 실행
+  introAnimation();
+
   // 커서
   mouseCursorEvent();
   // 시계
@@ -162,9 +189,93 @@
   const typingTimer = setInterval(resetAndPlay, 4000);
   // 체크박스 확인 시 버튼 활성화
   checkedBtn();
-
+  // 인트로 팝업 닫기
+  $('.cheched_btn, #win-intro .btn_box.close').on('click', function() {
+    $wrap.removeClass('is-intro');
+    setTimeout(function() {
+      $('#win-intro').hide();
+    }, 500);
+  });
 
   //////////
+  function introAnimation () {
+    const $wrap = $('.wrap');
+    const $loader = $('.loading_bar');
+    const blockWidth = 8;
+    const gap = 2;
+
+    function startBooting() {
+      $wrap.addClass('is-booting');
+      $('#win-boot').show();
+
+      const containerWidth = $loader.width();
+      const totalBlocks = Math.floor((containerWidth + gap) / (blockWidth + gap));
+      let currentBlock = 0;
+
+      function getRandomTime(progress) {
+        const percent = (progress / totalBlocks) * 100;
+
+        if (percent < 30) {
+          return Math.random() * 100 + 50;
+        } else if (percent < 80) {
+          return Math.random() * 200 + 100;
+        } else if (percent < 95) {
+          return Math.random() * 400 + 300;
+        } else {
+          return Math.random() * 200 + 100;
+        }
+      }
+
+      function addBlock() {
+        if (currentBlock < totalBlocks) {
+          $loader.append('<div class="block"></div>');
+          currentBlock++;
+
+          const nextTime = getRandomTime(currentBlock);
+          setTimeout(addBlock, nextTime);
+        } else {
+          setTimeout(endBooting, 600);
+        }
+      }
+      // 첫 번째 블록 시작
+      addBlock();
+    }
+
+    function endBooting() {
+      $wrap.removeClass('is-booting').addClass('is-intro');
+      $('#win-boot').hide();
+      if (typeof winControl === 'function') winControl('#win-intro', 'open');
+      if (typeof checkedBtn === 'function') checkedBtn();
+    }
+
+    startBooting();
+  };
+
+  function startBooting() {
+    $wrap.addClass('is-booting');
+    const $loader = $('.loading_bar');
+    
+    //로딩바 애니메이션
+    $loader.animate({ width: '100%' }, 3000, function() {
+      endBooting();
+    });
+  }
+
+  function endBooting() {
+    $wrap.removeClass('is-booting');
+    $wrap.addClass('is-intro');
+
+    // 인트로 팝업 열기
+    if (typeof winControl === 'function') {
+      winControl('#win-intro', 'open');
+    }
+    
+    // 체크박스 감시
+    if (typeof checkedBtn === 'function') {
+      checkedBtn();
+    }
+  }
+
   function mouseCursorEvent() {
     const $cursor = $('#cursor');
 
@@ -184,6 +295,25 @@
       }
     });
   };
+
+  function winControl(target, action) {
+    const $targetWin = $(target);
+
+    if (action === 'open') {
+      $targetWin.show();
+      $('.window_container').css('z-index', 1);
+      $targetWin.css('z-index', 99);
+    } 
+    else if (action === 'close') {
+      $targetWin.hide();
+    }
+  }
+
+  // 창 클릭 시 해당 창 맨 위로
+  // $('.window_container').on('mousedown', function() {
+  //   $('.window_container').css('z-index', 1);
+  //   $(this).css('z-index', 99);
+  // });
 
   function resetAndPlay() {
     const target = document.querySelector('#speech');
@@ -227,19 +357,21 @@
 
   function checkedBtn() {
     const $checkbox = $('#show_startup');
-    const $closeBtn = $('.cheched_btn');
+    const $enterBtn = $('.cheched_btn');
+    const $closeBtn = $('#win-intro .bar_btns .close');
 
     $checkbox.on('change', function() {
-      // 체크가 되어 있다면(true) disabled 속성을 제거(false), 아니면 추가(true)
       if ($(this).is(':checked')) {
+        $enterBtn.prop('disabled', false);
         $closeBtn.prop('disabled', false);
       } else {
+        $enterBtn.prop('disabled', true);
         $closeBtn.prop('disabled', true);
       }
     });
 
-    // 초기 상태 로드 (HTML에 checked가 이미 있으니 한 번 확인)
     if ($checkbox.is(':checked')) {
+      $enterBtn.prop('disabled', false);
       $closeBtn.prop('disabled', false);
     }
   }
