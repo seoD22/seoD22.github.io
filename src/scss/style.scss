@@ -7,11 +7,7 @@
 html,
 body {
   font-size: 10px;
-  // color: $color-textBlack;
   letter-spacing: -0.02em;
-}
-h1 {
-  // font-size: 10rem;
 }
 
 // DarkMode
@@ -74,6 +70,41 @@ h2{
   }
 }
 
+@keyframes show_1 {
+  0% { opacity: 0; }
+  5% { opacity: 1; }
+  80% { opacity: 1; }
+  90%, 100% { opacity: 0; }
+}
+
+@keyframes show_2 {
+  0%, 8% { opacity: 0; }
+  13% { opacity: 1; }
+  80% { opacity: 1; }
+  90%, 100% { opacity: 0; }
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(-0.5rem);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+
+// 공통 스타일
+.panel { // 탭 이벤트
+  &._hidden {
+    display: none;
+  }
+}
+
 
 // 윈도우 컨셉
 .window {
@@ -102,15 +133,20 @@ h2{
     position: relative;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    margin: 0;
     padding: 0.4rem 0.5rem;
     background: $color-monoGrey;
-    box-shadow: -2px -2px 0 0 #262626 inset, 2px 2px 0 0 #F0F0F0 inset, -4px -4px 0 0 #7E7E7E inset, 4px 4px 0 0 #B1B1B1 inset;
+    box-shadow: $line-common;
     &._min {
+      visibility: hidden;
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
       width: 70%;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+      transition: .3s;
       .inner {
         min-height: 10rem;
       }
@@ -133,9 +169,9 @@ h2{
     }
     &.btn_box {
       background-color: $color-monoGrey;
-      box-shadow: -2px -2px 0 0 #262626 inset, 2px 2px 0 0 #F0F0F0 inset, -4px -4px 0 0 #7E7E7E inset, 4px 4px 0 0 #B1B1B1 inset;
+      box-shadow: $line-common;
       &:active {
-        box-shadow: 2px 2px 0 0 #262626 inset, -2px -2px 0 0 #F0F0F0 inset, 4px 4px 0 0 #7E7E7E inset;
+        box-shadow: $line-concave;
       }
       &:disabled {
         pointer-events: none;
@@ -165,7 +201,7 @@ h2{
       justify-content: center;
       padding: 1rem 4rem;
       background-color: $color-monoGrey;
-      box-shadow: -2px -2px 0 0 #262626 inset, 2px 2px 0 0 #F0F0F0 inset, -4px -4px 0 0 #7E7E7E inset, 4px 4px 0 0 #B1B1B1 inset;
+      box-shadow: $line-common;
       font-family: $fontFamily-2;
       font-size: 1.6rem;
       letter-spacing: 0.03em;
@@ -181,7 +217,7 @@ h2{
         }
       }
       &:active {
-        box-shadow: 2px 2px 0 0 #262626 inset, -2px -2px 0 0 #F0F0F0 inset, 4px 4px 0 0 #7E7E7E inset;
+        box-shadow: $line-concave;
       }
       &:disabled {
         pointer-events: none;
@@ -396,9 +432,54 @@ h2{
       }
     }
   }
+  .tab_wrap {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    button {
+      margin-top: 0.2rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 0.3rem 0.3rem 0 0;
+      background-color: $color-monoGrey;
+      box-shadow: 2px 1.397px 0 0 #F0F0F0 inset, 0 -2px 0 0 #F0F0F0 inset, -1.397px 0 0 0 #262626 inset;
+      overflow: hidden;
+      &[aria-selected="true"] {
+        box-shadow: 2px 1.397px 0 0 #F0F0F0 inset, -1.397px 0 0 0 #262626 inset;
+      }
+      &:focus, &[aria-selected="true"] {
+        margin-top: 0;
+        padding: 0.3rem 0.8rem 0.5rem;
+      }
+      @include hover-device {
+        margin-top: 0;
+        padding: 0.3rem 0.8rem 0.5rem;
+      }
+    }
+    
+  }
+  .panel_wrap {
+    margin: -.16rem 0;
+    .panel {
+      width: 100%;
+      padding: 2rem;
+      box-shadow: inset -2px -2px 0 0 #262626,inset 2px 2px 0 0 #f0f0f0;
+    }
+    .img_wrap {
+      padding: 2rem;
+      width: 100%;
+      background-color: $color-green;
+      box-shadow: $line-concave;
+    }
+  }
+
 }
 
 .about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
   font-family: $fontFamily-1;
   aside {
     position: absolute;
@@ -431,10 +512,26 @@ h2{
     }
   }
 
+  // 팝업 공통 이벤트
+  @each $win in $windows {
+    &.is-#{$win} {
+      ##{$win} {
+        @include window-active-effect;
+      }
+    }
+  }
+
   // 인트로
   &.is-booting {
     .boot_screen {
       display: block;
+      .window_container {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        pointer-events: auto;
+        z-index: 99;
+        visibility: visible;
+      }
     }
   }
   .boot_screen {
@@ -492,14 +589,16 @@ h2{
   // 팝업, 폴더
   &.is-intro {
     #win-intro {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
+      &.window_container {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        pointer-events: auto;
+        z-index: 99;
+        visibility: visible;
+      }
     }
   }
   #win-intro {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.8);
-    transition: .3s;
     .inner {
       padding: 2rem 2rem 2rem 0;
       background: url(../assets/images/about/bg_cloud.png)no-repeat center center / cover;
@@ -603,6 +702,59 @@ h2{
       gap: 1rem;
       margin-left: 2rem;
     }
+  }
+
+  #win-resume {
+    width: 50%;
+    .inner {
+      padding: 1.5rem;
+      background-color: $color-monoGrey;
+    }
+    .img_wrap {
+      display: flex;
+      padding: 2rem 2rem 0;
+    }
+    .profile {
+      position: relative;
+      top: -0.3rem;
+      width: 37.45%;
+      margin-left: 2.1rem;
+      aspect-ratio: 282 / 279;
+      overflow: hidden;
+      img {
+        position: relative;
+        width: calc(100% - 0.8rem);
+        z-index: 3;
+      }
+    }
+    .profile_deco {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc(100% - 0.8rem);
+      height: 100%;
+      mask-repeat: no-repeat;
+      mask-size: cover;
+      opacity: 0;
+      animation-duration: 2.5s;
+      animation-iteration-count: infinite;
+      animation-timing-function: steps(1);
+      &._1 {
+        mask-image: url(../assets/images/dot_profile.png);
+        background-color: $color-blue;
+        z-index: 2;
+        transform: translate(4px, 4px);
+        animation-name: show_1;
+      }
+      &._2 {
+        mask-image: url(../assets/images/dot_profile.png);
+        background-color: #FFCE00;
+        z-index: 1;
+        transform: translate(8px, 8px);
+        animation-name: show_2;
+      }
+    }
+
   }
 }
 

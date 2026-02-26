@@ -31,9 +31,13 @@
               <img src="../assets/images/about/windowIcon/myComputer.png" alt="내컴퓨터">
               <p>내 컴퓨터</p>
             </button>
-            <button class="icon_box" data-target="win-computer">
+            <button class="icon_box" data-target="win-resume">
               <img src="../assets/images/about/windowIcon/resume.png" alt="기본 정보">
               <p>기본 정보</p>
+            </button>
+            <button class="icon_box" data-target="win-resumeInstall">
+              <img src="../assets/images/about/windowIcon/resume.png" alt="기본 정보">
+              <p>이력서<br> 설치 마법사</p>
             </button>
 
             <!-- 인트로 부팅 -->
@@ -60,7 +64,7 @@
               </div>
             </div>
 
-            <!-- 팝업 -->
+            <!-- 인트로 팝업 -->
             <div id="win-intro" class="window_container _min">
               <div class="bar">
                 <div class="title">
@@ -112,8 +116,8 @@
               </div>
             </div>
 
-            <!-- 폴더 -->
-            <!-- <div id="win-computer" class="window_container _min">
+            <!-- 폴더 팝업 -->
+            <div id="win-computer" class="window_container _min">
               <div class="bar">
                 <div class="title">
                   <i class="desctop"></i>
@@ -125,7 +129,45 @@
               </div>
               <div class="inner">
               </div>
-            </div> -->
+            </div>
+            <div id="win-resume" class="window_container _min">
+              <div class="bar">
+                <div class="title">
+                  <i class="desctop"></i>
+                  <h3>기본 정보</h3>
+                </div>
+                <div class="bar_btns">
+                  <button class="btn_box close">close</button>
+                </div>
+              </div>
+              <div class="inner">
+                <div class="tab_wrap" role="tablist" aria-label="기본 정보 탭">
+                  <button role="tab" aria-selected="true" aria-controls="panel-1">It's me</button>
+                  <button role="tab" aria-selected="false" aria-controls="panel-2">Tech Stack</button>
+                  <button role="tab" aria-selected="false" aria-controls="panel-3">Experience</button>
+                </div>
+                <div class="panel_wrap">
+                  <div id="panel-1" class="panel" role="tabpanel" aria-labelledby="tab-1">
+                    <div class="img_wrap">
+                      <div class="profile">
+                        <img src="../assets/images/dot_profile.png" alt="도트 이미지">
+                        <i class="profile_deco _1" aria-hidden="true"></i>
+                        <i class="profile_deco _2" aria-hidden="true"></i>
+                      </div>
+                      <i class="profile_text">
+                        
+                      </i>
+                    </div>
+                  </div>
+                  <div id="panel-2" class="panel _hidden" role="tabpanel" aria-labelledby="tab-2">
+
+                  </div>
+                  <div id="panel-3" class="panel _hidden" role="tabpanel" aria-labelledby="tab-3">
+
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
             <aside>
@@ -196,6 +238,10 @@
       $('#win-intro').hide();
     }, 500);
   });
+  // 아이콘 이벤트
+  iconClickEvent();
+  // 탭 이벤트
+  tabEvent();
 
   //////////
   function introAnimation () {
@@ -309,6 +355,34 @@
     }
   }
 
+  function iconClickEvent() {
+    const $wrap = $('.wrap');
+    // 창 열기
+    $('.icon_box').on('click', function() {
+      const targetId = $(this).data('target');
+      const stateClass = 'is-' + targetId;
+      
+      if (typeof winControl === 'function') {
+        winControl('#' + targetId, 'open');
+      }
+
+      $wrap.addClass(stateClass);
+    });
+
+    // 창 닫기
+    $(document).on('click', '.window_container .btn_box.close', function() {
+      const $targetWin = $(this).closest('.window_container');
+      const targetId = $targetWin.attr('id');
+      const stateClass = 'is-' + targetId;
+
+      if (typeof winControl === 'function') {
+        winControl($targetWin, 'close');
+      }
+
+      $wrap.removeClass(stateClass);
+    });
+  };
+  
   // 창 클릭 시 해당 창 맨 위로
   // $('.window_container').on('mousedown', function() {
   //   $('.window_container').css('z-index', 1);
@@ -374,6 +448,37 @@
       $enterBtn.prop('disabled', false);
       $closeBtn.prop('disabled', false);
     }
+  }
+
+  function tabEvent() {
+    const tabButtons = document.querySelectorAll('[role="tab"]');
+    const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const targetPanelId = btn.getAttribute('aria-controls');
+
+        // 1. 모든 버튼 비활성화
+        tabButtons.forEach(tab => {
+          tab.setAttribute('aria-selected', 'false');
+          tab.setAttribute('tabindex', '-1');
+        });
+
+        // 2. 모든 패널 숨기기
+        tabPanels.forEach(panel => {
+          panel.classList.add('_hidden');
+          panel.hidden = true;
+        });
+
+        // 3. 선택된 요소 활성화
+        btn.setAttribute('aria-selected', 'true');
+        btn.setAttribute('tabindex', '0');
+        
+        const targetPanel = document.getElementById(targetPanelId);
+        targetPanel.classList.remove('_hidden');
+        targetPanel.hidden = false;
+      });
+    });
   }
 
 </script>

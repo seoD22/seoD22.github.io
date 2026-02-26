@@ -26,7 +26,6 @@
 	}
 }
 
-
 // 예시
 // @mixin layer_width ($max-width: 1200px) {
 // 	max-width: $max-width;
@@ -52,4 +51,15 @@
   html.darkMode & {
     color: #FFF;
   }
+}
+
+// 아이콘 - 팝업
+$windows: ("win-intro", "win-computer", "win-resume", "win-trash", "win-project");
+
+@mixin window-active-effect {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+  z-index: 99;
+  visibility: visible;
 }
