@@ -100,8 +100,13 @@ h2{
 
 // 공통 스타일
 .panel { // 탭 이벤트
+  opacity: 1;
+  visibility: visible;
   &._hidden {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    padding: 0 !important;
   }
 }
 
@@ -134,6 +139,7 @@ h2{
     display: flex;
     flex-direction: column;
     width: 100%;
+    max-height: calc(100% - 11rem);
     margin: 0;
     padding: 0.4rem 0.5rem;
     background: $color-monoGrey;
@@ -438,40 +444,94 @@ h2{
     display: flex;
     button {
       margin-top: 0.2rem;
-      padding: 0.3rem 0.8rem;
+      padding: 0.5rem 0.8rem 0.3rem;
       border-radius: 0.3rem 0.3rem 0 0;
       background-color: $color-monoGrey;
+      font-family: $fontFamily-2;
+      font-size: 1.6rem;
       box-shadow: 2px 1.397px 0 0 #F0F0F0 inset, 0 -2px 0 0 #F0F0F0 inset, -1.397px 0 0 0 #262626 inset;
       overflow: hidden;
       &[aria-selected="true"] {
-        box-shadow: 2px 1.397px 0 0 #F0F0F0 inset, -1.397px 0 0 0 #262626 inset;
+        box-shadow: 2px 1.397px 0 0 #F0F0F0 inset, -1.397px 0 0 0 #26262657 inset;
       }
       &:focus, &[aria-selected="true"] {
         margin-top: 0;
-        padding: 0.3rem 0.8rem 0.5rem;
+        padding: 0.5rem 0.8rem 0.5rem;
       }
       @include hover-device {
         margin-top: 0;
-        padding: 0.3rem 0.8rem 0.5rem;
+        padding: 0.5rem 0.8rem 0.5rem;
       }
     }
     
   }
   .panel_wrap {
     margin: -.16rem 0;
+    &::-webkit-scrollbar {
+      display: none;
+    }
     .panel {
       width: 100%;
       padding: 2rem;
       box-shadow: inset -2px -2px 0 0 #262626,inset 2px 2px 0 0 #f0f0f0;
     }
-    .img_wrap {
+    .screen {
       padding: 2rem;
       width: 100%;
       background-color: $color-green;
       box-shadow: $line-concave;
     }
   }
+  // 스크롤바
+  ::-webkit-scrollbar {
+    width: 1.6rem;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #dfdfdf;
+    box-shadow: inset 0.1rem 0.1rem 0 #808080, inset -0.1rem -0.1rem 0 #fff;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0;
+    border: 0.1rem solid;
+    border-color: #ffffff #808080 #808080 #ffffff;
+    box-shadow: inset 0.1rem 0.1rem 0 #ffffff, inset -0.1rem -0.1rem 0 #000000;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #c0c0c0;
+  }
 
+  .dotted_list {
+    margin-top: 0.5rem;
+    li {
+      position: relative;
+      margin-left: 1rem;
+      font-family: $fontFamily-2;
+      font-size: 1.6rem;
+      line-height: 2rem;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 0.3rem;
+        aspect-ratio: 1 / 1;
+        top: 0.8rem;
+        left: -1rem;
+        background-color: $color-black;
+      }
+      & + li {
+        margin-top: 0.5rem;  
+      }
+    }
+  }
+  .progress_bar {
+    height: 1rem;
+    background-color: $color-white;
+    border: 1px solid;
+    border-color: $color-deepGrey #dfdfdf #dfdfdf $color-deepGrey;
+    .bar_inner {
+      height: 100%;
+      background-color: $color-blue;
+    }
+  }
 }
 
 .about {
@@ -710,15 +770,37 @@ h2{
       padding: 1.5rem;
       background-color: $color-monoGrey;
     }
-    .img_wrap {
+    .monitor {
+      position: relative;
+      width: 23rem;
+      aspect-ratio: 4 / 3;
+      margin: 0 auto;
+      margin-bottom: 2.6rem;
+      padding: 1.9rem;
+      border-radius: 0.4rem;
+      background-color: $color-monoGrey;
+      box-shadow: inset -2px -2px 0 0 #262626,inset 2px 2px 0 0 #f0f0f0;
+      &::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -2.6rem;
+        width: 13rem;
+        aspect-ratio: 117 / 23;
+        transform: translateX(-50%);
+        background: url(../assets/images/about/monitor_neck.png)no-repeat center center / contain;
+      }
+    }
+    .screen {
       display: flex;
+      height: 100%;
       padding: 2rem 2rem 0;
+      overflow: hidden;
     }
     .profile {
       position: relative;
-      top: -0.3rem;
-      width: 37.45%;
-      margin-left: 2.1rem;
+      top: -0.2rem;
+      width: 85%;
       aspect-ratio: 282 / 279;
       overflow: hidden;
       img {
@@ -727,34 +809,213 @@ h2{
         z-index: 3;
       }
     }
-    .profile_deco {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: calc(100% - 0.8rem);
-      height: 100%;
-      mask-repeat: no-repeat;
-      mask-size: cover;
-      opacity: 0;
-      animation-duration: 2.5s;
-      animation-iteration-count: infinite;
-      animation-timing-function: steps(1);
-      &._1 {
-        mask-image: url(../assets/images/dot_profile.png);
-        background-color: $color-blue;
-        z-index: 2;
-        transform: translate(4px, 4px);
-        animation-name: show_1;
-      }
-      &._2 {
-        mask-image: url(../assets/images/dot_profile.png);
-        background-color: #FFCE00;
-        z-index: 1;
-        transform: translate(8px, 8px);
-        animation-name: show_2;
+    .panel_body {
+      position: relative;
+      width: 100%;
+      margin-top: 2.5rem;
+      padding: 2rem;
+      @include window-boxLine;
+      .cnt {
+        font-family: $fontFamily-2;
+        font-size: 1.6rem;
       }
     }
-
+    .panel_title {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 1rem;
+      padding: 0 0.5rem;
+      transform: translateY(-50%);
+      background-color: $color-monoGrey;
+      font-family: $fontFamily-2;
+      font-size: 1.6rem;
+      text-transform: capitalize;
+    }
+    .btn_wrap {
+      margin-top: 1rem;
+      button {
+        margin-left: auto;
+        padding: 0.5rem 2rem;
+        font-size: 1.4rem;
+      }
+    }
+    #panel-1 {
+      .profile_deco {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(100% - 0.8rem);
+        height: 100%;
+        mask-repeat: no-repeat;
+        mask-size: cover;
+        opacity: 0;
+        animation-duration: 2.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: steps(1);
+        &._1 {
+          mask-image: url(../assets/images/dot_profile.png);
+          background-color: $color-blue;
+          z-index: 2;
+          transform: translate(4px, 4px);
+          animation-name: show_1;
+        }
+        &._2 {
+          mask-image: url(../assets/images/dot_profile.png);
+          background-color: #FFCE00;
+          z-index: 1;
+          transform: translate(8px, 8px);
+          animation-name: show_2;
+        }
+      }
+      .panel_body {
+        margin-top: calc(2.5rem + 2.6rem);
+      }
+      .profile_list {
+        > div {
+          display: flex;
+          align-items: flex-start;
+          gap: 1rem;
+          & + div {
+            margin-top: 1rem;
+          }
+        }
+        dt {
+          font-weight: 600;
+          width: 12rem;
+        }
+        dd {
+          width: calc(100% - 12rem);
+          line-height: 2rem;
+        }
+      }
+    }
+    #panel-2 {
+      .panel_head {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        p {
+          flex: 1;
+          font-family: $fontFamily-2;
+          font-size: 1.6rem;
+          line-height: 2rem;
+          word-break: keep-all;
+        }
+      }
+      .screen {
+        width: 100%;
+        max-height: 22rem;
+        padding: 0;
+        background-color: $color-white;
+        overflow-y: scroll;
+        .screen_inner {
+          width: 100%;
+          height: 100%;
+          padding: 2rem;
+        }
+      }
+      .icon_warning {
+        display: inline-block;
+        background: url(../assets/images/about/icon/icon_warning.png)no-repeat center center / contain;
+        width: 4rem;
+        aspect-ratio: 1 / 1;
+      }
+      .com_list {
+        & + .com_list {
+          margin-top: 5rem;
+        }
+      }
+      .title {
+        position: relative;
+        color: $color-blue;
+        font-size: 2rem;
+        line-height: 2.5rem;
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0; right: 0;
+          bottom: -0.1rem;
+          height: 0.1rem;
+          background-color: $color-blue;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          right: -0.3rem;
+          bottom: -0.1rem;
+          transform: translateX(100%);
+          width: 1rem;
+          height: 0.4rem;
+          background-color: $color-blue;
+          animation: blink 1s 0.1s infinite steps(1);
+        }
+      }
+      .work_desc {
+        margin: 0.8rem 0 0 1rem;
+        .label {
+          font-size: 1.8rem;
+          line-height: 2.2rem;
+        }
+      }
+      .dotted_list {
+        margin-left: 0.3rem;
+      }
+    }
+    #panel-3 {
+      .panel_head {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        p {
+          flex: 1;
+          font-family: $fontFamily-2;
+          font-size: 1.6rem;
+          line-height: 2rem;
+          word-break: keep-all;
+        }
+      }
+      .icon_help {
+        display: inline-block;
+        background: url(../assets/images/about/icon/icon_help.png)no-repeat center center / contain;
+        width: 4rem;
+        aspect-ratio: 1 / 1;
+      }
+      .skill_list {
+        li {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          & + li {
+            margin-top: 1.5rem;
+          }
+        }
+      }
+      .skill_name {
+        font-size: 1.6rem;
+        font-family: $fontFamily-2;
+      }
+      .status {
+        margin-left: auto;
+        font-family: $fontFamily-2;
+        font-size: 1.5rem;
+      }
+      .progress_bar {
+        margin-top: 0.5rem;
+        width: 100%;
+        height: 1.5rem;
+      }
+      .bar_inner {
+        transform: scaleX(1);
+        transform-origin: left;
+        transition: 0.7s;
+      }
+      &._hidden {
+        .bar_inner {
+          transform: scaleX(0);
+        }
+      }
+    }
   }
 }
 

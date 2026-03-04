@@ -37,32 +37,7 @@
   <script src="https://unpkg.com/type-hangul"></script>
 </head>
 <body>
-  <header id="header">
-  <div class="wrap">
-    <h1>
-      <a href="/" aria-label="메인으로 이동">
-        <img src="" alt="사이트 로고">
-      </a>
-    </h1>
-    <nav aria-label="메인 메뉴">
-      <ul>
-        <li><a href="/about/about.html">ABOUT</a></li>
-        <li><a href="#" onclick="alertText()">BLOG</a></li>
-      </ul>
-    </nav>
-
-    <button type="button" class="theme_toggle" aria-label="다크 모드로 전환">
-      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M12 4V2M12 20V22M6.41421 6.41421L5 5M17.728 17.728L19.1422 19.1422M4 12H2M20 12H22M17.7285 6.41421L19.1427 5M6.4147 17.728L5.00049 19.1422M12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M9 6C9 10.9706 13.0294 15 18 15C18.9093 15 19.787 14.8655 20.6144 14.6147C19.4943 18.3103 16.0613 20.9999 12 20.9999C7.02944 20.9999 3 16.9707 3 12.0001C3 7.93883 5.69007 4.50583 9.38561 3.38574C9.13484 4.21311 9 5.09074 9 6Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-  </div>
-</header>
-
-
+  
   <main>
     <div class="wrap about window">
       <div id="cursor" class="_text"><span style="--text-color: #009CFF">c</span><span style="--text-color: #FF3100">l</span><span style="--text-color: #6BCE39">i</span><span style="--text-color: #FFCE00">c</span><span style="--text-color: #009CFF">k</span></div>
@@ -142,7 +117,7 @@
                     <div class="_l button_list">
                       <p>CONTENT</p>
                       <ul>
-                        <li style="--folder-color: #009CFF;"><button class="clickable" aria-label="윤서희 간략소개 보기">Who is Seohee</button></li>
+                        <li class="active_resume" style="--folder-color: #009CFF;"><button class="clickable" aria-label="윤서희 간략소개 보기">Who is Seohee</button></li>
                         <li style="--folder-color: #FF3100;"><button class="clickable" aria-label="윤서희와 연락하기">Connection to me</button></li>
                         <li style="--folder-color: #6BCE39;"><button class="clickable" aria-label="기술 스택">Discover My Skills</button></li>
                         <li style="--folder-color: #FFCE00;"><button class="clickable" aria-label="내가 좋아하는 것들">Favorite Things</button></li>
@@ -203,28 +178,133 @@
               <div class="inner">
                 <div class="tab_wrap" role="tablist" aria-label="기본 정보 탭">
                   <button role="tab" aria-selected="true" aria-controls="panel-1">It's me</button>
-                  <button role="tab" aria-selected="false" aria-controls="panel-2">Tech Stack</button>
-                  <button role="tab" aria-selected="false" aria-controls="panel-3">Experience</button>
+                  <button role="tab" aria-selected="false" aria-controls="panel-2">Experience</button>
+                  <button role="tab" aria-selected="false" aria-controls="panel-3">Tech Stack</button>
                 </div>
                 <div class="panel_wrap">
                   <div id="panel-1" class="panel" role="tabpanel" aria-labelledby="tab-1">
-                    <div class="img_wrap">
-                      <div class="profile">
-                        <img src="../assets/images/dot_profile.png" alt="도트 이미지">
-                        <i class="profile_deco _1" aria-hidden="true"></i>
-                        <i class="profile_deco _2" aria-hidden="true"></i>
+                    <div class="panel_head">
+                      <div class="monitor">
+                        <div class="screen">
+                          <div class="profile">
+                            <img src="../assets/images/dot_profile.png" alt="도트 이미지">
+                            <i class="profile_deco _1" aria-hidden="true"></i>
+                            <i class="profile_deco _2" aria-hidden="true"></i>
+                          </div>
+                        </div>
                       </div>
-                      <i class="profile_text">
-                        
-                      </i>
+                    </div>
+                    <div class="panel_body">
+                      <strong class="panel_title">about me</strong>
+                      <dl class="cnt profile_list">
+                        <div>
+                          <dt>이름</dt>
+                          <dd>윤서희</dd>
+                        </div>
+                        <div>
+                          <dt>이메일</dt>
+                          <dd>cobbt258@naver.com</dd>
+                        </div>
+                        <div>
+                          <dt>활용 가능 도구</dt>
+                          <dd>HTML/CSS, SCSS, JS, jQuery, GitLab/GitHub, npm, gulp, Figma, Adobe XD, Photoshop</dd>
+                        </div>
+                      </dl>
                     </div>
                   </div>
                   <div id="panel-2" class="panel _hidden" role="tabpanel" aria-labelledby="tab-2">
+                    <div class="panel_head">
+                      <i class="icon_warning" aria-hidden="true"></i>
+                      <p>웹표준/접근성을 고려한 반응형 웹사이트 구축 및 서비스 고도화를 위한 운영·관리 경험을 가지고 있습니다.</p>
+                    </div>
+                    <div class="panel_body">
+                      <div class="screen">
+                        <div class="screen_inner">
+                          <ul class="com_list">
+                            <li>
+                              <strong class="title">(주)엘루오씨앤씨</strong>
+                              <p class="work_date"></p>
+                              <div class="work_desc">
+                                <span class="label">진행 프로젝트</span>
+                                <ul class="dotted_list">
+                                  <li><em>KT MVNO(마이알뜰폰)</em> (2025.02 ~ 진행중)<br> 운영, 개선</li>
+                                  <li><em>KT 엔터프라이즈</em> (2024.09 ~ 2025.01)<br> 운영, 개선</li>
+                                </ul>
+                              </div>
+                              <div class="work_desc">
+                                <span class="label">기술 스택</span>
+                                <ul class="dotted_list">
+                                  <li>퍼블리싱: HTML5, CSS3, SCSS</li>
+                                  <li>스크립트: JS, jQuery</li>
+                                  <li>디자인/협업: Figma, Adobe XD</li>
+                                  <li>운영/관리: GitLab/GitHub, npm</li>
+                                </ul>
+                              </div>
+                            </li>
+                          </ul>
+                          <ul class="com_list">
+                            <li>
+                              <strong class="title">와커스(WACUS)</strong>
+                              <p class="work_date"></p>
+                              <div class="work_desc">
+                                <span class="label">진행 프로젝트</span>
+                                <ul class="dotted_list">
+                                  <li><em>센트라스 서울안과</em><br> 신규 구축</li>
+                                  <li><em>오리엔탈치과</em><br> 신규 구축</li>
+                                  <li><em>창원힐링안과/내과</em><br> 신규 구축</li>
+                                </ul>
+                              </div>
+                              <div class="work_desc">
+                                <span class="label">기술 스택</span>
+                                <ul class="dotted_list">
+                                  <li>퍼블리싱: HTML5, CSS3, PHP</li>
+                                  <li>스크립트: JS, jQuery, GSAP, AOS</li>
+                                  <li>디자인/협업: Figma, Adobe XD, Photoshop</li>
+                                  <li>운영/관리: FileZilla(FTP)</li>
+                                </ul>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
 
+                      </div>
+                    </div>
                   </div>
                   <div id="panel-3" class="panel _hidden" role="tabpanel" aria-labelledby="tab-3">
-
+                    <div class="panel_head">
+                      <i class="icon_help" aria-hidden="true"></i>
+                      <p>각 스택별 숙련도는 실무 프로젝트 수행 경험과 기술적 이해도를 바탕으로 산출되었습니다.</p>
+                    </div>
+                    <div class="panel_body">
+                      <ul class="skill_list">
+                        <li>
+                          <span class="skill_name">HTML/CSS</span>
+                          <span class="status">95%</span>
+                          <div class="progress_bar">
+                            <div class="bar_inner" style="width: 95%"></div>
+                          </div>
+                        </li>
+                        <li>
+                          <span class="skill_name">JS, jQuery</span>
+                          <span class="status">70%</span>
+                          <div class="progress_bar">
+                            <div class="bar_inner" style="width: 70%"></div>
+                          </div>
+                        </li>
+                        <li>
+                          <span class="skill_name">SCSS</span>
+                          <span class="status">80%</span>
+                          <div class="progress_bar">
+                            <div class="bar_inner" style="width: 80%"></div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
+                </div>
+
+                <div class="btn_wrap">
+                  <button class="common_btn cheched_btn close" data-target="#win-resume"><span class="underLine">C</span>ancel</button>
                 </div>
               </div>
             </div>
@@ -296,16 +376,25 @@
   // 체크박스 확인 시 버튼 활성화
   checkedBtn();
   // 인트로 팝업 닫기
-  $('.cheched_btn, #win-intro .btn_box.close').on('click', function() {
-    $wrap.removeClass('is-intro');
-    setTimeout(function() {
-      $('#win-intro').hide();
-    }, 500);
+  $('.cheched_btn, .window_container .btn_box.close').on('click', function() {
+    const $targetWin = $(this).closest('.window_container');
+    const targetId = $targetWin.attr('id');
+
+    if (targetId) {
+      const stateClass = 'is-' + targetId;
+      $wrap.removeClass(stateClass);
+      $targetWin.hide();
+    }
   });
   // 아이콘 이벤트
   iconClickEvent();
   // 탭 이벤트
   tabEvent();
+
+  // 인트로 팝업 버튼
+  $('.active_resume').on('click', function() { // 윤서희 간략소개
+    $('button[data-target="win-resume"]').trigger('click');
+  });
 
   //////////
   function introAnimation () {
@@ -421,8 +510,9 @@
 
   function iconClickEvent() {
     const $wrap = $('.wrap');
-    // 창 열기
-    $('.icon_box').on('click', function() {
+
+    // 1. 창 열기
+    $('.icon_box').off('click').on('click', function() {
       const targetId = $(this).data('target');
       const stateClass = 'is-' + targetId;
       
@@ -433,19 +523,28 @@
       $wrap.addClass(stateClass);
     });
 
-    // 창 닫기
-    $(document).on('click', '.window_container .btn_box.close', function() {
+    // 2. 창 닫기
+    $(document).off('click', '.window_container .close').on('click', '.window_container .close', function(e) {
+      e.preventDefault();
+      e.stopPropagation(); // 🌟 이벤트가 부모로 퍼지는 걸 막음
+
+      // 1. 클릭된 버튼에서 가장 가까운 윈도우(ID가 있는 놈)를 찾음
       const $targetWin = $(this).closest('.window_container');
       const targetId = $targetWin.attr('id');
-      const stateClass = 'is-' + targetId;
 
-      if (typeof winControl === 'function') {
-        winControl($targetWin, 'close');
+      if (targetId) {
+          // 2. 창 닫기 함수 호출 (ID 앞에 # 붙여서 전달)
+          if (typeof winControl === 'function') {
+              winControl('#' + targetId, 'close');
+          }
+
+          // 3. wrap에 붙은 해당 창 전용 클래스만 제거
+          $('.wrap').removeClass('is-' + targetId);
       }
-
-      $wrap.removeClass(stateClass);
+      
+      return false;
     });
-  };
+  }
   
   // 창 클릭 시 해당 창 맨 위로
   // $('.window_container').on('mousedown', function() {
@@ -531,7 +630,7 @@
         // 2. 모든 패널 숨기기
         tabPanels.forEach(panel => {
           panel.classList.add('_hidden');
-          panel.hidden = true;
+          // panel.hidden = true;
         });
 
         // 3. 선택된 요소 활성화
@@ -540,7 +639,7 @@
         
         const targetPanel = document.getElementById(targetPanelId);
         targetPanel.classList.remove('_hidden');
-        targetPanel.hidden = false;
+        // targetPanel.hidden = false;
       });
     });
   }
