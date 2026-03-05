@@ -107,7 +107,7 @@
                       </label>
                     </form>
 
-                    <button class="common_btn cheched_btn" disabled><span class="underLine">E</span>nter</button>
+                    <button class="common_btn checked_btn" disabled><span class="underLine">E</span>nter</button>
                   </div>
 
                 
@@ -190,6 +190,12 @@
                               <strong class="title">(주)엘루오씨앤씨</strong>
                               <p class="work_date"></p>
                               <div class="work_desc">
+                                <span class="label">주요업무</span>
+                                <ul class="dotted_list">
+                                  <li>웹 퍼블리싱 (UI/UX 구현 및 운영·보수)</li>
+                                </ul>
+                              </div>
+                              <div class="work_desc">
                                 <span class="label">진행 프로젝트</span>
                                 <ul class="dotted_list">
                                   <li><em>KT MVNO(마이알뜰폰)</em> (2025.02 ~ 진행중)<br> 운영, 개선</li>
@@ -211,6 +217,12 @@
                             <li>
                               <strong class="title">와커스(WACUS)</strong>
                               <p class="work_date"></p>
+                              <div class="work_desc">
+                                <span class="label">주요업무</span>
+                                <ul class="dotted_list">
+                                  <li>병원사이트 웹 퍼블리싱 (UI/UX 구현 및 운영·보수)</li>
+                                </ul>
+                              </div>
                               <div class="work_desc">
                                 <span class="label">진행 프로젝트</span>
                                 <ul class="dotted_list">
@@ -269,7 +281,7 @@
                 </div>
 
                 <div class="btn_wrap">
-                  <button class="common_btn cheched_btn close" data-target="#win-resume"><span class="underLine">C</span>ancel</button>
+                  <button class="common_btn checked_btn close" data-target="#win-resume"><span class="underLine">C</span>ancel</button>
                 </div>
               </div>
             </div>
@@ -337,7 +349,7 @@
   // 체크박스 확인 시 버튼 활성화
   checkedBtn();
   // 인트로 팝업 닫기
-  $('.cheched_btn, .window_container .btn_box.close').on('click', function() {
+  $('#win-intro .checked_btn, #win-intro.window_container .btn_box.close').on('click', function() {
     const $targetWin = $(this).closest('.window_container');
     const targetId = $targetWin.attr('id');
 
@@ -555,7 +567,7 @@
 
   function checkedBtn() {
     const $checkbox = $('#show_startup');
-    const $enterBtn = $('.cheched_btn');
+    const $enterBtn = $('.checked_btn');
     const $closeBtn = $('#win-intro .bar_btns .close');
 
     $checkbox.on('change', function() {
