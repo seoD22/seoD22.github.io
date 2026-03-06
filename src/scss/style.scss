@@ -184,11 +184,40 @@ h2{
       }
     }
     &.icon_box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
       color: $color-white;
       &:focus {
         &::after {
           left: -0.3rem; right: -0.3rem;
           top: -0.3rem; bottom: -0.3rem;
+        }
+      }
+      &.text_hide {
+        p {
+          position: relative;
+          &::after {
+            content: "";
+            white-space: pre;
+            display: block;
+            position: absolute;
+            bottom: 3.2rem;
+            left: 50%;
+            transform: translate(-50%, 100%);
+            opacity: 0;
+            pointer-events: none;
+          }
+        }
+        &:focus, &:hover {
+          p {
+            color: transparent;
+            &::after {
+              opacity: 1;
+              color: $color-white;
+            }
+          }
         }
       }
       img {
@@ -282,6 +311,7 @@ h2{
       align-items: center;
       gap: 0.6rem;
       height: 100%;
+      margin-left: 0.3rem;
       font-size: 1.8rem;
       line-height: 2.8rem;
       white-space: nowrap;
@@ -358,6 +388,7 @@ h2{
     display: flex;
     flex-direction: column;
     background-color: $color-white;
+    overflow: hidden;
     &.green {
       background-color: $color-green;
     }
@@ -365,13 +396,14 @@ h2{
       flex: 1;
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: repeat(5, 1fr);
+      grid-template-rows: repeat(6, 1fr);
       grid-auto-flow: column;
-      row-gap: 4.5rem;
+      row-gap: 1.5rem;
       padding: 2rem;
     }
   }
   .bottom_bar {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -434,6 +466,50 @@ h2{
             transform-box: fill-box;
             animation: grow 2s linear infinite;
           }
+        }
+      }
+    }
+  }
+  .start_menu{
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateY(-100%);
+    .menu_list {
+      li {
+        display: flex;
+        background-color: $color-monoGrey;
+        box-shadow: $line-common;
+        &:first-child {
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0.2rem;
+            left: 0;
+            right: 0;
+            height: 0.1rem;
+            background-color: #fff;
+          }
+        }
+        &:hover,
+        &:focus {
+          background-color: $color-blue;
+          button {
+            color: $color-white;
+          }
+        }
+        button {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          width: 20rem;
+          height: 4rem;
+          padding: 1rem;
+        }
+        i {
+          display: inline-block;
+          width: 3rem;
+          aspect-ratio: 1 / 1;
         }
       }
     }
@@ -569,6 +645,14 @@ h2{
       position: relative;
       width: 4rem;
       left: 3rem;
+    }
+  }
+
+  .icon_box[data-target="win-monkey"] {
+    p {
+      &::after {
+        content: "절대\000a바이러스\000a아닙니다.\000a믿어\000a주세요... 전\000a숭숭이입니\000a다" !important; 
+      }
     }
   }
 
