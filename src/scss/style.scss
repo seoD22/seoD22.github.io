@@ -157,6 +157,11 @@ h2{
         min-height: 10rem;
       }
     }
+    &.scroll {
+      .inner {
+        overflow-y: scroll;
+      }
+    }
   }
   .underLine {
     text-decoration: underline;
@@ -393,6 +398,7 @@ h2{
       background-color: $color-green;
     }
     .board {
+      position: relative;
       flex: 1;
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -476,17 +482,36 @@ h2{
     top: 0;
     transform: translateY(-100%);
     .menu_list {
+      position: relative;
+      background-color: $color-monoGrey;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;z-index: 1;
+        border-top: 0.15rem solid #f0f0f0;
+        border-left: 0.15rem solid #f0f0f0;
+        box-shadow: inset 0.15rem 0.15rem 0 0 #b1b1b1;
+        pointer-events: none;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        border-bottom: 0.15rem solid #262626;
+        border-right: 0.15rem solid #262626;
+        box-shadow: inset -0.15rem -0.15rem 0 0 #7e7e7e;
+        pointer-events: none;
+      }
       li {
+        position: relative;
         display: flex;
-        background-color: $color-monoGrey;
-        box-shadow: $line-common;
-        &:first-child {
+        &:last-child {
           &::before {
             content: "";
             position: absolute;
-            top: 0.2rem;
-            left: 0;
-            right: 0;
+            top: 0;
+            left: 0.15rem;
+            right: 0.15rem;
             height: 0.1rem;
             background-color: #fff;
           }
@@ -496,20 +521,56 @@ h2{
           background-color: $color-blue;
           button {
             color: $color-white;
+            .arrow {
+              rect {
+                fill: white;
+              }
+            }
+            span {
+              &::before {
+                background-color: $color-white;
+              }
+            }
           }
         }
         button {
           display: flex;
           align-items: center;
-          gap: 0.5rem;
           width: 20rem;
-          height: 4rem;
+          height: 5rem;
           padding: 1rem;
+          font-size: 1.6rem;
+          span {
+            position: relative;
+            display: inline;
+            &::before {
+              content: "";
+              position: absolute;
+              left: 0;
+              right: 0;
+              bottom: 0.2rem;
+              height: 0.1rem;
+              background-color: $color-black;
+            }
+          }
+          .arrow {
+            margin-left: auto;
+          }
         }
         i {
           display: inline-block;
           width: 3rem;
           aspect-ratio: 1 / 1;
+          margin-right: 1rem;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 100%;
+        }
+        .icon_shutdown {
+          background-image: url(../assets/images/about/windowIcon/shutDown.png);
+        }
+        .icon_program {
+          background-image: url(../assets/images/about/windowIcon/programFolder.png);
         }
       }
     }
@@ -557,6 +618,14 @@ h2{
       background-color: $color-green;
       box-shadow: $line-concave;
     }
+  }
+  // 오버레이
+  .overlay {
+    position: absolute;
+    left: 0;right: 0;
+    top: 0; bottom: 0;
+    z-index: 1;
+    pointer-events: none;
   }
   // 스크롤바
   ::-webkit-scrollbar {
@@ -608,6 +677,25 @@ h2{
       background-color: $color-blue;
     }
   }
+  .img_file {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    .img_wrapper {
+      // width: 20rem;
+      // height: 20rem;
+      aspect-ratio: 1 / 1;
+      img {
+        width: 100%;
+      }
+    }
+    figcaption {
+      font-family: $fontFamily-2;
+      font-size: 1.6rem;
+      text-align: center;
+    }
+  }
 }
 
 .about {
@@ -620,7 +708,7 @@ h2{
   aside {
     position: absolute;
     right: 3rem;
-    bottom: calc($bottomBar-height + 3rem);
+    bottom: $bottomBar-height;
     width: 10rem;
     img {
       width: 100%;
@@ -1098,6 +1186,31 @@ h2{
         .bar_inner {
           transform: scaleX(0);
         }
+      }
+    }
+  }
+
+  #win-monkey {
+    width: fit-content !important;
+    .inner {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 2rem;
+      figure {
+        width: calc((100% - (1rem * 2)) / 3);
+      }
+    }
+    .abs_img {
+      position: absolute;
+      right: 2rem;
+      bottom: 0;
+      width: 15rem;
+      aspect-ratio: 587 / 662;
+      img {
+        width: 100%;
       }
     }
   }

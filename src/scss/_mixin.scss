@@ -54,7 +54,7 @@
 }
 
 // 아이콘 - 팝업
-$windows: ("win-intro", "win-computer", "win-resume", "win-trash", "win-project");
+$windows: ("win-intro", "win-computer", "win-resume", "win-trash", "win-project", "win-monkey");
 
 @mixin window-active-effect {
   opacity: 1;

@@ -28,5 +28,8 @@
   "browserslist": [
     "last 2 versions",
     "ie > 9"
-  ]
+  ],
+  "dependencies": {
+    "powerglitch": "^2.5.0"
+  }
 }
