@@ -742,6 +742,27 @@ h2{
         content: "절대\000a바이러스\000a아닙니다.\000a믿어\000a주세요... 전\000a숭숭이입니\000a다" !important; 
       }
     }
+    img {
+      &._original {
+        display: block;
+      }
+      &._alien {
+        display: none;
+      }
+    }
+  }
+
+  &.is-win-monkey {
+    .icon_box[data-target="win-monkey"] {
+      img {
+        &._original {
+          display: none;
+        }
+        &._alien {
+          display: block;
+        }
+      }
+    }
   }
 
   // 팝업 공통 이벤트
