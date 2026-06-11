@@ -26,6 +26,7 @@ $color-lightGrey: #DFDFDF;
 
 // window-concept-line
 $line-common: inset -2px -2px 0 0 #262626, inset 2px 2px 0 0 #f0f0f0, inset -4px -4px 0 0 #7e7e7e, inset 4px 4px 0 0 #b1b1b1;
+$line-common-thin: inset -2px -2px 0 0 #262626,inset 2px 2px 0 0 #f0f0f0;
 $line-concave: inset 2px 2px 0 0 #262626 , inset -2px -2px 0 0 #F0F0F0 , inset 4px 4px 0 0 #7E7E7E;
 
 
@@ -43,6 +44,7 @@ $line-concave: inset 2px 2px 0 0 #262626 , inset -2px -2px 0 0 #F0F0F0 , inset 4
 //font-family
 $fontFamily-1: "DungGeunMo", "Pretendard", "Roboto", "Noto Sans KR", sans-serif;
 $fontFamily-2: "ThinDungGeunMo", "Pretendard", "Roboto", "Noto Sans KR", sans-serif;
+$fontFamily-3: "Pretendard", "Roboto", "Noto Sans KR", sans-serif;
 
 // etc
 $transition: 0.3s;
