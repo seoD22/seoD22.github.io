@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이력서 및 경력기술서</title>
+  <meta name="description" content="안녕하세요, 퍼블리셔 윤서희입니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/">
+  <meta property="og:title" content="윤서희 이력서 및 경력기술서">
+  <meta property="og:description" content="안녕하세요, 퍼블리셔 윤서희입니다.">
+  <meta property="og:image" content="https://example.com/og/1200x630.jpg">
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <link rel="icon" href="/favicon.ico" sizes="any">
+
+  <!-- style -->
+  <link rel="stylesheet" href="../assets/default/swiper.min.css">
+  <link rel="stylesheet" href="../assets/default/font.css">
+  <link rel="stylesheet" href="../assets/default/reset.css">
+  <link rel="stylesheet" href="../css/introduce.css">
+  <!-- script -->
+  <script defer type="text/javascript" src="../js/jquery-3.7.1.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/jquery.marquee@1.6.0/jquery.marquee.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/ScrollToPlugin.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/ScrollTrigger.min.js"></script>
+  <script defer type="text/javascript" src="../js/swiper-bundle.min.js"></script>
+  <script defer src="https://unpkg.com/type-hangul"></script>
+</head>
+
+<body>
+  <!-- 로딩화면 -->
+  <!-- <div id="load">
+    <div class="inner">
+      <div class="logo_wrap">
+        <div class="logo_box _01">
+          <div class="img-box">
+            <img src="../assets/images/introduce/comm/logo_Q.png" alt="Q">
+          </div>
+          <div class="img-box">
+            <img src="../assets/images/introduce/comm/logo_U.png" alt="U">
+          </div>
+          <em><span>OKKA</span></em>
+        </div>
+        <div class="logo_box _02">
+          <em class="line"><span></span></em>
+          <div class="img-box">
+            <img src="../assets/images/introduce/comm/logo_I.png" alt="I">
+          </div>
+          <div class="img-box">
+            <img src="../assets/images/introduce/comm/logo_N.png" alt="N">
+          </div>
+          <em class="text"><span>E</span></em>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- 헤더 -->
+  <header>
+    <div class="inner">
+      <nav>
+        <ul>
+          <li class="nav"><a href="#">profile</a></li>
+          <li class="nav"><a href="#">contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- aside 버튼 -->
+  <!-- <aside>
+    <div class="icon">
+      <img src="../assets/images/introduce/icon_home.png" alt="">
+    </div>
+    <button type="button" class="btn_scroll"></button>
+    <div class="icon">
+      <img src="../assets/images/introduce/icon_menu.png" alt="">
+    </div>
+  </aside> -->
+
+  <!-- portfolio -->
+  <!-- <div class="portfolio">
+    <div class="wrap">
+      <div class="swiper port_swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide _01">
+
+            <div class="port_des">
+              <h3>개인작업 - 카페</h3>
+              <div class="btn"><a href="https://seod22.github.io/pb-class/portfolio_cafe/">웹사이트 바로가기</a></div>
+            </div>
+
+            <div class="port_cont">
+              <div class="top">
+                <div class="txt">기여 ｜ 퍼블</div>
+                <div class="percentbar">
+                  <div class="bar"></div>
+                </div>
+                <div class="percent">100%</div>
+              </div>
+
+              <div class="img-box">
+                <img src="../assets/images/introduce/port/port_img_01.jpg" alt="포트폴리오">
+              </div>
+
+              <div class="tag_box">
+                <div class="tag">#반응형</div>
+                <div class="tag">#시멘틱 마크업</div>
+                <div class="tag">#Javascript</div>
+                <div class="tag">#Swiper</div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide _02">
+
+            <div class="port_des">
+              <h3>센트라스 서울안과</h3>
+              <div class="btn"><a href="https://centlas.mycafe24.com/">웹사이트 바로가기</a></div>
+            </div>
+
+            <div class="port_cont">
+              <div class="top">
+                <div class="txt">기여 ｜ 퍼블</div>
+                <div class="percentbar">
+                  <div class="bar"></div>
+                </div>
+                <div class="percent">100%</div>
+              </div>
+
+              <div class="img-box">
+                <img src="../assets/images/introduce/port/port_img_02.jpg" alt="포트폴리오">
+              </div>
+
+              <div class="tag_box">
+                <div class="tag">#반응형</div>
+                <div class="tag">#Javascript</div>
+                <div class="tag">#JQuery</div>
+                <div class="tag">#Swiper</div>
+                <div class="tag">#Gsap</div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide _03">
+
+            <div class="port_des">
+              <h3>오리엔탈치과</h3>
+              <div class="btn"><a href="https://orientaleye.mycafe24.com/">웹사이트 바로가기</a></div>
+            </div>
+
+            <div class="port_cont">
+              <div class="top">
+                <div class="txt">기여 ｜ 퍼블</div>
+                <div class="percentbar">
+                  <div class="bar"></div>
+                </div>
+                <div class="percent">100%</div>
+              </div>
+
+              <div class="img-box">
+                <img src="../assets/images/introduce/port/port_img_03.jpg" alt="포트폴리오">
+              </div>
+
+              <div class="tag_box">
+                <div class="tag">#Javascript</div>
+                <div class="tag">#Swiper</div>
+                <div class="tag">#Gsap</div>
+                <div class="tag">#AOS</div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide _04">
+
+            <div class="port_des">
+              <h3>창원힐링안과/내과</h3>
+              <div class="btn"><a href="https://vikifa99.cafe24.com/">웹사이트 바로가기</a></div>
+            </div>
+
+            <div class="port_cont">
+              <div class="top">
+                <div class="txt">기여 ｜ 퍼블</div>
+                <div class="percentbar">
+                  <div class="bar"></div>
+                </div>
+                <div class="percent">80%</div>
+              </div>
+
+              <div class="img-box">
+                <img src="../assets/images/introduce/port/port_img_04.jpg" alt="포트폴리오">
+              </div>
+
+              <div class="tag_box">
+                <div class="tag">#반응형</div>
+                <div class="tag">#Javascript</div>
+                <div class="tag">#Swiper</div>
+                <div class="tag">#AOS</div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide _05">
+
+            <div class="port_des">
+              <h3>세종우리성모안과</h3>
+              <div class="btn"><a href="https://swseyes.cafe24.com/">웹사이트 바로가기</a></div>
+            </div>
+
+            <div class="port_cont">
+              <div class="top">
+                <div class="txt">기여 ｜ 퍼블</div>
+                <div class="percentbar">
+                  <div class="bar"></div>
+                </div>
+                <div class="percent">50%</div>
+              </div>
+
+              <div class="img-box">
+                <img src="../assets/images/introduce/port/port_img_05.jpg" alt="포트폴리오">
+              </div>
+
+              <div class="tag_box">
+                <div class="tag">#php</div>
+                <div class="tag">#CSS</div>
+                <div class="tag">#Javascript</div>
+                <div class="tag">#JQuery</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pagination">
+        <div class="num">01</div>
+        <div class="pagi">
+          <div class="lineWrap">
+              <span></span>
+          </div>
+        </div>
+        <div class="num">05</div>
+      </div>
+
+    </div>
+  </div> -->
+
+  
+  <!-- 메인 시작 -->
+  <!-- visual -->
+  <section class="_01">
+    <div class="inner">
+      <div class="logo_wrap">
+          <div class="img_box">
+            <img src="../assets/images/introduce/comm/logo_Q.png" alt="Q">
+          </div>
+          <div class="img_box">
+            <img src="../assets/images/introduce/comm/logo_U.png" alt="U">
+          </div>
+          <div class="img_box">
+            <img src="../assets/images/introduce/comm/logo_I.png" alt="I">
+          </div>
+          <div class="img_box">
+            <img src="../assets/images/introduce/comm/logo_N.png" alt="N">
+          </div>
+      </div>
+      <div class="scroll_cue">
+        <span class="_txt">SCROLL</span>
+        <span class="_mouse">
+          <div class="_wheel"></div>
+        </span>
+      </div>
+    </div>
+
+    <!-- 768 flow -->
+    <!-- <div class="flow_section_768">
+      <div class="flow_inner">
+        <div class="flow_wrap _01">
+          <div class="txt"><span>challenge</span></div>
+          <div class="img_box"><img src="../assets/images/introduce/comm/logo_Q.png" alt="Q"></div>
+          <div class="txt t_white"><span>positive</span></div>
+          <div class="img_box"><img src="../assets/images/introduce/comm/logo_Q.png" alt="Q"></div>
+          <div class="txt"><span>faitful</span></div>
+          <div class="img_box"><img src="../assets/images/introduce/comm/logo_Q.png" alt="Q"></div>
+          <div class="txt t_white"><span>creative</span></div>
+        </div>
+        <div class="flow_wrap _02">
+          <div class="txt t_white"><span>cooperation</span></div>
+          <div class="img_box"><img src="../assets/images/introduce/comm/logo_Q.png" alt="Q"></div>
+          <div class="txt"><span>friendly</span></div>
+          <div class="img_box"><img src="../assets/images/introduce/comm/logo_Q.png" alt="Q"></div>
+          <div class="txt t_white"><span>communication</span></div>
+        </div>
+      </div>
+    </div> -->
+  </section>
+
+  <section class="_flow">
+    <div class="flow_inner">
+      <div class="flow_wrap _01">
+        <div class="txt">challenge</div>
+        <div class="img_box"><img src="../assets/images/introduce/comm/logo_Q.png" alt=""></div>
+        <div class="txt t_white">positive</div>
+        <div class="img_box"><img src="../assets/images/introduce/comm/logo_Q.png" alt=""></div>
+        <div class="txt">faitful</div>
+        <div class="img_box"><img src="../assets/images/introduce/comm/logo_Q.png" alt=""></div>
+        <div class="txt t_white">creative</div>
+      </div>
+      <div class="flow_wrap _02">
+        <div class="txt t_white">cooperation</div>
+        <div class="img_box"><img src="../assets/images/introduce/comm/logo_Q.png" alt=""></div>
+        <div class="txt">friendly</div>
+        <div class="img_box"><img src="../assets/images/introduce/comm/logo_Q.png" alt=""></div>
+        <div class="txt t_white">communication</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="_02 _bak">
+    <div class="inner">
+      <div class="hover_box">
+        <div class="_default">
+          PROFILE
+        </div>
+        <div class="_hover">
+          <span>Myself</span>
+          <span>Career</span>
+        </div>
+      </div>
+
+      <div class="cont">
+        <div class="_default">
+          마우스를 올려보세요
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <section class="_02">
+    <div class="inner">
+      <h2><span>#행동</span>, <span>#협동</span>, <span>#소통</span>하는 퍼블리셔,<br> 윤서희입니다</h2>
+    </div>
+    <div class="cont">
+      <ul class="coverletter_list">
+        <li class="_01">
+          <div class="inner">
+            <div class="_txt">
+              <h3>속도에서 깊이로</h3>
+              <p class="desc">첫 에이전시에서 다수의 사이트를 신속하게 구축하며 HTML·CSS의 탄탄한 실무 기초와 레이아웃 구현 능력을 키웠습니다.<br>
+                이후 대형 플랫폼을 운영하며 alt와 aria-label 등 사소한 마크업이 웹 접근성에 미치는 영향을 체감하고, 웹 표준 준수의 중요성을 배웠습니다.<br>
+                이 경험을 바탕으로 현재는 스크린 리더와 사용자 흐름을 먼저 고려하며, 기본에 충실하고 지속적으로 성장하는 퍼블리셔를 지향합니다.</p>
+            </div>
+          </div>
+        </li>
+        <li class="_02">
+          <div class="inner">
+            <div class="_txt">
+              <h3>관행에서 효율로</h3>
+              <p class="desc">1년 이상 대규모 엔터프라이즈 플랫폼을 운영하며, 수많은 화면 유지보수를 위해 개발 파트와의 원활한 소통 구조를 구축하는 데 집중했습니다.<br>
+                기존의 수동 파일 관리 방식을 개선하고자 'Git Flow' 브랜치 전략을 도입하여 소스 충돌을 방지하고 마크업 이력 추적의 명확성을 확보했습니다.<br>
+                동시에 SCSS를 도입해 반복되는 UI 요소를 공통 컴포넌트와 변수로 구조화함으로써 중복 코드를 줄이고 웹 스타일 가이드의 일관성을 높였습니다.</p>
+            </div>
+          </div>
+        </li>
+        <li class="_03">
+          <div class="inner">
+            <div class="_txt">
+              <h3>유연한 소통</h3>
+              <p class="desc">대학에서 디자인을 전공하고 언론 에이전시에서 기획 및 클라이언트 소통 업무를 수행하며 다양한 성향의 사람들과 적극적으로 소통하는 태도를 길렀습니다.<br>
+                기획과 디자인 프로세스에 대한 높은 이해도를 바탕으로, 요구사항의 의도와 스타일 가이드를 누구보다 빠르게 파악하여 화면을 구현합니다.<br>
+                실무 중 조율이 필요한 순간마다 각 직군의 고충을 배려하며 중간 다리 역할을 수행하고, 팀과 유연하게 호흡하며 프로젝트 완성도를 높이겠습니다.</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="_03">
+    <div class="wrap">
+      <div class="cont">
+        <div class="logo_tbx">
+          <div class="logo_group">
+            <div class="img-box">
+              <img src="../assets/images/introduce/comm/logo_Q_w.png" alt="Q">
+            </div>
+            <p><span>quokka-ine</span></p>
+          </div>
+        </div>
+
+        <div class="contact_tbx">
+          <div class="contact">
+            <div class="abs"><span>contact me</span></div>
+            <div class="rel"><a href="mailto:cobbt258@naver.com">cobbt258@naver.com</a></div>
+          </div>
+        </div>
+
+        <div class="git" onclick="window.open('https://github.com/seoD22?tab=repositories')">
+          <div class="img-box">
+            <img src="../assets/images/introduce/icon_git.png" alt="git">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="inner">
+      <div class="_left">
+        <!-- <p>QUOKKA-INE</p> -->
+        <img src="../assets/images/introduce/comm/logo_Q_w.png" alt="">
+      </div>
+      <div class="_right">
+        <nav>
+          <ul>
+            <li><a href="#">profile</a></li>
+            <li><a href="#">contact</a></li>
+          </ul>
+        </nav>
+        <a href="#" class="resume_download" download="윤서희_이력서.pdf" title="윤서희 이력서 다운로드">
+          이력서
+          <img src="../assets/images/introduce/icon_download.png" alt="">
+        </a>
+        <p class="reserved">© 2026. QUOKKA-INE<br> ALL RIGHTS RESERVED.</p>
+      </div>
+
+    </div>
+  </footer>
+  <script src="../js/introduce.js"></script>
+</body>
+
+</html>

@@ -1274,6 +1274,14 @@ h2{
 
     ._bottom {
       margin-top: 1rem;
+      .btn_wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+      }
     }
     .msn_chatInput {
       position: relative;
@@ -1281,18 +1289,6 @@ h2{
     ._inputField {
       color: #8F8F91;
       font-size: 1.8rem;
-    }
-    ._send_btn {
-      position: absolute;
-      right: 1rem;
-      bottom: 1rem;
-      width: fit-content;
-      padding: 1rem 2rem;
-      background-color: $color-monoGrey;
-      box-shadow: $line-common;
-      color: #808080;
-      font-size: 1.4rem;
-      pointer-events: none;
     }
   }
 

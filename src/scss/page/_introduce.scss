@@ -1,0 +1,11 @@
+// size
+@mixin header_height {
+    height: 8rem;
+	// @media screen and (max-width: 1045px) {
+	// 	padding: 0 2rem;
+	// }
+}
+
+// color
+$color-yellow: #FFCC13;
+$color-deepYellow: #cda000;
