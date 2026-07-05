@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('load', function () {
+    section02_toggle();
+    section03_toggle();
       // 로딩 화면
       // loading();
   });
@@ -358,23 +360,23 @@ function portfolioSwiper() {
 
 // gsap anime
 function visual() {
-  const section01 = document.querySelector('section._01');
+  const sectionVisual = document.querySelector('section._visual');
   const flowSection = document.querySelector('section._flow');
-  const section02 = document.querySelector('section._02');
+  const section01 = document.querySelector('section._01');
   
   const flowBox01 = document.querySelector('section._flow .flow_inner .flow_wrap._01');
   const flowBox02 = document.querySelector('section._flow .flow_inner .flow_wrap._02');
 
   ScrollTrigger.create({
-    trigger: section01,
+    trigger: sectionVisual,
     start: "top top",
-    end: "+=500%",
+    end: "+=200%",
     pin: true,
     pinSpacing: false,
     invalidateOnRefresh: true,
   });
 
-  let masterTimeline = gsap.timeline({
+  let flowTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: flowSection,
       start: "top-=20% bottom",
@@ -385,7 +387,7 @@ function visual() {
     }
   });
 
-  masterTimeline
+  flowTimeline
     .addLabel("start_move")
     .fromTo(flowBox01, { xPercent: -100 }, { xPercent: 200, duration: 12, ease: "none" }, 'start_move')
     .fromTo(flowBox02, { xPercent: 100 }, { xPercent: -200, duration: 12, ease: "none" }, 'start_move')
@@ -402,217 +404,97 @@ function visual() {
     invalidateOnRefresh: true,
   });
 
-  // section02 애니메이션
-  gsap.from(section02, {
-    yPercent: 100,
+  // section01 애니메이션
+  let sec01Timeline = gsap.timeline({
     scrollTrigger: {
-      trigger: flowSection,
-      start: "top top",
-      end: "+=100%",
-      scrub: 2,
+      trigger: section01,
+      start: 'top top',
+      end: "+=50%",
+      toggleActions: 'play none none reverse', 
+      pin: true,
+      // pinSpacing: false,
       invalidateOnRefresh: true,
-    }
+      // markers: true,
+    },
   });
 
-  // section02 카드 겹침
-  const $cards = $('.coverletter_list li');
+  sec01Timeline
+    .set(".profile_card ._txt", { width: "100%" })
+    .set(".profile_card ._txt > *", { opacity: 0 })
 
-  $cards.each(function(index, card) {
-    gsap.set(card, { zIndex: index + 1 });
+    .addLabel("label_01")
+    .to(".profile_card ._txt", { 
+      width: "70%", 
+      duration: 0.8, 
+      ease: "power2.out"
+    }, "label_01")
 
-    if (index > 0) {
-      gsap.fromTo(card, 
-        { 
-          marginTop: "0" 
-        }, 
-        {
-          marginTop: "-80px", 
-          scrollTrigger: {
-            trigger: card,
-            start: "top 80%", 
-            end: "top top",
-            scrub: true,
-            invalidateOnRefresh: true,
-            // markers: true,
-          }
-        }
-      );
+    .addLabel("label_02")
+    .to(".profile_card ._txt > *", { 
+      opacity: 1, 
+      duration: 0.6,
+      ease: "power1.out"
+    }, "label_02");
+  }
+
+function section02_toggle() {
+  $('.com_list').removeClass('view');
+  $('.com_list .desc_box').hide();
+
+  $('.com_list .work_title button')
+    .attr('aria-expanded', 'false')
+    .text('펼치기');
+
+  $('.com_list .work_title button').on('click', function() {
+    const $btn = $(this);
+    const $list = $btn.closest('.com_list');
+    const $descBox = $list.find('.desc_box');
+    
+    const isExpanded = $btn.attr('aria-expanded') === 'true';
+
+    if (!isExpanded) {
+      $list.addClass('view');
+      $descBox.stop().slideDown(300);
+      
+      $btn.attr('aria-expanded', 'true').text('접기');
+    } else {
+      $descBox.stop().slideUp(300, function() {
+        $list.removeClass('view');
+      });
+    
+      $btn.attr('aria-expanded', 'false').text('펼치기');
     }
   });
 }
 
-// function visualRespon() {
-//   const section01 = document.querySelector('section._01');
-//   const sectionImg = document.querySelector('section._01 .logo_group');
-//   const flowBox01 = document.querySelector('section._01 .flow_wrap .flow_box._01');
-//   const flowBox02 = document.querySelector('section._01 .flow_wrap .flow_box._02');
+function section03_toggle() {
+  $('section._03 li').removeClass('view');
+  $('section._03 li ._desc').hide();
+  
+  $('section._03 li ._title button')
+    .attr('aria-expanded', 'false')
+    .find('.sr-only').text('열기');
 
-//   let flowAnime = gsap.timeline({
-//     scrollTrigger: {
-//       trigger: section01,
-//       start: "top top",
-//       end: "+=250%",
-//       pin: true,
-//       scrub: 2,
-//       // markers: true,
-//       invalidateOnRefresh: true,
-//     },
-//   });
+  $('section._03 li ._title button').on('click', function() {
+    const $btn = $(this);
+    const $list = $btn.closest('section._03 li');
+    const $descBox = $list.find('._desc');
+    const $srText = $btn.find('.sr-only');
+    const isExpanded = $btn.attr('aria-expanded') === 'true';
 
-//   flowAnime
-//   .set(flowBox01, {xPercent: -110})
-//   .set(flowBox02, {xPercent: 110})
-
-//   .to(sectionImg, {opacity: 1, duration: 5})
-//   .addLabel("label_01")
-//   .to(sectionImg, {opacity: 0, duration: 5, delay: 3}, 'label_01')
-//   .to(flowBox01, {xPercent: 123, duration: 30,}, 'label_01-=4')
-//   .to(flowBox02, {xPercent: -123, duration: 30,}, 'label_01-=4')
-//   .addLabel("label_02")
-//   .to(flowBox01, {opacity: 0, duration: 5}, 'label_02-=2')
-//   .to(flowBox02, {opacity: 0, duration: 5}, 'label_02-=2')
-// }
-
-// function sec01Fix() {
-//   const section01 = document.querySelector('section._01');
-
-//   ScrollTrigger.create({ // sticky
-//     trigger: section01,
-//     start: 'top top',
-//     end: '+=200%',
-//     pin: true,
-//     pinSpacing : false,
-//     scrub: 2,
-//     // markers: true,
-//     invalidateOnRefresh: true,
-//   });
-// }
-
-// function sec02Fix() {
-//   const section02 = document.querySelector('section._02');
-//   const section02_tbx = document.querySelector('section._02 .tbx');
-//   const profileImg = document.querySelector('section._02 .img_part');
-//   const profileImg_01 = document.querySelector('section._02 .img_part .img-box._01');
-//   const profileImg_02 = document.querySelector('section._02 .img_part .img-box._02');
-//   const profileWord = document.querySelector('section._02 .word_group');
-//   const profileTag01 = document.querySelector('section._02 .des_group .tag._01');
-//   const profileTag02 = document.querySelector('section._02 .des_group .tag._02');
-//   const profileTag03 = document.querySelector('section._02 .des_group .tag._03');
-//   const profileH3 = document.querySelector('section._02 .des_group h3 span');
-//   const profileTxt = document.querySelector('section._02 .des_group p span');
-
-
-//   // 섹션 고정
-//   ScrollTrigger.create({
-//     trigger: section02,
-//     start: 'top top',
-//     end: '+=200%', // 고정이 풀리는 지점
-//     pin: true,
-//     scrub: 2,
-//     // markers: true, // 디버그용 마커
-//     invalidateOnRefresh: true,
-//   });
-
-//   // 애니메이션
-//   let section02Anime = gsap.timeline({
-//     scrollTrigger: {
-//       trigger: section02_tbx,
-//       start: 'top+=20% top',
-//       end: '+=100%',
-//       // pin: true,
-//       // markers: true,
-//       toggleActions: "play none none reverse",
-//       invalidateOnRefresh: true,
-//     },
-//   });
-
-//   section02Anime
-//     .addLabel("label_01")
-//     .to(profileImg, {rotationY: "180deg", duration: .5}, "label_01")
-//     .to(profileImg_01, {opacity: 0, duration: .5}, "label_01")
-//     .to(profileImg_02, {opacity: 1, duration: .5}, "label_01")
-//     .to(profileWord, {opacity: 0, zIndex: 0, duration: 1}, "label_01")
-//     .to(profileTag01, {y: 0, duration: .3, delay: .1}, "-=.5")
-//     .to(profileTag02, {y: 0, duration: .3}, "-=.2")
-//     .to(profileTag03, {y: 0, duration: .3}, "-=.2")
-//     .to(profileH3, {y: 0, duration: .3})
-//     .to(profileTxt, {y: 0, duration: .3});
-// }
-// function sec02FixRespon() {
-//   const section02 = document.querySelector('section._02');
-//   const section02_tbx = document.querySelector('section._02 .tbx');
-//   const profileImg = document.querySelector('section._02 .img_part');
-//   const profileImg_01 = document.querySelector('section._02 .img_part .img-box._01');
-//   const profileImg_02 = document.querySelector('section._02 .img_part .img-box._02');
-//   const profileWord = document.querySelector('section._02 .word_group');
-//   const profileTag01 = document.querySelector('section._02 .des_group .tag._01');
-//   const profileTag02 = document.querySelector('section._02 .des_group .tag._02');
-//   const profileTag03 = document.querySelector('section._02 .des_group .tag._03');
-//   const profileH3 = document.querySelector('section._02 .des_group h3 span');
-//   const profileTxt = document.querySelector('section._02 .des_group p span');
-
-
-//   // 섹션 고정
-//   ScrollTrigger.create({
-//     trigger: section02,
-//     start: 'top top',
-//     end: '+=200%', // 고정이 풀리는 지점
-//     pin: true,
-//     scrub: 2,
-//     // markers: true,
-//     invalidateOnRefresh: true,
-//   });
-
-//   // 애니메이션
-//   let section02Anime = gsap.timeline({
-//     scrollTrigger: {
-//       trigger: section02_tbx,
-//       start: 'top+=20% top',
-//       end: '+=100%',
-//       // pin: true,
-//       // markers: true,
-//       toggleActions: "play none none reverse",
-//       invalidateOnRefresh: true,
-//     },
-//   });
-
-//   section02Anime
-//     .addLabel("label_01")
-//     .to(profileImg, {rotationY: "180deg", duration: .5}, "label_01")
-//     .to(profileImg_01, {opacity: 0, duration: .5}, "label_01")
-//     .to(profileImg_02, {opacity: 1, duration: .5}, "label_01")
-//     .to(profileWord, {opacity: 0, zIndex: 0, duration: 1}, "label_01")
-//     .to(profileTag01, {y: 0, duration: .3, delay: .1}, "-=.5")
-//     .to(profileTag02, {y: 0, duration: .3}, "-=.2")
-//     .to(profileTag03, {y: 0, duration: .3}, "-=.2")
-//     .to(profileH3, {y: 0, duration: .3})
-//     .to(profileTxt, {y: 0, duration: .3})
-//     .to(profileTag01, {backgroundColor: '#6974EB', color: '#fff', duration: .5, delay: .1}, "-=.5")
-//     .to(profileTag02, {backgroundColor: '#EC5E44', color: '#fff', duration: .5}, "-=.2")
-//     .to(profileTag03, {backgroundColor: '#3AF563', color: '#fff', duration: .5}, "-=.2");
-// }
-
-// function sec03Anime() {
-//   const section03 = document.querySelector('section._03')
-//   const logo = document.querySelector('section._03 .logo_group')
-//   const contact = document.querySelector('section._03 .contact')
-
-//   // 애니메이션
-//   let section03Anime = gsap.timeline({
-//     scrollTrigger: {
-//       trigger: section03,
-//       start: 'top top+=30%',
-//       end: '+=100%',
-//       // pin: true,
-//       // markers: true,
-//       toggleActions: "play none none reverse",
-//       invalidateOnRefresh: true,
-//     },
-//   });
-
-//   section03Anime
-//     .addLabel("label_01")
-//     .to(logo, {y: 0, duration: .3}, "label_01")
-//     .to(contact, {y: 0, duration: .3}, "-=70%")
-
-// }
+    if (!isExpanded) {
+      $list.addClass('view');
+      $descBox.stop().slideDown(300);
+      
+      $btn.attr('aria-expanded', 'true');
+      $srText.text('닫기');
+    } else {
+      $descBox.stop().slideUp(300, function() {
+        $list.removeClass('view');
+      });
+      
+      $btn.attr('aria-expanded', 'false');
+      $srText.text('열기');
+    }
+  });
+}
