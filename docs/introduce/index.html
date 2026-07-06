@@ -373,9 +373,7 @@
     <div class="inner">
       <div class="_left">
         <div class="sticky_box">
-          <strong></strong>
           <h2>Work<br> Experience</h2>
-          <p>어쩌구저쩌구 설명할게요 3줄 정도</p>
         </div>
       </div>
 
@@ -384,34 +382,76 @@
           <li class="com_list">
             <div class="work_title">
               <h3>(주)엘루오씨앤씨</h3>
-              <p class="work_date"></p>
+              <time class="work_date" datetime="2024-09">2024.09 ~ 현재</time>
               <button type="button" aria-expanded="false">펼치기</button>
             </div>
-            <div class="desc_box">
-              <div class="work_desc">
-                <span class="label">주요업무</span>
-                <ul class="dotted_list">
-                  <li>웹 퍼블리싱 (UI/UX 구현 및 운영·보수)</li>
-                </ul>
+            <dl class="work_spec_list">
+              <div class="spec_item">
+                <dt class="label">주요업무</dt>
+                <dd>
+                  <ul class="dotted_list">
+                    <li>웹 퍼블리싱 (UI/UX 구현 및 운영·보수)</li>
+                  </ul>
+                </dd>
               </div>
-              <div class="work_desc">
-                <span class="label">진행 프로젝트</span>
-                <ul class="dotted_list">
-                  <li><em>KT MVNO(마이알뜰폰)</em> (2025.06 ~ 진행중)<br> 운영, 개선</li>
-                  <li><em>KT MVNO(마이알뜰폰)</em> (2025.02 ~ 2026.05)<br> 운영, 개선</li>
-                  <li><em>KT 엔터프라이즈</em> (2024.09 ~ 2025.01)<br> 운영, 개선</li>
-                </ul>
+              <div class="spec_item">
+                <dt class="label">진행 프로젝트</dt>
+                <dd>
+                  <ul class="project_card_list dotted_list">
+                    <li class="project_card">
+                      <strong>KT 닷컴</strong>
+                      <time datetime="2025-06">2025.06 ~ 현재</time>
+                      <div class="project_task">
+                        <p class="task_summary">대고객 메인 플랫폼 운영 및 UI 리뉴얼 퍼블리싱</p>
+                        <ul class="task_details">
+                          <li><strong>UI/UX 안정화:</strong> 메인 페이지 및 주요 서비스 화면의 UI를 안정적으로 운영 및 보수하고 있습니다.</li>
+                          <li><strong>웹 표준 준수:</strong> 크로스 브라우징 및 다양한 디바이스 환경을 고려한 반응형 웹을 구현합니다.</li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li class="project_card">
+                      <div class="project_header">
+                        <strong>KT MVNO (마이알뜰폰)</strong>
+                        <time datetime="2025-02/2026-05">2025.02 ~ 2026.05</time>
+                      </div>
+                      <div class="project_task">
+                        <p class="task_summary">통합 플랫폼 대고객 서비스 운영 및 UI/UX 사용성 개선</p>
+                        <ul class="task_details">
+                          <li><strong>웹 접근성(WA) 강화:</strong> WCAG 가이드라인에 기반하여 초점(Focus) 관리, <code>aria-label</code> 속성 및 시맨틱 마크업을 적용해 스크린 리더 최적화를 주도했습니다.</li>
+                          <li><strong>컴포넌트화 및 공통화:</strong> Vanilla JS와 jQuery를 활용해 자주 사용되는 모달, 탭 등의 UI 요소를 모듈화하여 유지보수 효율성을 극대화했습니다.</li>
+                        </ul>
+                        <p class="task_growth">💡 <strong>배운 점:</strong> 대규모 트래픽 플랫폼을 다루며 웹 접근성의 실무 적용 노하우를 익혔고, GitLab과 npm 빌드 생태계를 활용한 팀 단위 형상 관리 능력을 키웠습니다.</p>
+                      </div>
+                    </li>
+                    <li class="project_card">
+                      <div class="project_header">
+                        <strong>KT 엔터프라이즈</strong>
+                        <time datetime="2024-09/2025-01">2024.09 ~ 2025.01</time>
+                      </div>
+                      <div class="project_task">
+                        <p class="task_summary">B2B 플랫폼 특화 서비스 운영 및 UI 구조 개선</p>
+                        <ul class="task_details">
+                          <li><strong>SCSS 아키텍처 도입:</strong> Nesting, Variables, Mixin을 활용해 복잡한 B2B 대시보드와 데이터 테이블의 스타일 코드를 체계적으로 구조화하고 중복을 최소화했습니다.</li>
+                          <li><strong>디자인 협업:</strong> Figma 및 Adobe XD를 기반으로 디자이너의 의도를 정확히 파악하여 디자인 시스템과 매핑되는 컴포넌트를 설계했습니다.</li>
+                        </ul>
+                        <p class="task_growth">💡 <strong>배운 점:</strong> 대형 B2B 서비스의 복잡한 정보 구조를 직관적인 UI 레이아웃으로 풀어내는 설계 역량을 강화했습니다.</p>
+                      </div>
+                    </li>
+                  </ul>
+                </dd>
               </div>
-              <div class="work_desc">
-                <span class="label">기술 스택</span>
-                <ul class="dotted_list">
-                  <li>퍼블리싱: HTML5, CSS3, SCSS</li>
-                  <li>스크립트: JS, jQuery</li>
-                  <li>디자인/협업: Figma, Adobe XD</li>
-                  <li>운영/관리: GitLab/GitHub, npm</li>
-                </ul>
+              <div class="spec_item spec_item">
+                <dt class="label">기술 스택</dt>
+                <dd>
+                  <ul class="tech_stack_list">
+                    <li><strong>퍼블리싱</strong> <span>HTML5, CSS3, SCSS</span></li>
+                    <li><strong>스크립트</strong> <span>JS (Vanilla JS), jQuery</span></li>
+                    <li><strong>디자인/협업</strong> <span>Figma, Adobe XD</span></li>
+                    <li><strong>운영/관리</strong> <span>GitLab, GitHub, npm</span></li>
+                  </ul>
+                </dd>
               </div>
-            </div>
+            </dl>
           </li>
           <li class="com_list">
             <div class="work_title">
@@ -419,22 +459,22 @@
               <p class="work_date"></p>
               <button type="button" aria-expanded="false">펼치기</button>
             </div>
-            <div class="desc_box">
-              <div class="work_desc">
+            <div class="work_spec_list">
+              <div class="spec_item">
                 <span class="label">주요업무</span>
                 <ul class="dotted_list">
                   <li>병원사이트 웹 퍼블리싱 (UI/UX 구현 및 운영·보수)</li>
                 </ul>
               </div>
-              <div class="work_desc">
+              <div class="spec_item">
                 <span class="label">진행 프로젝트</span>
-                <ul class="dotted_list">
-                  <li><em>센트라스 서울안과</em><br> 신규 구축</li>
-                  <li><em>오리엔탈치과</em><br> 신규 구축</li>
-                  <li><em>창원힐링안과/내과</em><br> 신규 구축</li>
+                <ul class="project_card_list dotted_list">
+                  <li class="project_card"><em>센트라스 서울안과</em><br> 신규 구축</li>
+                  <li class="project_card"><em>오리엔탈치과</em><br> 신규 구축</li>
+                  <li class="project_card"><em>창원힐링안과/내과</em><br> 신규 구축</li>
                 </ul>
               </div>
-              <div class="work_desc">
+              <div class="spec_item">
                 <span class="label">기술 스택</span>
                 <ul class="dotted_list">
                   <li>퍼블리싱: HTML5, CSS3, PHP</li>

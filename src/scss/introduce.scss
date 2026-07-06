@@ -390,13 +390,17 @@ section {
     }
   }
   &._02 {
-    .inner {
-      display: flex;
-      padding: 10rem 0;
-    }
     position: relative;
     z-index: 1;
     background-color: $color-yellow;
+    .inner {
+      display: flex;
+      padding: 20rem 0 10rem;
+    }
+    h2 {
+      font-size: 7rem;
+      font-weight: 700;
+    }
     ._left {
       position: relative;
       width: 50%;
@@ -404,8 +408,7 @@ section {
     .sticky_box {
       width: 40%;
       position: sticky;
-      top: 50%;
-      transform: translateY(-50%);
+      top: calc(50% - 7rem);
     }
     ._right {
       width: 60%;
@@ -422,6 +425,38 @@ section {
         }
       }
     }
+    .project_task {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #334155;
+
+      .task_summary {
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 8px;
+      }
+
+      .task_details {
+        list-style: disc;
+        padding-left: 20px;
+        margin-bottom: 12px;
+
+        li {
+          margin-bottom: 4px;
+          strong { color: #0284c7; } /* 핵심 키워드 강조 컬러 */
+        }
+      }
+
+      .task_growth {
+        background: #f0f9ff; /* 배운 점 영역에 연한 푸른빛 박스 쳐주기 */
+        padding: 10px 14px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        color: #0369a1;
+        margin-top: 8px;
+      }
+    }
   }
   &._03 {
     .inner {
@@ -432,7 +467,7 @@ section {
         position: relative;
         li {
           padding: 6rem 0 4rem;
-          border-bottom: 0.2rem solid #fff;
+          border-bottom: 0.1rem solid #000;
           &.view {
             ._title button::before {
               transform: translate(-50%, -50%);
@@ -450,9 +485,9 @@ section {
         justify-content: space-between;
         button {
           position: relative;
-          width: 5rem;
+          width: 4rem;
           aspect-ratio: 1 / 1;
-          border: 0.2rem solid #fff;
+          border: 0.1rem solid #000;
           border-radius: 50%;
           &::before {
             content: "";
@@ -460,9 +495,9 @@ section {
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%) rotate(90deg);
-            width: 3rem;
-            height: 0.2rem;
-            background-color: #fff;
+            width: 2rem;
+            height: 0.1rem;
+            background-color: #000;
             transition: .2s;
           }
           &::after {
@@ -471,9 +506,9 @@ section {
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            width: 3rem;
-            height: 0.2rem;
-            background-color: #fff;
+            width: 2rem;
+            height: 0.1rem;
+            background-color: #000;
           }
         }
       }
