@@ -325,9 +325,15 @@ section {
       background-color: #fff;
       border-radius: 2rem;
       ._img {
+        width: 53%;
         height: 100%;
+        overflow: hidden;
         background-color: $color-deepYellow;
         border-radius: 2rem;
+        img {
+          width: 102%;
+          transform: translateX(-27%);
+        }
       }
       ._txt {
         position: absolute;
@@ -401,6 +407,33 @@ section {
       font-size: 7rem;
       font-weight: 700;
     }
+    .work_title {
+      transition: .3s;
+      h3 {
+        font-size: 3rem;
+        font-weight: 600;
+      }
+      time {
+        display: inline-block;
+        margin-top: 2rem;
+        font-size: 1.8rem;
+        line-height: 1.3;
+      }
+    }
+    .btn_toggle {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1;
+      @include hover-device {
+        & + .work_title {
+          transform: translateY(-1rem);
+        }
+      }
+    }
     ._left {
       position: relative;
       width: 50%;
@@ -416,12 +449,22 @@ section {
         display: flex;
         flex-direction: column;
         justify-content: end;
+        position: relative;
         min-height: 40rem;
         background-color: #fff;
         border-radius: 2rem;
         padding: 6rem;
         & + .com_list {
           margin-top: 4rem;
+        }
+        &.view {
+          .btn_toggle {
+            @include hover-device {
+              & + .work_title {
+                transform: unset;
+              }
+            }
+          }
         }
       }
     }
@@ -513,9 +556,9 @@ section {
         }
       }
       ._desc {
-        margin-top: 8rem;
-        font-size: 1.5rem;
-        line-height: 1.5;
+        margin-top: 5rem;
+        font-size: 1.8rem;
+        line-height: 1.7;
         word-break: keep-all;
       }
     }
