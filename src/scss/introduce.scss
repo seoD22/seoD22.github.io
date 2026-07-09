@@ -539,8 +539,8 @@ section {
     }
     .cont {
       .coverletter_list {
-        position: relative;
         li {
+          position: relative;
           padding: 6rem 0 4rem;
           border-bottom: 0.1rem solid #000;
           &.view {
@@ -588,10 +588,24 @@ section {
         }
       }
       ._desc {
-        margin-top: 5rem;
+        position: relative;
+        // margin-top: 8rem;
+        padding-top: 8rem;
         font-size: 1.8rem;
         line-height: 1.7;
         word-break: keep-all;
+        &::after {
+          content: "";
+          position: absolute;
+          right: 16rem;
+          top: 0;
+          width: 15rem;
+          aspect-ratio: 1 / 1;
+          background: url(../assets/images/introduce/Pill.png)no-repeat center center / contain;
+        }
+        p {
+          width: 50%;
+        }
       }
     }
   }
