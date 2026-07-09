@@ -13,8 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // asideBtnEvent(); // 사이드 버튼
   // profileBtn(); // profile 마우스 오버 버튼
 
-  // 포트폴리오 스와이퍼
-  // portfolioSwiper();
 
   // 반응형
   // ScrollTrigger.matchMedia({
@@ -211,13 +209,22 @@ function section02_toggle() {
 
     if (!isExpanded) {
       $list.addClass('view');
-      $descBox.stop().slideDown(300);
+      // 1. 슬라이드가 완전히 내려간 후(콜백 함수) refresh 실행
+      $descBox.stop().slideDown(300, function() {
+        if (typeof ScrollTrigger !== 'undefined') {
+          ScrollTrigger.refresh();
+        }
+      });
       
       $btn.attr('aria-expanded', 'true');
       $srText.text('닫기'); 
     } else {
+      // 2. 슬라이드가 완전히 올라간 후 refresh 실행
       $descBox.stop().slideUp(300, function() {
         $list.removeClass('view');
+        if (typeof ScrollTrigger !== 'undefined') {
+          ScrollTrigger.refresh();
+        }
       });
     
       $btn.attr('aria-expanded', 'false');
@@ -244,8 +251,8 @@ function section03_toggle() {
 
     ScrollTrigger.create({
       trigger: element,
-      start: 'top 50%',
-      end: 'bottom 50%',
+      start: 'top 40%',
+      end: 'bottom 40%',
       onEnter: function() {
         if ($list.attr('data-user-opened') === 'true') return;
         $list.addClass('view');

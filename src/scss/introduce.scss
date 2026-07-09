@@ -494,7 +494,7 @@ section {
       color: #334155;
       .task_summary {
         position: relative;
-        z-index: 1;
+        z-index: 0;
         font-weight: 700;
         margin: 1rem 0;
         width: fit-content;
@@ -504,9 +504,9 @@ section {
           position: absolute;
           left: -0.5rem;
           right: -0.5rem;
-          bottom: 0.2rem;
+          bottom: 0;
           height: 0.8rem;
-          z-index: 0;
+          z-index: -1;
           background-color: $color-yellow;
           border-radius: 99rem;
           opacity: .5;
@@ -535,7 +535,7 @@ section {
   }
   &._03 {
     .inner {
-      padding: 10rem 0;
+      padding: 10rem 0 0;
     }
     .cont {
       .coverletter_list {
@@ -546,6 +546,27 @@ section {
           &.view {
             ._title button::before {
               transform: translate(-50%, -50%);
+            }
+          }
+          &._01 {
+            ._desc {
+              &::after {
+                background: url(../assets/images/introduce/pill.png)no-repeat center center / contain;
+              }
+            }
+          }
+          &._02 {
+            ._desc {
+              &::after {
+                background: url(../assets/images/introduce/pyramid.png)no-repeat center center / contain;
+              }
+            }
+          }
+          &._03 {
+            ._desc {
+              &::after {
+                background: url(../assets/images/introduce/cylinder.png)no-repeat center center / contain;
+              }
             }
           }
         }
@@ -589,7 +610,6 @@ section {
       }
       ._desc {
         position: relative;
-        // margin-top: 8rem;
         padding-top: 8rem;
         font-size: 1.8rem;
         line-height: 1.7;
@@ -601,7 +621,7 @@ section {
           top: 0;
           width: 15rem;
           aspect-ratio: 1 / 1;
-          background: url(../assets/images/introduce/Pill.png)no-repeat center center / contain;
+          animation: float 3s ease-in-out infinite;
         }
         p {
           width: 50%;
@@ -610,7 +630,56 @@ section {
     }
   }
   &._04 {
-    padding: 10rem 0;
+    .inner {
+      padding: 30rem 0;
+      text-align: center;
+    }
+    .logo_group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.4rem;
+      img {
+        width: 9.1rem;
+        aspect-ratio: 1 / 1;
+      }
+      span {
+        font-weight: 700;
+        font-size: 6rem;
+      }
+    }
+    .contact_group {
+      overflow: hidden;
+      margin-top: 3rem;
+      .contact {
+        position: relative;
+        font-weight: 500;
+        font-size: 2.4rem;
+        text-align: center;
+        transition: .3s;
+        left: calc(15.1rem + 2.4rem);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2.4rem;
+        @include hover-device {
+          left: 0;
+          .rel {
+            opacity: 1;
+          }
+        }
+        .rel {
+          background-color: #000;
+          border-radius: 5rem;
+          padding: 0.8rem 2.4rem;
+          opacity: 0;
+          transition: .3s;
+          a {
+            color: #fff !important;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -631,5 +700,17 @@ section {
   100% {
     opacity: 0;
     transform: translate(-50%, 1.2rem);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
   }
 }
