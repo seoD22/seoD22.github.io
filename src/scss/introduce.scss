@@ -463,6 +463,7 @@ section {
         background-color: #fff;
         border-radius: 2rem;
         padding: 6rem;
+        word-break: keep-all;
         & + .com_list {
           margin-top: 4rem;
         }
@@ -481,24 +482,26 @@ section {
       margin-top: 2rem;
     }
     .spec_item {
-      margin-top: 2rem;
+      & + .spec_item {
+        margin-top: 2rem;
+      }
+      .label {
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        font-weight: 500;
+      }
+    }
+    .project_card {
+      & + .project_card{
+        margin-top: 3rem;
+      }
     }
     .project_header {
       font-size: 2.2rem;
       font-weight: 700;
-    }
-    .project_task {
-      margin-top: 1rem;
-      font-size: 1.8rem;
-      line-height: 1.6;
-      color: #334155;
-      .task_summary {
+      strong {
         position: relative;
-        z-index: 0;
-        font-weight: 700;
-        margin: 1rem 0;
-        width: fit-content;
-        color: #000;
+        z-index: 1;
         &::before {
           content: "";
           position: absolute;
@@ -512,12 +515,35 @@ section {
           opacity: .5;
         }
       }
+    }
+    .project_task {
+      margin-top: 1rem;
+      font-size: 1.8rem;
+      line-height: 1.6;
+      .task_summary {
+        font-weight: 700;
+        margin-top: 1rem;
+        color: #000;
+      }
       .task_details {
-        list-style: disc;
+        margin-top: 0.5rem;
         padding-left: 2rem;
-        margin-bottom: 1rem;
         li {
-          margin-bottom: 1rem;
+          position: relative;
+          font-size: 1.4rem;
+          &::before {
+            content: "";
+            position: absolute;
+            left: -1.2rem;
+            top: 1rem;
+            width: 0.3rem;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            background-color: #000;
+          }
+          & + li {
+            margin-top: 0.5rem;
+          }
           strong {
             font-weight: 500;
           }
