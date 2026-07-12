@@ -114,78 +114,116 @@ function visual() {
   const sectionVisual = document.querySelector('section._visual');
   const flowSection = document.querySelector('section._flow');
   const section01 = document.querySelector('section._01');
-  
+
   const flowBox01 = document.querySelector('section._flow .flow_inner .flow_wrap._01');
   const flowBox02 = document.querySelector('section._flow .flow_inner .flow_wrap._02');
 
-  ScrollTrigger.create({
-    trigger: sectionVisual,
-    start: "top top",
-    end: "+=200%",
-    pin: true,
-    pinSpacing: false,
-    invalidateOnRefresh: true,
-  });
-
-  let flowTimeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: flowSection,
-      start: "top-=20% bottom",
-      end: "bottom top",
-      scrub: 2,
-      invalidateOnRefresh: true,
-      // markers: "true",
-    }
-  });
-
-  flowTimeline
-    .addLabel("start_move")
-    .fromTo(flowBox01, { xPercent: -100 }, { xPercent: 200, duration: 12, ease: "none" }, 'start_move')
-    .fromTo(flowBox02, { xPercent: 100 }, { xPercent: -200, duration: 12, ease: "none" }, 'start_move')
-    .fromTo([flowBox01, flowBox02], { opacity: 0 }, { opacity: 1, duration: 2 }, 'start_move')
-    .to([flowBox01, flowBox02], { opacity: 0, duration: 3 }, 'start_move+=8');
-
-  // flowSection 고정
-  ScrollTrigger.create({
-    trigger: flowSection,
-    start: "top top",
-    end: "+=100%",
-    pin: true,
-    pinSpacing: false,
-    invalidateOnRefresh: true,
-  });
-
-  // section01 애니메이션
-  let sec01Timeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: section01,
-      start: 'top top',
-      end: "+=50%",
-      toggleActions: 'play none none reverse', 
-      pin: true,
-      // pinSpacing: false,
-      invalidateOnRefresh: true,
-      // markers: true,
+  // 화면 크기별로 pin 스크롤 길이 / 애니메이션 값을 분기 (CSS 브레이크포인트와 동일: 1024px, 768px)
+  ScrollTrigger.matchMedia({
+    // PC
+    "(min-width: 1025px)": function () {
+      initVisualAnime({
+        visualEnd: "+=200%",
+        flowEnd: "+=100%",
+        flowScrub: 2,
+        flowDuration: 12,
+        sec01End: "+=50%",
+      });
+    },
+    // 태블릿
+    "(min-width: 769px) and (max-width: 1024px)": function () {
+      initVisualAnime({
+        visualEnd: "+=150%",
+        flowEnd: "+=80%",
+        flowScrub: 1.6,
+        flowDuration: 9,
+        sec01End: "+=40%",
+      });
+    },
+    // 모바일
+    "(max-width: 768px)": function () {
+      initVisualAnime({
+        visualEnd: "+=100%",
+        flowEnd: "+=60%",
+        flowScrub: 1.2,
+        flowDuration: 6,
+        sec01End: "+=30%",
+      });
     },
   });
 
-  sec01Timeline
-    .set(".profile_card ._txt", { width: "100%" })
-    .set(".profile_card ._txt > *", { opacity: 0 })
+  // 공통 애니메이션 로직 (breakpoint별 수치만 주입)
+  // ScrollTrigger.matchMedia가 화면 전환 시 이전 컨텍스트를 알아서 정리(revert)해줌
+  function initVisualAnime({ visualEnd, flowEnd, flowScrub, flowDuration, sec01End }) {
+    ScrollTrigger.create({
+      trigger: sectionVisual,
+      start: "top top",
+      end: visualEnd,
+      pin: true,
+      pinSpacing: false,
+      invalidateOnRefresh: true,
+    });
 
-    .addLabel("label_01")
-    .to(".profile_card ._txt", { 
-      width: "70%", 
-      duration: 0.8, 
-      ease: "power2.out"
-    }, "label_01")
+    let flowTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: flowSection,
+        start: "top-=20% bottom",
+        end: "bottom top",
+        scrub: flowScrub,
+        invalidateOnRefresh: true,
+        // markers: "true",
+      }
+    });
 
-    .addLabel("label_02")
-    .to(".profile_card ._txt > *", { 
-      opacity: 1, 
-      duration: 0.6,
-      ease: "power1.out"
-    }, "label_02");
+    flowTimeline
+      .addLabel("start_move")
+      .fromTo(flowBox01, { xPercent: -100 }, { xPercent: 200, duration: flowDuration, ease: "none" }, 'start_move')
+      .fromTo(flowBox02, { xPercent: 100 }, { xPercent: -200, duration: flowDuration, ease: "none" }, 'start_move')
+      .fromTo([flowBox01, flowBox02], { opacity: 0 }, { opacity: 1, duration: 2 }, 'start_move')
+      .to([flowBox01, flowBox02], { opacity: 0, duration: 3 }, 'start_move+=8');
+
+    // flowSection 고정
+    ScrollTrigger.create({
+      trigger: flowSection,
+      start: "top top",
+      end: flowEnd,
+      pin: true,
+      pinSpacing: false,
+      invalidateOnRefresh: true,
+    });
+
+    // section01 애니메이션
+    let sec01Timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: section01,
+        start: 'top top',
+        end: sec01End,
+        toggleActions: 'play none none reverse',
+        pin: true,
+        // pinSpacing: false,
+        invalidateOnRefresh: true,
+        // markers: true,
+      },
+    });
+
+    sec01Timeline
+      .set(".profile_card ._txt", { width: "100%" })
+      .set(".profile_card ._txt > *", { opacity: 0 })
+
+      .addLabel("label_01")
+      .to(".profile_card ._txt", {
+        width: "70%",
+        duration: 0.8,
+        ease: "power2.out"
+      }, "label_01")
+
+      .addLabel("label_02")
+      .to(".profile_card ._txt > *", {
+        opacity: 1,
+        duration: 0.6,
+        ease: "power1.out"
+      }, "label_02");
+  }
 }
   
 
