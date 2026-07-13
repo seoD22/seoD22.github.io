@@ -128,6 +128,7 @@ function visual() {
         flowScrub: 2,
         flowDuration: 12,
         sec01End: "+=50%",
+        sec01Pin: true,
       });
     },
     // 태블릿
@@ -138,9 +139,11 @@ function visual() {
         flowScrub: 1.6,
         flowDuration: 9,
         sec01End: "+=40%",
+        sec01Pin: true,
       });
     },
-    // 모바일
+    // 모바일 - profile_card 가 이미지 위 / 텍스트 아래로 쌓이는 레이아웃이라
+    // width 애니메이션(펼침 연출)은 의미가 없어서 pin/애니메이션 자체를 생략함
     "(max-width: 768px)": function () {
       initVisualAnime({
         visualEnd: "+=100%",
@@ -148,13 +151,14 @@ function visual() {
         flowScrub: 1.2,
         flowDuration: 6,
         sec01End: "+=30%",
+        sec01Pin: false,
       });
     },
   });
 
   // 공통 애니메이션 로직 (breakpoint별 수치만 주입)
   // ScrollTrigger.matchMedia가 화면 전환 시 이전 컨텍스트를 알아서 정리(revert)해줌
-  function initVisualAnime({ visualEnd, flowEnd, flowScrub, flowDuration, sec01End }) {
+  function initVisualAnime({ visualEnd, flowEnd, flowScrub, flowDuration, sec01End, sec01Pin }) {
     ScrollTrigger.create({
       trigger: sectionVisual,
       start: "top top",
@@ -192,7 +196,9 @@ function visual() {
       invalidateOnRefresh: true,
     });
 
-    // section01 애니메이션
+    // section01 애니메이션 (모바일에서는 profile_card 가 세로 스택 레이아웃이라 생략)
+    if (!sec01Pin) return;
+
     let sec01Timeline = gsap.timeline({
       scrollTrigger: {
         trigger: section01,

@@ -43,7 +43,7 @@ header {
   }
   li {
     a {
-      color: #fff;
+      color: #000;
       font-weight: 500;
       font-size: 2rem;
       text-transform: uppercase;
@@ -164,7 +164,7 @@ aside {
 
 
 section {
-  &._visual { // section._01
+  &._visual {
     position: relative;
     .inner {
       display: flex;
@@ -288,7 +288,7 @@ section {
   &._01 {
     z-index: 3;
     > .inner {
-      padding: 3rem 0;
+      padding: 3rem 2rem;
       padding-top: calc($header-height + 5rem);
     }
     h2 {
@@ -375,14 +375,18 @@ section {
         }
       }
       dt {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
         width: 11rem;
-        padding: 1.2rem 0;
-        background-color: $color-yellow;
-        border-radius: 99rem;
+        padding: 0.5rem 1.4rem;
+        background-color: #000;
+        border-radius: 0.6rem;
         color: #fff;
-        font-weight: 500;
-        font-size: 1.6rem;
-        letter-spacing: -0.06rem;
+        font-weight: 700;
+        font-size: 1.3rem;
+        letter-spacing: -0.02rem;
         text-align: center;
       }
       dd {
@@ -681,43 +685,47 @@ section {
     }
     .cont {
       .coverletter_list {
+        counter-reset: cover-step;
         li {
+          counter-increment: cover-step;
           position: relative;
-          padding: 6rem 0 4rem;
-          border-bottom: 0.1rem solid #000;
+          overflow: hidden;
+          padding: 4rem 4rem;
+          background-color: #fff;
+          border-radius: 2rem;
+          box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.08);
+          & + li {
+            margin-top: 3rem;
+          }
+          &::before {
+            content: "0" counter(cover-step);
+            position: absolute;
+            bottom: -3rem;
+            right: 2rem;
+            z-index: 0;
+            font-size: 10rem;
+            font-weight: 800;
+            line-height: 1;
+            color: $color-yellow;
+            opacity: .5;
+            pointer-events: none;
+          }
           &.view {
             ._title button::before {
               transform: translate(-50%, -50%);
             }
           }
-          &._01 {
-            ._desc {
-              &::after {
-                background: url(../assets/images/introduce/pill.png)no-repeat center center / contain;
-              }
-            }
-          }
-          &._02 {
-            ._desc {
-              &::after {
-                background: url(../assets/images/introduce/pyramid.png)no-repeat center center / contain;
-              }
-            }
-          }
-          &._03 {
-            ._desc {
-              &::after {
-                background: url(../assets/images/introduce/cylinder.png)no-repeat center center / contain;
-              }
-            }
-          }
         }
       }
       h3 {
+        position: relative;
+        z-index: 1;
         font-weight: 700;
         font-size: 4rem;
       }
       ._title {
+        position: relative;
+        z-index: 1;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -725,8 +733,10 @@ section {
           position: relative;
           width: 4rem;
           aspect-ratio: 1 / 1;
+          background-color: #fff;
           border: 0.1rem solid #000;
           border-radius: 50%;
+          transition: .2s;
           &::before {
             content: "";
             position: absolute;
@@ -752,21 +762,13 @@ section {
       }
       ._desc {
         position: relative;
-        padding-top: 8rem;
+        z-index: 1;
+        padding-top: 3rem;
         font-size: 1.8rem;
         line-height: 1.7;
         word-break: keep-all;
-        &::after {
-          content: "";
-          position: absolute;
-          right: 16rem;
-          top: 0;
-          width: 15rem;
-          aspect-ratio: 1 / 1;
-          animation: float 3s ease-in-out infinite;
-        }
         p {
-          width: 50%;
+          width: 100%;
         }
       }
     }
@@ -856,15 +858,6 @@ section {
     transform: translateY(0px);
   }
 }
-
-/* ==========================================================================
-   Responsive (Tablet / Mobile)
-   - variables.scss / mixin.scss 를 받지 못해 색상·헤더높이 값은 하드코딩했습니다.
-     ($color-yellow → #FFCC13, $color-deepYellow → #cda000, $header-height → 8rem 가정)
-     나중에 원본 파일 주시면 변수/믹스인으로 바꿔드릴게요.
-   - .profile_card ._txt 는 GSAP(sec01Timeline)이 width를 인라인으로 애니메이션하는
-     대상이라 구조(포지션)는 유지하고 비율·여백만 축소했습니다.
-========================================================================== */
 
 // ---------- Tablet (max-width: 1024px) ----------
 @media screen and (max-width: 1024px) {
@@ -959,16 +952,18 @@ section {
         padding: 6rem 3rem 0;
       }
       .cont {
+        .coverletter_list li {
+          padding: 3rem;
+          &::before {
+            font-size: 9rem;
+          }
+        }
         h3 {
           font-size: 3rem;
         }
         ._desc {
-          &::after {
-            right: 4rem;
-            width: 10rem;
-          }
           p {
-            width: 65%;
+            width: 100%;
           }
         }
       }
@@ -993,7 +988,7 @@ section {
 // ---------- Mobile (max-width: 768px) ----------
 @media screen and (max-width: 768px) {
   html {
-    font-size: 55%;
+    font-size: 62.5%;
   }
 
   .inner {
@@ -1077,16 +1072,31 @@ section {
         text-align: left;
       }
       .profile_card {
+        display: flex;
+        flex-direction: column;
         margin-top: 4rem;
-        aspect-ratio: 3 / 4;
+        aspect-ratio: unset;
+        height: auto;
         border-radius: 1.6rem;
       }
       .profile_card ._img {
-        border-radius: 1.6rem;
+        position: static;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        border-radius: 1.6rem 1.6rem 0 0;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transform: none;
+        }
       }
       .profile_card ._txt {
+        position: static;
+        width: 100% !important; // GSAP가 인라인으로 넣는 width(70%) 무시하고 항상 풀폭 유지
         padding: 2.4rem;
-        border-radius: 1.6rem;
+        border-radius: 0 0 1.6rem 1.6rem;
+        filter: none;
       }
       .profile-top {
         strong {
@@ -1195,7 +1205,15 @@ section {
       }
       .cont {
         .coverletter_list li {
-          padding: 4rem 0 3rem;
+          padding: 2.4rem;
+          & + li {
+            margin-top: 2rem;
+          }
+          &::before {
+            top: -1rem;
+            right: 1rem;
+            font-size: 6rem;
+          }
         }
         h3 {
           font-size: 2.4rem;
@@ -1204,11 +1222,8 @@ section {
           width: 3.2rem;
         }
         ._desc {
-          padding-top: 5rem;
+          padding-top: 2rem;
           font-size: 1.5rem;
-          &::after {
-            display: none;
-          }
           p {
             width: 100%;
           }
