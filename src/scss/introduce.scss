@@ -1,18 +1,23 @@
 @use 'variables' as *;
+
 @use 'mixin' as *;
 @use 'page/introduce' as *;
+
 html {
   font-size: 62.5%;
 }
+
 body {
   background-color: $color-yellow;
   font-family: 'Pretendard';
 }
+
 .inner {
   width: 100%;
   max-width: 128rem;
   margin: 0 auto;
 }
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -24,12 +29,11 @@ body {
   white-space: nowrap;
   border: 0;
 }
+
 // header
 header {
   position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
+  left: 0;top: 0;right: 0;
   z-index: 9;
   ul {
     display: flex;
@@ -115,6 +119,7 @@ footer {
     line-height: 1.25;
   }
 }
+
 // aside 
 aside {
   display: flex;
@@ -156,9 +161,10 @@ aside {
     }
   }
 }
+
+
 section {
-  &._visual {
-    // section._01
+  &._visual { // section._01
     position: relative;
     .inner {
       display: flex;
@@ -185,8 +191,7 @@ section {
           & {
             opacity: 1;
           }
-          &:nth-child(2) img,
-          &:nth-child(3) img {
+          &:nth-child(2) img, &:nth-child(3) img {
             transform: rotate(90deg);
             filter: brightness(100);
           }
@@ -228,8 +233,7 @@ section {
       }
     }
   }
-  &._flow {
-    // section._flow
+  &._flow { // section._flow
     position: relative;
     width: 100%;
     height: 100vh;
@@ -244,7 +248,7 @@ section {
       height: 1rem;
       transform: translateY(-100%);
       background-color: $color-yellow;
-      filter: drop-shadow(0 -0.2rem 1.4rem rgba(0, 0, 0, .15));
+      filter: drop-shadow(0 -0.2rem 1.4rem rgba(0,0,0,.15));
     }
     .flow_inner {
       width: 100%;
@@ -267,7 +271,7 @@ section {
         right: 0;
         transform: translate(100%, 50%);
       }
-      >div {
+      > div {
         display: flex;
         align-items: center;
       }
@@ -283,7 +287,7 @@ section {
   }
   &._01 {
     z-index: 3;
-    >.inner {
+    > .inner {
       padding: 3rem 0;
       padding-top: calc($header-height + 5rem);
     }
@@ -339,7 +343,7 @@ section {
         // width: 100%;
         padding: 6rem;
         background-color: #fff;
-        filter: drop-shadow(5px 6px 7px rgba(128, 128, 128, .315));
+        filter: drop-shadow(5px 6px 7px rgba(128,128,128,.315));
         border-radius: 2rem;
         // > * {
         // opacity: 0;
@@ -366,7 +370,7 @@ section {
         display: flex;
         align-items: center;
         gap: 2rem;
-        &+.profile-item {
+        & + .profile-item {
           margin-top: 1rem;
         }
       }
@@ -404,10 +408,13 @@ section {
       font-weight: 700;
     }
     .work_title {
+      position: relative;
+      z-index: 1;
       transition: .3s;
       h3 {
-        font-size: 3rem;
-        font-weight: 600;
+        font-size: 3.2rem;
+        font-weight: 700;
+        color: #000;
       }
       time {
         display: inline-block;
@@ -418,27 +425,16 @@ section {
     }
     .btn_toggle {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: transparent;
       border: none;
       cursor: pointer;
-      z-index: 1;
+      z-index: 2;
       @include hover-device {
-        &+.work_title {
+        & + .work_title {
           transform: translateY(-1rem);
         }
-      }
-      &::before {
-        content: "";
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 50%;
-        height: auto;
-        background: url(../assets/images/introduce/comm/logo_Q.png) no-repeat center center / contain;
       }
     }
     ._left {
@@ -457,18 +453,32 @@ section {
         flex-direction: column;
         justify-content: end;
         position: relative;
+        overflow: hidden;
         min-height: 40rem;
         background-color: #fff;
         border-radius: 2rem;
         padding: 6rem;
         word-break: keep-all;
-        &+.com_list {
+        &::before {
+          content: "";
+          position: absolute;
+          top: 4rem;
+          right: -3rem;
+          width: 60%;
+          max-width: 32rem;
+          aspect-ratio: 1 / 1;
+          background: url(../assets/images/introduce/comm/logo_Q.png) no-repeat center center / contain;
+          opacity: 0.06;
+          pointer-events: none;
+          z-index: 0;
+        }
+        & + .com_list {
           margin-top: 4rem;
         }
         &.view {
           .btn_toggle {
             @include hover-device {
-              &+.work_title {
+              & + .work_title {
                 transform: unset;
               }
             }
@@ -477,24 +487,75 @@ section {
       }
     }
     .desc_box {
+      position: relative;
+      z-index: 1;
       margin-top: 2rem;
     }
     .spec_item {
-      &+.spec_item {
+      & + .spec_item {
         margin-top: 2rem;
       }
       .label {
+        display: inline-flex;
+        align-items: center;
         margin-bottom: 2rem;
-        font-size: 2rem;
-        font-weight: 500;
+        padding: 0.5rem 1.4rem;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #fff;
+        background: #000;
+        border-radius: 0.6rem;
+      }
+    }
+    .project_card_list {
+      position: relative;
+      padding-left: 4.4rem;
+      counter-reset: project-step;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 1.5rem;
+        width: 2px;
+        background: rgba(0, 0, 0, 0.12);
       }
     }
     .project_card {
-      &+.project_card {
-        margin-top: 3rem;
+      position: relative;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 1.6rem;
+      padding: 2.4rem 2.4rem 2.4rem 2.8rem;
+      box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.04);
+      & + .project_card {
+        margin-top: 2.4rem;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        left: -3.65rem;
+        top: 3rem;
+        width: 1rem;
+        height: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $color-yellow;
+        border: 3px solid #fff;
+        box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #000;
+        z-index: 1;
       }
     }
     .project_header {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem 1.2rem;
       font-size: 2.2rem;
       font-weight: 700;
       strong {
@@ -513,6 +574,22 @@ section {
           opacity: .5;
         }
       }
+      time {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.5);
+      }
+    }
+    .project_status {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.3rem 1rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: $color-deepYellow;
+      background: rgba($color-yellow, 0.2);
+      border: 1px solid rgba($color-deepYellow, 0.3);
+      border-radius: 99rem;
     }
     .project_task {
       margin-top: 1rem;
@@ -539,7 +616,7 @@ section {
             border-radius: 50%;
             background-color: #000;
           }
-          &+li {
+          & + li {
             margin-top: 0.5rem;
           }
           strong {
@@ -554,6 +631,47 @@ section {
         font-size: 1.6rem;
         color: #fff;
         margin-top: 1rem;
+      }
+    }
+    .tech_stack_list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      padding: 2rem 2.4rem;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 1.6rem;
+      box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.04);
+
+      li {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 0.6rem 1.2rem;
+        font-size: 1.5rem;
+        line-height: 1.5;
+
+        & + li {
+          padding-top: 1.2rem;
+          border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        strong {
+          flex: 0 0 auto;
+          display: inline-flex;
+          align-items: center;
+          padding: 0.3rem 1rem;
+          font-size: 1.2rem;
+          font-weight: 700;
+          color: $color-deepYellow;
+          background: rgba($color-yellow, 0.2);
+          border: 1px solid rgba($color-deepYellow, 0.3);
+          border-radius: 99rem;
+        }
+
+        span {
+          color: rgba(0, 0, 0, 0.65);
+        }
       }
     }
   }
@@ -699,19 +817,21 @@ section {
           opacity: 0;
           transition: .3s;
           a {
-            color: #fff;
+            color: #fff !important;
           }
         }
       }
     }
   }
 }
+
 // animation
 @keyframes scroll-wheel {
   0% {
     opacity: 0;
     transform: translate(-50%, 0);
   }
+
   30% {
     opacity: 1;
   }
@@ -724,6 +844,7 @@ section {
     transform: translate(-50%, 1.2rem);
   }
 }
+
 @keyframes float {
   0% {
     transform: translateY(0px);
@@ -735,10 +856,22 @@ section {
     transform: translateY(0px);
   }
 }
+
+/* ==========================================================================
+   Responsive (Tablet / Mobile)
+   - variables.scss / mixin.scss 를 받지 못해 색상·헤더높이 값은 하드코딩했습니다.
+     ($color-yellow → #FFCC13, $color-deepYellow → #cda000, $header-height → 8rem 가정)
+     나중에 원본 파일 주시면 변수/믹스인으로 바꿔드릴게요.
+   - .profile_card ._txt 는 GSAP(sec01Timeline)이 width를 인라인으로 애니메이션하는
+     대상이라 구조(포지션)는 유지하고 비율·여백만 축소했습니다.
+========================================================================== */
+
+// ---------- Tablet (max-width: 1024px) ----------
 @media screen and (max-width: 1024px) {
   .inner {
     padding: 0 3rem;
   }
+
   header {
     ul {
       gap: 1.5rem;
@@ -748,6 +881,7 @@ section {
       font-size: 1.6rem;
     }
   }
+
   footer {
     .inner {
       padding: 3rem;
@@ -756,6 +890,7 @@ section {
       width: 8rem;
     }
   }
+
   section {
     &._visual {
       .logo_wrap {
@@ -765,6 +900,7 @@ section {
         }
       }
     }
+
     &._flow {
       .flow_wrap {
         gap: 3rem;
@@ -773,6 +909,7 @@ section {
         }
       }
     }
+
     &._01 {
       h2 {
         font-size: 3.6rem;
@@ -794,6 +931,7 @@ section {
         }
       }
     }
+
     &._02 {
       .inner {
         flex-direction: column;
@@ -815,6 +953,7 @@ section {
         padding: 4rem;
       }
     }
+
     &._03 {
       .inner {
         padding: 6rem 3rem 0;
@@ -834,6 +973,7 @@ section {
         }
       }
     }
+
     &._04 {
       .inner {
         padding: 18rem 3rem;
@@ -849,14 +989,17 @@ section {
     }
   }
 }
+
 // ---------- Mobile (max-width: 768px) ----------
 @media screen and (max-width: 768px) {
   html {
     font-size: 55%;
   }
+
   .inner {
     padding: 0 2rem;
   }
+
   header {
     ul {
       gap: 1rem;
@@ -866,6 +1009,7 @@ section {
       font-size: 1.4rem;
     }
   }
+
   footer {
     border-radius: 4rem 4rem 0 0;
     .inner {
@@ -890,6 +1034,7 @@ section {
       margin-left: 0;
     }
   }
+
   section {
     &._visual {
       .logo_wrap {
@@ -909,6 +1054,7 @@ section {
         }
       }
     }
+
     &._flow {
       .flow_wrap {
         gap: 1.5rem;
@@ -920,8 +1066,9 @@ section {
         }
       }
     }
+
     &._01 {
-      >.inner {
+      > .inner {
         padding-top: calc(6rem + 3rem);
       }
       h2 {
@@ -967,6 +1114,7 @@ section {
         }
       }
     }
+
     &._02 {
       .inner {
         flex-direction: column;
@@ -979,7 +1127,7 @@ section {
       ._right .com_list {
         padding: 3rem 2rem;
         min-height: auto;
-        &+.com_list {
+        & + .com_list {
           margin-top: 2rem;
         }
       }
@@ -992,6 +1140,24 @@ section {
       }
       .btn_toggle::before {
         width: 30%;
+      }
+      .project_card_list {
+        padding-left: 3.2rem;
+        &::before {
+          left: 1rem;
+        }
+      }
+      .project_card {
+        padding: 1.8rem 1.8rem 1.8rem 2rem;
+        &::before {
+          left: -2.65rem;
+          top: 2.2rem;
+          width: 0.8rem;
+          height: 0.8rem;
+        }
+        & + .project_card {
+          margin-top: 1.6rem;
+        }
       }
       .project_header {
         font-size: 1.8rem;
@@ -1008,7 +1174,21 @@ section {
           font-size: 1.4rem;
         }
       }
+      .tech_stack_list {
+        padding: 1.6rem 1.8rem;
+        gap: 1rem;
+        li {
+          font-size: 1.3rem;
+          & + li {
+            padding-top: 1rem;
+          }
+          strong {
+            font-size: 1.1rem;
+          }
+        }
+      }
     }
+
     &._03 {
       .inner {
         padding: 5rem 2rem 0;
@@ -1035,6 +1215,7 @@ section {
         }
       }
     }
+
     &._04 {
       .inner {
         padding: 10rem 2rem;

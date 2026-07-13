@@ -1,6 +1,7 @@
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 $(function() {
+  hoverCapabilityDetect();
   initNavigation();
 
   //about 페이지
@@ -77,6 +78,25 @@ function quickMenu() {
 }
 
 // 범용 이벤트
+// 마우스 사용 여부 감지
+function hoverCapabilityDetect() {
+  const root = document.documentElement;
+
+  // 진짜 마우스로 움직였을 때만 클래스 추가
+  window.addEventListener('pointermove', function (e) {
+    if (e.pointerType === 'mouse' && !root.classList.contains('is-mouse')) {
+      root.classList.add('is-mouse');
+    }
+  });
+
+  // 터치로 조작하면 다시 제거 (입력장치 전환 대응)
+  window.addEventListener('pointerdown', function (e) {
+    if (e.pointerType === 'touch' && root.classList.contains('is-mouse')) {
+      root.classList.remove('is-mouse');
+    }
+  });
+}
+
 // 토글
 function activeToggle(selector, target, className) {
   $(selector).on('click', function() {
