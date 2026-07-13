@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('load', function () {
     section02_toggle();
     section03_toggle();
-      // 로딩 화면
-      // loading();
+    // 로딩 화면
+    loading();
   });
 
   // 네비게이션
-  // navi();
+  navi();
 
 
   // asideBtnEvent(); // 사이드 버튼
@@ -41,43 +41,46 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// 로딩화면
+// 로딩화면 (CSS의 #load.hide 트랜지션과 짝을 맞춘 버전)
 function loading() {
   const load = document.querySelector('#load');
-  const html = document.querySelector('html');
+  if (!load) return;
 
+  const html = document.documentElement;
   html.style.overflow = 'hidden'; // 로딩 중 스크롤 방지
 
+  // 로고 등장 애니메이션(이미지 2쌍 → U/I 색 전환 → 라인·글자 리빌, 총 1.8s 정도)이 끝날 때까지 최소 노출 시간 확보
+  const MIN_DISPLAY = 2300;
+
   setTimeout(() => {
-    load.classList.add('show')
+    load.classList.add('hide');
+    html.style.overflow = '';
 
-    setTimeout(() => { //  <- 로딩속도 구현
-      load.style.opacity = '0';
-      html.style.overflow = 'auto'; // 스크롤 방지 해제
-
-      setTimeout(() => {
-          load.style.display = 'none';
-      }, 400);
-
-    }, 2000);
-
-  }, 1500);
-  
+    load.addEventListener('transitionend', () => {
+      load.remove();
+    }, { once: true });
+  }, MIN_DISPLAY);
 };
 
 // 네비게이션
 function navi() {
-  $('header .nav').click(function () {
+  gsap.registerPlugin(ScrollToPlugin);
+
+  $('header .nav, footer .nav').on('click', function (e) {
+    e.preventDefault();
+
     let idx = $(this).index();
-    // console.log(idx);
-    gsap.to(window,{
-        scrollTo: {
-            y: $('.move').eq(idx),
-            offsetY: 0
-        },
-        duration: 1,
-        ease: 'power2.inOut'
-    })
+    const $target = $('.move').eq(idx);
+    if (!$target.length) return;
+
+    gsap.to(window, {
+      scrollTo: {
+        y: $target,
+        offsetY: 80 // 고정 헤더 높이만큼 살짝 내려서, 헤더가 섹션 상단을 가리지 않게
+      },
+      duration: 1,
+      ease: 'power2.inOut'
+    });
   });
 }
 

@@ -30,6 +30,118 @@ body {
   border: 0;
 }
 
+// 로딩화면
+#load {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-yellow;
+  transition: opacity .5s ease, visibility .5s ease;
+  &.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .logo_wrap {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .logo_box {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    .img-box {
+      width: 15rem;
+      opacity: 0;
+      transform: translateY(1.5rem);
+      animation: loadPieceIn .5s ease forwards;
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+    em {
+      position: relative;
+      left: -1rem;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 20rem;
+      line-height: 15rem;
+      color: #000;
+      overflow: hidden;
+      max-width: 0;
+      white-space: nowrap;
+      animation: textReveal .6s ease forwards;
+      animation-delay: 1.2s;
+      &.line {
+        display: flex;
+        align-items: center;
+        // width: 0;
+        // overflow: hidden;
+        // animation: lineWidthReveal .3s ease forwards;
+        // animation-delay: 1.2s;
+        span {
+          display: block;
+          flex: 0 0 auto;
+          width: 41rem;
+          height: 1.2rem;
+          background-color: #000;
+          border-radius: 99rem;
+          transform: scaleX(0);
+          transform-origin: right;
+          animation: lineReveal .3s ease forwards;
+          animation-delay: 1.2s;
+        }
+      }
+    }
+
+    &._01 .img-box:nth-of-type(2) img,
+    &._02 .img-box:nth-of-type(1) img {
+      animation: toWhite .4s ease forwards;
+      animation-delay: .9s;
+    }
+  }
+}
+
+@keyframes loadPieceIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toWhite {
+  to {
+    filter: brightness(0) invert(1);
+  }
+}
+
+@keyframes textReveal {
+  to {
+    max-width: 100rem;
+  }
+}
+
+@keyframes lineWidthReveal {
+  to {
+    width: 41rem;
+  }
+}
+
+@keyframes lineReveal {
+  to {
+    transform: scaleX(1);
+  }
+}
+
 // header
 header {
   position: fixed;
@@ -164,7 +276,7 @@ aside {
 
 
 section {
-  &._visual {
+  &._visual { // section._01
     position: relative;
     .inner {
       display: flex;
@@ -288,7 +400,7 @@ section {
   &._01 {
     z-index: 3;
     > .inner {
-      padding: 3rem 2rem;
+      padding: 3rem 3rem 10rem;
       padding-top: calc($header-height + 5rem);
     }
     h2 {
@@ -321,7 +433,6 @@ section {
       position: relative;
       width: 100%;
       margin-top: 10rem;
-      aspect-ratio: 615 / 240;
       background-color: #fff;
       border-radius: 2rem;
       ._img {
@@ -405,7 +516,7 @@ section {
     background-color: $color-yellow;
     .inner {
       display: flex;
-      padding: 20rem 0 10rem;
+      padding: 10rem 0 10rem;
     }
     h2 {
       font-size: 7rem;
@@ -909,7 +1020,7 @@ section {
       }
       .profile_card {
         margin-top: 6rem;
-        aspect-ratio: 615 / 320;
+        aspect-ratio: unset;
       }
       .profile_card ._txt {
         padding: 4rem;
@@ -1082,7 +1193,6 @@ section {
       .profile_card ._img {
         position: static;
         width: 100%;
-        aspect-ratio: 4 / 3;
         border-radius: 1.6rem 1.6rem 0 0;
         img {
           width: 100%;
@@ -1198,7 +1308,6 @@ section {
         }
       }
     }
-
     &._03 {
       .inner {
         padding: 5rem 2rem 0;
@@ -1230,7 +1339,6 @@ section {
         }
       }
     }
-
     &._04 {
       .inner {
         padding: 10rem 2rem;
