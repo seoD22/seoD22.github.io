@@ -431,27 +431,32 @@ section {
     }
     .profile_card {
       position: relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto; // 텍스트 내용 높이에 맞춰 행 높이가 자동으로 늘어남
       width: 100%;
       margin-top: 10rem;
       background-color: #fff;
       border-radius: 2rem;
       ._img {
+        position: absolute; // 그리드 자동 높이 계산에서 제외시켜서(텍스트만 높이를 결정) 최종 확정된 카드 크기에 꽉 채워지도록 함
+        inset: 0;
         width: 53%;
-        height: 100%;
         overflow: hidden;
         background-color: $color-deepYellow;
         border-radius: 2rem;
         img {
-          width: 102%;
-          transform: translateX(-27%);
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
         }
       }
       ._txt {
-        position: absolute;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        // width: 100%;
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: end; // 오른쪽 정렬 (GSAP이 width를 100%→70%로 줄이면 왼쪽으로 이미지가 드러남)
         padding: 6rem;
         background-color: #fff;
         filter: drop-shadow(5px 6px 7px rgba(128,128,128,.315));
