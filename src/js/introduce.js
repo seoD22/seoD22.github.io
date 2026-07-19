@@ -1,4 +1,13 @@
+// 새로고침해도 브라우저가 이전 스크롤 위치를 복원하지 않도록 함
+// (스크롤된 상태로 페이지가 열리면 ScrollTrigger의 pin 계산이 꼬여서 오류가 남)
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
 document.addEventListener('DOMContentLoaded', function() {
+  window.scrollTo(0, 0);
+
   window.addEventListener('load', function () {
     section02_toggle();
     section03_toggle();
@@ -45,6 +54,12 @@ document.addEventListener('DOMContentLoaded', function() {
 function loading() {
   const load = document.querySelector('#load');
   if (!load) return;
+
+  // 모바일(768px 이하)에서는 로딩 화면 자체를 건너뜀
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    load.remove();
+    return;
+  }
 
   const html = document.documentElement;
   html.style.overflow = 'hidden'; // 로딩 중 스크롤 방지
@@ -122,6 +137,8 @@ function visual() {
   const flowBox02 = document.querySelector('section._flow .flow_inner .flow_wrap._02');
 
   // 화면 크기별로 pin 스크롤 길이 / 애니메이션 값을 분기 (CSS 브레이크포인트와 동일: 1024px, 768px)
+  // flow 섹션은 화면이 작아질수록 오히려 더 넉넉한 스크롤 구간(flowEnd)이 필요함
+  // (섹션 자체 높이가 작아져서 자연 스크롤 구간이 짧아지는데, pin 구간까지 짧게 잡으면 텍스트가 순식간에 지나가버림)
   ScrollTrigger.matchMedia({
     // PC
     "(min-width: 1025px)": function () {
@@ -138,9 +155,9 @@ function visual() {
     "(min-width: 769px) and (max-width: 1024px)": function () {
       initVisualAnime({
         visualEnd: "+=150%",
-        flowEnd: "+=80%",
-        flowScrub: 1.6,
-        flowDuration: 9,
+        flowEnd: "+=130%",
+        flowScrub: 2,
+        flowDuration: 12,
         sec01End: "+=40%",
         sec01Pin: true,
       });
@@ -150,9 +167,9 @@ function visual() {
     "(max-width: 768px)": function () {
       initVisualAnime({
         visualEnd: "+=100%",
-        flowEnd: "+=60%",
-        flowScrub: 1.2,
-        flowDuration: 6,
+        flowEnd: "+=140%",
+        flowScrub: 2,
+        flowDuration: 12,
         sec01End: "+=30%",
         sec01Pin: false,
       });
@@ -218,6 +235,19 @@ function visual() {
     sec01Timeline
       .set(".profile_card ._txt", { width: "100%" })
       .set(".profile_card ._txt > *", { opacity: 0 })
+      // width가 100%→70%로 줄어들수록 줄바꿈이 늘어나 텍스트가 더 길어짐.
+      // 지금까지는 100%(가장 짧은) 상태의 높이를 고정해서, 70%(가장 긴) 상태에서 항상 모자랐던 것.
+      // 70% 상태로 잠깐 바꿔 실제로 가장 긴 높이를 재고, 다시 원래 상태로 되돌린 뒤 그 값을 고정값으로 사용.
+      .set(".profile_card", {
+        height: () => {
+          const txt = document.querySelector(".profile_card ._txt");
+          const original = txt.style.width;
+          txt.style.width = "70%";
+          const h = txt.scrollHeight;
+          txt.style.width = original;
+          return h;
+        },
+      })
 
       .addLabel("label_01")
       .to(".profile_card ._txt", {
@@ -283,6 +313,11 @@ function section02_toggle() {
 function section03_toggle() {
   gsap.registerPlugin(ScrollTrigger);
 
+  // 모바일에서는 스크롤 자동 열림/닫힘(GSAP) 자체를 사용하지 않음 - 아래 each 안에서 return 처리
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const triggerStart = 'top 40%';
+  const triggerEnd = 'bottom 40%';
+
   $('section._03 li').removeClass('view').removeAttr('data-user-opened');
   $('section._03 li ._desc').hide();
   
@@ -296,10 +331,13 @@ function section03_toggle() {
     const $descBox = $list.find('._desc');
     const $srText = $btn.find('.sr-only');
 
+    // 모바일에서는 스크롤에 따라 자동으로 열고 닫는 GSAP 효과를 빼고, 클릭으로만 토글되게 함
+    if (isMobile) return;
+
     ScrollTrigger.create({
       trigger: element,
-      start: 'top 40%',
-      end: 'bottom 40%',
+      start: triggerStart,
+      end: triggerEnd,
       onEnter: function() {
         if ($list.attr('data-user-opened') === 'true') return;
         $list.addClass('view');
