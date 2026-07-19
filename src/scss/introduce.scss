@@ -30,6 +30,118 @@ body {
   border: 0;
 }
 
+// 로딩화면
+#load {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-yellow;
+  transition: opacity .5s ease, visibility .5s ease;
+  &.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .logo_wrap {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .logo_box {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    .img-box {
+      width: 15rem;
+      opacity: 0;
+      transform: translateY(1.5rem);
+      animation: loadPieceIn .5s ease forwards;
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+    em {
+      position: relative;
+      left: -1rem;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 20rem;
+      line-height: 15rem;
+      color: #000;
+      overflow: hidden;
+      max-width: 0;
+      white-space: nowrap;
+      animation: textReveal .6s ease forwards;
+      animation-delay: 1.2s;
+      &.line {
+        display: flex;
+        align-items: center;
+        // width: 0;
+        // overflow: hidden;
+        // animation: lineWidthReveal .3s ease forwards;
+        // animation-delay: 1.2s;
+        span {
+          display: block;
+          flex: 0 0 auto;
+          width: 41rem;
+          height: 1.2rem;
+          background-color: #000;
+          border-radius: 99rem;
+          transform: scaleX(0);
+          transform-origin: right;
+          animation: lineReveal .3s ease forwards;
+          animation-delay: 1.2s;
+        }
+      }
+    }
+
+    &._01 .img-box:nth-of-type(2) img,
+    &._02 .img-box:nth-of-type(1) img {
+      animation: toWhite .4s ease forwards;
+      animation-delay: .9s;
+    }
+  }
+}
+
+@keyframes loadPieceIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toWhite {
+  to {
+    filter: brightness(0) invert(1);
+  }
+}
+
+@keyframes textReveal {
+  to {
+    max-width: 100rem;
+  }
+}
+
+@keyframes lineWidthReveal {
+  to {
+    width: 41rem;
+  }
+}
+
+@keyframes lineReveal {
+  to {
+    transform: scaleX(1);
+  }
+}
+
 // header
 header {
   position: fixed;
@@ -39,11 +151,11 @@ header {
     display: flex;
     justify-content: flex-end;
     gap: 2rem;
-    padding: 3rem 0;
+    padding: 3rem;
   }
   li {
     a {
-      color: #fff;
+      color: #000;
       font-weight: 500;
       font-size: 2rem;
       text-transform: uppercase;
@@ -59,7 +171,7 @@ footer {
   .inner {
     display: flex;
     align-items: center;
-    padding: 4rem 0;
+    padding: 4rem 3rem;
     text-align: right;
   }
   ._left {
@@ -286,9 +398,10 @@ section {
     }
   }
   &._01 {
+    position: relative;
     z-index: 3;
     > .inner {
-      padding: 3rem 0;
+      padding: 3rem 3rem 10rem;
       padding-top: calc($header-height + 5rem);
     }
     h2 {
@@ -319,28 +432,32 @@ section {
     }
     .profile_card {
       position: relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto; // 텍스트 내용 높이에 맞춰 행 높이가 자동으로 늘어남
       width: 100%;
       margin-top: 10rem;
-      aspect-ratio: 615 / 240;
       background-color: #fff;
       border-radius: 2rem;
       ._img {
+        position: absolute; // 그리드 자동 높이 계산에서 제외시켜서(텍스트만 높이를 결정) 최종 확정된 카드 크기에 꽉 채워지도록 함
+        inset: 0;
         width: 53%;
-        height: 100%;
         overflow: hidden;
         background-color: $color-deepYellow;
         border-radius: 2rem;
         img {
-          width: 102%;
-          transform: translateX(-27%);
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          object-position: right bottom;
         }
       }
       ._txt {
-        position: absolute;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        // width: 100%;
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: end; // 오른쪽 정렬 (GSAP이 width를 100%→70%로 줄이면 왼쪽으로 이미지가 드러남)
         padding: 6rem;
         background-color: #fff;
         filter: drop-shadow(5px 6px 7px rgba(128,128,128,.315));
@@ -375,14 +492,18 @@ section {
         }
       }
       dt {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
         width: 11rem;
-        padding: 1.2rem 0;
-        background-color: $color-yellow;
-        border-radius: 99rem;
+        padding: 0.5rem 1.4rem;
+        background-color: #000;
+        border-radius: 0.6rem;
         color: #fff;
-        font-weight: 500;
-        font-size: 1.6rem;
-        letter-spacing: -0.06rem;
+        font-weight: 700;
+        font-size: 1.3rem;
+        letter-spacing: -0.02rem;
         text-align: center;
       }
       dd {
@@ -401,17 +522,20 @@ section {
     background-color: $color-yellow;
     .inner {
       display: flex;
-      padding: 20rem 0 10rem;
+      padding: 10rem 3rem 10rem;
     }
     h2 {
       font-size: 7rem;
       font-weight: 700;
     }
     .work_title {
+      position: relative;
+      z-index: 1;
       transition: .3s;
       h3 {
-        font-size: 3rem;
-        font-weight: 600;
+        font-size: 3.2rem;
+        font-weight: 700;
+        color: #000;
       }
       time {
         display: inline-block;
@@ -427,20 +551,11 @@ section {
       background: transparent;
       border: none;
       cursor: pointer;
-      z-index: 1;
+      z-index: 2;
       @include hover-device {
         & + .work_title {
           transform: translateY(-1rem);
         }
-      }
-      &::before {
-        content: "";
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 50%;
-        height: auto;
-        background: url(../assets/images/introduce/comm/logo_Q.png) no-repeat center center / contain;
       }
     }
     ._left {
@@ -459,11 +574,25 @@ section {
         flex-direction: column;
         justify-content: end;
         position: relative;
+        overflow: hidden;
         min-height: 40rem;
         background-color: #fff;
         border-radius: 2rem;
         padding: 6rem;
         word-break: keep-all;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 4rem;
+          right: -3rem;
+          width: 60%;
+          max-width: 32rem;
+          aspect-ratio: 1 / 1;
+          background: url(../assets/images/introduce/comm/logo_Q.png) no-repeat center center / contain;
+          opacity: 0.06;
+          pointer-events: none;
+          z-index: 0;
+        }
         & + .com_list {
           margin-top: 4rem;
         }
@@ -479,6 +608,8 @@ section {
       }
     }
     .desc_box {
+      position: relative;
+      z-index: 1;
       margin-top: 2rem;
     }
     .spec_item {
@@ -486,17 +617,66 @@ section {
         margin-top: 2rem;
       }
       .label {
+        display: inline-flex;
+        align-items: center;
         margin-bottom: 2rem;
-        font-size: 2rem;
-        font-weight: 500;
+        padding: 0.5rem 1.4rem;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #fff;
+        background: #000;
+        border-radius: 0.6rem;
+      }
+    }
+    .project_card_list {
+      position: relative;
+      padding-left: 4.4rem;
+      counter-reset: project-step;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 1.5rem;
+        width: 2px;
+        background: rgba(0, 0, 0, 0.12);
       }
     }
     .project_card {
-      & + .project_card{
-        margin-top: 3rem;
+      position: relative;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 1.6rem;
+      padding: 2.4rem;
+      box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.04);
+      & + .project_card {
+        margin-top: 2.4rem;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        left: -3.65rem;
+        top: 3rem;
+        width: 1rem;
+        height: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $color-yellow;
+        border: 3px solid #fff;
+        box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #000;
+        z-index: 1;
       }
     }
     .project_header {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem 1.2rem;
       font-size: 2.2rem;
       font-weight: 700;
       strong {
@@ -515,6 +695,22 @@ section {
           opacity: .5;
         }
       }
+      time {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.5);
+      }
+    }
+    .project_status {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.3rem 1rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: $color-deepYellow;
+      background: rgba($color-yellow, 0.2);
+      border: 1px solid rgba($color-deepYellow, 0.3);
+      border-radius: 99rem;
     }
     .project_task {
       margin-top: 1rem;
@@ -558,50 +754,82 @@ section {
         margin-top: 1rem;
       }
     }
+    .tech_stack_list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      padding: 2.4rem;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 1.6rem;
+      box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.04);
+
+      li {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 0.6rem 1.2rem;
+        font-size: 1.5rem;
+        line-height: 1.5;
+
+        & + li {
+          padding-top: 1.2rem;
+          border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        strong {
+          flex: 0 0 auto;
+          display: inline-flex;
+          align-items: center;
+          padding: 0.3rem 1rem;
+          font-size: 1.2rem;
+          font-weight: 700;
+          color: $color-deepYellow;
+          background: rgba($color-yellow, 0.2);
+          border: 1px solid rgba($color-deepYellow, 0.3);
+          border-radius: 99rem;
+        }
+
+        span {
+          color: rgba(0, 0, 0, 0.65);
+        }
+      }
+    }
   }
   &._03 {
     .inner {
-      padding: 10rem 0 0;
+      padding: 10rem 3rem 0;
     }
     .cont {
       .coverletter_list {
+        counter-reset: cover-step;
         li {
+          counter-increment: cover-step;
           position: relative;
-          padding: 6rem 0 4rem;
-          border-bottom: 0.1rem solid #000;
+          overflow: hidden;
+          padding: 4rem 4rem;
+          background-color: #fff;
+          border-radius: 2rem;
+          box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.08);
+          & + li {
+            margin-top: 3rem;
+          }
           &.view {
             ._title button::before {
               transform: translate(-50%, -50%);
             }
           }
-          &._01 {
-            ._desc {
-              &::after {
-                background: url(../assets/images/introduce/pill.png)no-repeat center center / contain;
-              }
-            }
-          }
-          &._02 {
-            ._desc {
-              &::after {
-                background: url(../assets/images/introduce/pyramid.png)no-repeat center center / contain;
-              }
-            }
-          }
-          &._03 {
-            ._desc {
-              &::after {
-                background: url(../assets/images/introduce/cylinder.png)no-repeat center center / contain;
-              }
-            }
-          }
         }
       }
       h3 {
+        position: relative;
+        z-index: 1;
         font-weight: 700;
         font-size: 4rem;
       }
       ._title {
+        position: relative;
+        z-index: 1;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -609,8 +837,10 @@ section {
           position: relative;
           width: 4rem;
           aspect-ratio: 1 / 1;
+          background-color: #fff;
           border: 0.1rem solid #000;
           border-radius: 50%;
+          transition: .2s;
           &::before {
             content: "";
             position: absolute;
@@ -636,28 +866,33 @@ section {
       }
       ._desc {
         position: relative;
-        padding-top: 8rem;
+        z-index: 1;
+        padding-top: 3rem;
+        padding-bottom: 5rem; // 오른쪽 아래 숫자랑 본문 텍스트가 안 겹치도록 여유 공간 확보
         font-size: 1.8rem;
         line-height: 1.7;
         word-break: keep-all;
-        &::after {
-          content: "";
+        &::before {
+          content: "0" counter(cover-step);
           position: absolute;
-          right: 16rem;
-          top: 0;
-          width: 15rem;
-          aspect-ratio: 1 / 1;
-          animation: float 3s ease-in-out infinite;
+          right: 0;
+          bottom: 0;
+          z-index: -1; // 본문 텍스트보다 뒤에 깔림
+          font-size: 5rem;
+          font-weight: 800;
+          line-height: 1;
+          color: $color-yellow;
+          pointer-events: none;
         }
         p {
-          width: 50%;
+          width: 100%;
         }
       }
     }
   }
   &._04 {
     .inner {
-      padding: 30rem 0;
+      padding: 30rem 3rem;
       text-align: center;
     }
     .logo_group {
@@ -738,5 +973,443 @@ section {
   }
   100% {
     transform: translateY(0px);
+  }
+}
+
+// ---------- Tablet (max-width: 1024px) ----------
+@media screen and (max-width: 1024px) {
+  .inner {
+    padding: 0 3rem;
+  }
+
+  header {
+    ul {
+      gap: 1.5rem;
+      padding: 2rem 3rem;
+    }
+    li a {
+      font-size: 1.6rem;
+    }
+  }
+
+  footer {
+    border-radius: 4rem 4rem 0 0;
+    .inner {
+      padding: 3rem;
+    }
+    ._left img {
+      width: 8rem;
+    }
+    nav ul {
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+      a {
+        font-size: 1.6rem;
+      }
+    }
+    .resume_download {
+      padding: 0.8rem 1.4rem;
+      font-size: 1.3rem;
+    }
+    .reserved {
+      font-size: 1.3rem;
+    }
+  }
+
+  section {
+    &._visual {
+      .logo_wrap {
+        gap: 1.5rem;
+        .img_box img {
+          width: 6rem;
+        }
+      }
+    }
+
+    &._flow {
+      .flow_wrap {
+        gap: 3rem;
+        .txt {
+          font-size: 9rem;
+        }
+      }
+    }
+
+    &._01 {
+      h2 {
+        font-size: 3.6rem;
+      }
+      .profile_card {
+        margin-top: 6rem;
+        aspect-ratio: unset;
+      }
+      .profile_card ._txt {
+        padding: 4rem;
+      }
+      .profile-top {
+        strong {
+          font-size: 3rem;
+        }
+        p {
+          margin-top: 2rem;
+          font-size: 1.6rem;
+        }
+      }
+    }
+
+    &._02 {
+      .inner {
+        flex-direction: column;
+        gap: 4rem;
+        padding: 14rem 3rem 8rem;
+      }
+      h2 {
+        font-size: 5rem;
+      }
+      ._left,
+      ._right {
+        width: 100%;
+      }
+      .sticky_box {
+        position: static;
+        width: 100%;
+      }
+      ._right .com_list {
+        padding: 4rem;
+        &::before {
+          top: 3rem;
+          right: -2rem;
+          width: 55%;
+          max-width: 24rem;
+        }
+      }
+    }
+
+    &._03 {
+      .inner {
+        padding: 6rem 3rem 0;
+      }
+      .cont {
+        .coverletter_list li {
+          padding: 3rem;
+        }
+        h3 {
+          font-size: 3rem;
+        }
+        ._desc {
+          &::before {
+            font-size: 4rem;
+          }
+          p {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    &._04 {
+      .inner {
+        padding: 18rem 3rem;
+      }
+      .logo_group {
+        img {
+          width: 6rem;
+        }
+        span {
+          font-size: 4rem;
+        }
+      }
+    }
+  }
+}
+
+// ---------- Mobile (max-width: 768px) ----------
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 62.5%;
+  }
+
+  #load {
+    display: none; // 모바일에서는 로딩 화면 자체를 노출하지 않음
+  }
+
+  .inner {
+    padding: 0 2rem;
+  }
+
+  header {
+    ul {
+      gap: 1rem;
+      padding: 1.6rem 2rem;
+    }
+    li a {
+      font-size: 1.4rem;
+    }
+  }
+
+  footer {
+    border-radius: 3rem 3rem 0 0;
+    .inner {
+      flex-direction: column;
+      gap: 2.4rem;
+      padding: 3rem 2rem;
+    }
+    ._left {
+      display: none;
+      p {
+        margin-bottom: 0;
+        font-size: 1.6rem;
+      }
+    }
+    ._right {
+      width: 100%;
+    }
+    nav ul {
+      flex-wrap: wrap;
+      gap: 1rem 1.6rem;
+      margin-bottom: 2rem;
+      a {
+        font-size: 1.4rem;
+      }
+    }
+    .resume_download {
+      padding: 0.8rem 1.4rem;
+      font-size: 1.3rem;
+    }
+    .reserved {
+      margin-top: 1.6rem;
+      font-size: 1.2rem;
+    }
+  }
+
+  section {
+    &._visual {
+      .logo_wrap {
+        gap: 1rem;
+        .img_box img {
+          width: 4.4rem;
+        }
+      }
+      .scroll_cue {
+        bottom: 3rem;
+        ._txt {
+          font-size: 1.2rem;
+        }
+        ._mouse {
+          width: 1.8rem;
+          height: 3rem;
+        }
+      }
+    }
+
+    &._flow {
+      .flow_wrap {
+        gap: 1.5rem;
+        .txt {
+          font-size: 4.4rem;
+        }
+        .img_box img {
+          width: 4rem;
+        }
+      }
+    }
+
+    &._01 {
+      > .inner {
+        padding-top: calc(6rem + 3rem);
+      }
+      h2 {
+        font-size: 2.6rem;
+        line-height: 1.4;
+        text-align: left;
+      }
+      .profile_card {
+        display: flex;
+        flex-direction: column;
+        margin-top: 4rem;
+        aspect-ratio: unset;
+        height: auto;
+        border-radius: 1.6rem;
+      }
+      .profile_card ._img {
+        position: static;
+        width: 100%;
+        border-radius: 1.6rem 1.6rem 0 0;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transform: none;
+        }
+      }
+      .profile_card ._txt {
+        position: static;
+        width: 100% !important; // GSAP가 인라인으로 넣는 width(70%) 무시하고 항상 풀폭 유지
+        padding: 2.4rem 2rem;
+        border-radius: 0 0 1.6rem 1.6rem;
+        filter: none;
+      }
+      .profile-top {
+        strong {
+          font-size: 2.2rem;
+        }
+        p {
+          margin-top: 1.6rem;
+          font-size: 1.4rem;
+        }
+      }
+      .profile-list {
+        margin-top: 2rem;
+        .profile-item {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.6rem;
+        }
+        dt {
+          width: fit-content;
+          padding: 0.8rem 1.6rem;
+          font-size: 1.3rem;
+        }
+        dd {
+          font-size: 1.3rem;
+        }
+      }
+    }
+
+    &._02 {
+      .inner {
+        flex-direction: column;
+        gap: 3rem;
+        padding: 10rem 2rem 6rem;
+      }
+      h2 {
+        font-size: 3.4rem;
+      }
+      ._right .com_list {
+        padding: 3rem 2rem;
+        min-height: auto;
+        & + .com_list {
+          margin-top: 2rem;
+        }
+        &::before {
+          top: 2rem;
+          right: -1.5rem;
+          width: 50%;
+          max-width: 16rem;
+        }
+      }
+      .work_title h3 {
+        font-size: 2.2rem;
+      }
+      .work_title time {
+        margin-top: 1rem;
+        font-size: 1.4rem;
+      }
+      .btn_toggle::before {
+        width: 30%;
+      }
+      .project_card_list {
+        padding-left: 3.2rem;
+        &::before {
+          left: 1rem;
+        }
+      }
+      .project_card {
+        padding: 1.8rem 2rem;
+        &::before {
+          left: -2.65rem;
+          top: 2.2rem;
+          width: 0.8rem;
+          height: 0.8rem;
+        }
+        & + .project_card {
+          margin-top: 1.6rem;
+        }
+      }
+      .project_header {
+        font-size: 1.8rem;
+      }
+      .project_task {
+        font-size: 1.5rem;
+        .task_summary {
+          font-size: 1.5rem;
+        }
+        .task_details li {
+          font-size: 1.3rem;
+        }
+        .task_growth {
+          font-size: 1.4rem;
+        }
+      }
+      .tech_stack_list {
+        padding: 1.6rem 2rem;
+        gap: 1rem;
+        li {
+          font-size: 1.3rem;
+          & + li {
+            padding-top: 1rem;
+          }
+          strong {
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+    &._03 {
+      .inner {
+        padding: 5rem 2rem 0;
+      }
+      .cont {
+        .coverletter_list li {
+          padding: 2.4rem 2rem;
+          & + li {
+            margin-top: 2rem;
+          }
+        }
+        h3 {
+          font-size: 2.4rem;
+        }
+        ._title button {
+          width: 3.2rem;
+        }
+        ._desc {
+          padding-top: 2rem;
+          padding-bottom: 4rem;
+          font-size: 1.5rem;
+          &::before {
+            font-size: 3.4rem;
+          }
+          p {
+            width: 100%;
+          }
+        }
+      }
+    }
+    &._04 {
+      .inner {
+        padding: 10rem 2rem;
+      }
+      .logo_group {
+        gap: 1.2rem;
+        img {
+          width: 5rem;
+        }
+        span {
+          font-size: 2.8rem;
+        }
+      }
+      .contact_group {
+        margin-top: 2rem;
+        .contact {
+          left: 0;
+          flex-direction: column;
+          gap: 1rem;
+          font-size: 1.6rem;
+          .rel {
+            opacity: 1;
+          }
+        }
+      }
+    }
   }
 }
