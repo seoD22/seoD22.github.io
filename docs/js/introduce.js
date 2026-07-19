@@ -1,5 +1,3 @@
-// 새로고침해도 브라우저가 이전 스크롤 위치를 복원하지 않도록 함
-// (스크롤된 상태로 페이지가 열리면 ScrollTrigger의 pin 계산이 꼬여서 오류가 남)
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }

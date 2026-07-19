@@ -10,6 +10,7 @@ html {
 body {
   background-color: $color-yellow;
   font-family: 'Pretendard';
+  word-break: keep-all;
 }
 
 .inner {
@@ -70,7 +71,6 @@ body {
     }
     em {
       position: relative;
-      left: -1rem;
       font-style: normal;
       font-weight: 800;
       font-size: 20rem;
@@ -78,6 +78,7 @@ body {
       color: #000;
       overflow: hidden;
       max-width: 0;
+      letter-spacing: -0.4rem;
       white-space: nowrap;
       animation: textReveal .6s ease forwards;
       animation-delay: 1.2s;
