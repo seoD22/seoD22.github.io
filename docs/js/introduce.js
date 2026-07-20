@@ -17,10 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
   navi();
 
 
-  // asideBtnEvent(); // 사이드 버튼
-  // profileBtn(); // profile 마우스 오버 버튼
-
-
   // 반응형
   // ScrollTrigger.matchMedia({
   //   '(min-width: 769px)': function(){
@@ -48,21 +44,21 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// 로딩화면 (CSS의 #load.hide 트랜지션과 짝을 맞춘 버전)
+// 로딩화면
 function loading() {
   const load = document.querySelector('#load');
   if (!load) return;
 
-  // 모바일(768px 이하)에서는 로딩 화면 자체를 건너뜀
+  // 모바일
   if (window.matchMedia('(max-width: 768px)').matches) {
     load.remove();
     return;
   }
 
   const html = document.documentElement;
-  html.style.overflow = 'hidden'; // 로딩 중 스크롤 방지
+  html.style.overflow = 'hidden';
 
-  // 로고 등장 애니메이션(이미지 2쌍 → U/I 색 전환 → 라인·글자 리빌, 총 1.8s 정도)이 끝날 때까지 최소 노출 시간 확보
+  // 로고 등장 애니메이션
   const MIN_DISPLAY = 2300;
 
   setTimeout(() => {
@@ -89,7 +85,7 @@ function navi() {
     gsap.to(window, {
       scrollTo: {
         y: $target,
-        offsetY: 80 // 고정 헤더 높이만큼 살짝 내려서, 헤더가 섹션 상단을 가리지 않게
+        offsetY: 80
       },
       duration: 1,
       ease: 'power2.inOut'
@@ -134,9 +130,6 @@ function visual() {
   const flowBox01 = document.querySelector('section._flow .flow_inner .flow_wrap._01');
   const flowBox02 = document.querySelector('section._flow .flow_inner .flow_wrap._02');
 
-  // 화면 크기별로 pin 스크롤 길이 / 애니메이션 값을 분기 (CSS 브레이크포인트와 동일: 1024px, 768px)
-  // flow 섹션은 화면이 작아질수록 오히려 더 넉넉한 스크롤 구간(flowEnd)이 필요함
-  // (섹션 자체 높이가 작아져서 자연 스크롤 구간이 짧아지는데, pin 구간까지 짧게 잡으면 텍스트가 순식간에 지나가버림)
   ScrollTrigger.matchMedia({
     // PC
     "(min-width: 1025px)": function () {
@@ -160,8 +153,7 @@ function visual() {
         sec01Pin: true,
       });
     },
-    // 모바일 - profile_card 가 이미지 위 / 텍스트 아래로 쌓이는 레이아웃이라
-    // width 애니메이션(펼침 연출)은 의미가 없어서 pin/애니메이션 자체를 생략함
+    // 모바일 - profile_card
     "(max-width: 768px)": function () {
       initVisualAnime({
         visualEnd: "+=100%",
@@ -174,8 +166,7 @@ function visual() {
     },
   });
 
-  // 공통 애니메이션 로직 (breakpoint별 수치만 주입)
-  // ScrollTrigger.matchMedia가 화면 전환 시 이전 컨텍스트를 알아서 정리(revert)해줌
+  // 공통 애니메이션 로직
   function initVisualAnime({ visualEnd, flowEnd, flowScrub, flowDuration, sec01End, sec01Pin }) {
     ScrollTrigger.create({
       trigger: sectionVisual,
@@ -233,9 +224,6 @@ function visual() {
     sec01Timeline
       .set(".profile_card ._txt", { width: "100%" })
       .set(".profile_card ._txt > *", { opacity: 0 })
-      // width가 100%→70%로 줄어들수록 줄바꿈이 늘어나 텍스트가 더 길어짐.
-      // 지금까지는 100%(가장 짧은) 상태의 높이를 고정해서, 70%(가장 긴) 상태에서 항상 모자랐던 것.
-      // 70% 상태로 잠깐 바꿔 실제로 가장 긴 높이를 재고, 다시 원래 상태로 되돌린 뒤 그 값을 고정값으로 사용.
       .set(".profile_card", {
         height: () => {
           const txt = document.querySelector(".profile_card ._txt");
@@ -284,7 +272,6 @@ function section02_toggle() {
 
     if (!isExpanded) {
       $list.addClass('view');
-      // 1. 슬라이드가 완전히 내려간 후(콜백 함수) refresh 실행
       $descBox.stop().slideDown(300, function() {
         if (typeof ScrollTrigger !== 'undefined') {
           ScrollTrigger.refresh();
@@ -294,7 +281,6 @@ function section02_toggle() {
       $btn.attr('aria-expanded', 'true');
       $srText.text('닫기'); 
     } else {
-      // 2. 슬라이드가 완전히 올라간 후 refresh 실행
       $descBox.stop().slideUp(300, function() {
         $list.removeClass('view');
         if (typeof ScrollTrigger !== 'undefined') {
@@ -311,7 +297,7 @@ function section02_toggle() {
 function section03_toggle() {
   gsap.registerPlugin(ScrollTrigger);
 
-  // 모바일에서는 스크롤 자동 열림/닫힘(GSAP) 자체를 사용하지 않음 - 아래 each 안에서 return 처리
+  // 모바일
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
   const triggerStart = 'top 40%';
   const triggerEnd = 'bottom 40%';
@@ -329,7 +315,7 @@ function section03_toggle() {
     const $descBox = $list.find('._desc');
     const $srText = $btn.find('.sr-only');
 
-    // 모바일에서는 스크롤에 따라 자동으로 열고 닫는 GSAP 효과를 빼고, 클릭으로만 토글되게 함
+    // 모바일
     if (isMobile) return;
 
     ScrollTrigger.create({
