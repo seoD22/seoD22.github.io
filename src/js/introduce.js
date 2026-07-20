@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     section02_toggle();
     section03_toggle();
     // 로딩 화면
-    // loading();
+    loading();
   });
 
   // 네비게이션
