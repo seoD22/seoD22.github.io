@@ -743,6 +743,14 @@ section {
           strong {
             font-weight: 500;
           }
+          ul {
+            margin-top: 0.5rem;
+            padding-left: 1.6rem;
+            li {
+              font-size: 1.3rem;
+              opacity: .85;
+            }
+          }
         }
       }
       .task_growth {
