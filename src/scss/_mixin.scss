@@ -19,7 +19,7 @@
 }
 
 @mixin hover-device {
-	html.is-mouse & {
+	@media (min-width: 1025px) {
 		&:hover {
 			@content;
 		}
