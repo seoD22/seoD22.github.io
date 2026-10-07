@@ -1,0 +1,19 @@
+@import 'fonts';
+@import 'variables';
+@import 'mixins';
+
+// 윈도우 98 전체 기본 폰트 지정 (영문: W95FA, 한글: Galmuri9, 기본: Pretendard)
+body {
+  font-family: 'W95FA', 'Pretendard', sans-serif;
+  
+  /* macOS / Safari 픽셀 폰트 선명화 설정 */
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+  font-smooth: never;
+}
+
+.portfolio-content {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}

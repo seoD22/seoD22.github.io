@@ -1,0 +1,34 @@
+:root {
+  --color-grey: #e0e0e0;
+}
+
+// Breakpoints
+$breakpoint-pc: 1280px;
+$breakpoint-tablet: 1024px;
+$breakpoint-mobile: 768px;
+$breakpoint-fold: 320px;
+
+// Color
+$color-green: #008080;
+$color-blue: #000080;
+$color-black: #000000;
+$color-white: #FFFFFF;
+$color-grey: #C0C0C0;
+$color-monoGrey: #C3C3C3;
+$color-deepGrey: #7F7F7F;
+$color-lightGrey: #DFDFDF;
+
+// window-concept-line
+$line-common: inset -2px -2px 0 0 #262626, inset 2px 2px 0 0 #f0f0f0, inset -4px -4px 0 0 #7e7e7e, inset 4px 4px 0 0 #b1b1b1;
+$line-common-thin: inset -2px -2px 0 0 #262626,inset 2px 2px 0 0 #f0f0f0;
+$line-concave: inset 2px 2px 0 0 #262626 , inset -2px -2px 0 0 #F0F0F0 , inset 4px 4px 0 0 #7E7E7E;
+
+//font-family
+$fontFamily-1: "W95FA", "Pretendard", "Roboto", "Noto Sans KR", sans-serif;
+$fontFamily-2: "Pretendard", "Roboto", "Noto Sans KR", sans-serif;
+
+// etc
+$transition: 0.3s;
+$header-height: 50px;
+$bottomBar-height: 35px;
+

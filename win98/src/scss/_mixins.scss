@@ -1,0 +1,72 @@
+@import 'variables';
+
+@mixin tablet {
+	@media (max-width: #{$breakpoint-tablet}) {
+		@content;
+	}
+}
+
+@mixin mobile {
+	@media (max-width: #{$breakpoint-mobile}) {
+		@content;
+	}
+}
+
+@mixin fold {
+	@media (max-width: #{$breakpoint-fold}) {
+		@content;
+	}
+}
+
+// @mixin hover-device {
+// 	@media (min-width: 1025px) {
+// 		&:hover {
+// 			@content;
+// 		}
+// 	}
+// }
+
+// 예시
+// @mixin layer_width ($max-width: 1200px) {
+// 	max-width: $max-width;
+// 	margin:0 auto;
+// }
+
+@mixin content_wrap {
+	width: 100%;
+	max-width: 120rem;
+	margin: 0 auto;
+
+	// @media screen and (max-width: 1200px) {
+	// 	max-width: 102.5rem;
+	// }
+
+	// @media screen and (max-width: 1045px) {
+	// 	padding: 0 2rem;
+	// }
+}
+
+// @mixin text_color {
+//   color: #21252a;
+//   html.darkMode & {
+//     color: #FFF;
+//   }
+// }
+
+// 아이콘 - 팝업
+$windows: ("win-intro", "win-computer", "win-resume", "win-coverLetter", "win-trash", "win-project", "win-monkey");
+
+@mixin window-active-effect {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+  z-index: 99;
+  visibility: visible;
+}
+
+@mixin window-boxLine {
+  background-color: #c0c0c0;
+  border: 1px solid #808080; 
+  outline: 1px solid #ffffff;
+  outline-offset: -2px;
+}
