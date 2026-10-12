@@ -17,6 +17,7 @@ body {
 h2 {
   font-family: 'HBIOS-SYS', monospace !important;
   letter-spacing: -.1rem;
+  line-height: 1.2;
 }
 
 img {
@@ -86,9 +87,10 @@ img {
 }
 
 .dot-list {
+  margin-top: 1.5rem;
   > li {
     & + li {
-      margin-top: 0.5rem;
+      margin-top: .5rem;
     }
   }
 }
@@ -115,6 +117,19 @@ img {
     }
   }
 
+  .stack-term {
+    display: flex;
+    align-items: flex-start;
+    gap: .8rem;
+    line-height: 1.5;
+    > dt {
+      width: 8rem;
+    }
+    > dd {
+      flex: 1;
+    }
+  }
+
   [data-panel="profile"] {
     .info-wrap {
       .txt-wrap {
@@ -131,10 +146,6 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-
-  .stack-list {
-
   }
 }
 

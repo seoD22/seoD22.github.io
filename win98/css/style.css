@@ -90,6 +90,7 @@ body {
 h2 {
   font-family: "HBIOS-SYS", monospace !important;
   letter-spacing: -0.1rem;
+  line-height: 1.2;
 }
 
 img {
@@ -156,6 +157,9 @@ img {
   margin-top: 1rem;
 }
 
+.dot-list {
+  margin-top: 1.5rem;
+}
 .dot-list > li + li {
   margin-top: 0.5rem;
 }
@@ -178,11 +182,24 @@ img {
 #window-mycom [role=tabpanel] .info-wrap .txt-wrap + .txt-wrap {
   margin-top: 1rem;
 }
+#window-mycom .stack-term {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  line-height: 1.5;
+}
+#window-mycom .stack-term > dt {
+  width: 8rem;
+}
+#window-mycom .stack-term > dd {
+  flex: 1;
+}
 #window-resume .window-body {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 #window-monkey .scroll-panel {
   display: grid;
   grid-template-columns: repeat(3, 20rem);
