@@ -2,18 +2,270 @@
 @import 'variables';
 @import 'mixins';
 
-// 윈도우 98 전체 기본 폰트 지정 (영문: W95FA, 한글: Galmuri9, 기본: Pretendard)
+html {
+  font-size: 62.5%;
+}
+
 body {
-  font-family: 'W95FA', 'Pretendard', sans-serif;
-  
-  /* macOS / Safari 픽셀 폰트 선명화 설정 */
+  font-family: 'Galmuri9', 'Pretendard', sans-serif;
+
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: unset;
   font-smooth: never;
 }
 
-.portfolio-content {
-  font-family: 'Pretendard', sans-serif;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
+h2 {
+  font-family: 'HBIOS-SYS', monospace !important;
+  letter-spacing: -.1rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+.portfolio-win98 {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+// content
+.win-content {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  background-color: $color-green;
+  padding: 3.8rem 3.4rem;
+}
+.content-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.win-icon {
+  width: fit-content;
+  figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    aspect-ratio: 122 / 99;
+    img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+    }
+  }
+  figcaption {
+    font-size: 1.6rem;
+  }
+  &.bg-icon {
+    figure {
+      width: 11rem;
+        img {
+          width: 5rem;
+        }
+    }
+  }
+  &.bg-icon figcaption {
+    color: $color-white;
+  }
+}
+
+.window-board {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  .btn-wrap {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+}
+
+.dot-list {
+  > li {
+    & + li {
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+#window-mycom {
+  [role="tabpanel"] {
+    .window-body {
+      display: flex;
+      gap: .8rem;
+      width: 62rem;
+    }
+    .img-row {
+      width: 16rem;
+    }
+    .info-wrap {
+      padding: .8rem 0;
+      .txt-wrap {
+        margin-top: 2rem;
+        font-size: 1.4rem;
+        & + .txt-wrap {
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+
+  [data-panel="profile"] {
+    .info-wrap {
+      .txt-wrap {
+      }
+    }
+  }
+  [data-panel="techstack"] {
+
+  }
+}
+
+#window-resume {
+  .window-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stack-list {
+
+  }
+}
+
+#window-monkey {
+  .scroll-panel {
+    display: grid;
+    grid-template-columns: repeat(3, 20rem);
+    gap: 1rem;
+    max-height: 70vh;
+    padding: 1rem;
+  }
+}
+
+#window-intro {
+  .msn-panel {
+    display: flex;
+    gap: 0.8rem;
+  }
+  .chat {
+    .scroll-panel {
+      min-width: 50rem;
+      height: 20rem;
+      padding: 1rem;
+    }
+    .host {
+      &:first-child {
+        .name {
+          margin: 0;
+        }
+      }
+    }
+    .name {
+      margin-top: 1.2rem;
+      opacity: .5;
+    }
+    .text {
+      margin-top: .5rem;
+    }
+  }
+  .guest {
+    .text {
+      color: red;
+    }
+  }
+
+  .write-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 10rem;
+    margin-top: .8rem;
+    > * {
+      width: 100%;
+      padding: 1rem;
+      box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;      
+    }
+    .empty {
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+  }
+
+  .avatar-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .avatar-1, .avatar-2 {
+    max-width: 10rem;
+    aspect-ratio: 1 / 1;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.help-puppy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  position: absolute;
+  bottom: 5rem;
+  right: 2rem;
+  .bubble {
+    position: relative;
+    max-width: 8rem;
+    > p {
+      position: absolute;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: fit-content;
+      white-space: nowrap;
+    }
+  }
+  .puppy {
+  }
+}
+
+// footer
+footer {
+  display: flex;
+  align-items: center;
+  background-color: $color-monoGrey;
+  box-shadow: inset 2px 2px 0 #F0F0F0;
+  padding: 4px;
+  .btn-start {
+    font-size: 1.4rem;
+  }
+  .taskbar-items {
+    display: flex;
+    flex: 1;
+    gap: .2rem;
+    min-width: 0;
+    margin-left: .5rem;
+  }
+  .task-btn {
+    min-width: 15rem;
+    text-align: left;
+  }
+  .clock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin-left: auto;
+    padding: 0 8px;
+    white-space: nowrap;
+    box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+  }
 }

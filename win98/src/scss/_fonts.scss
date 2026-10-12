@@ -88,12 +88,13 @@
        url('../../assets/fonts/Pretendard-Black.woff') format('woff');
 }
 
-// W95FA
+// galmuri
+@import url('https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css');
+
+// HBIOS-SYS
 @font-face {
-  font-family: 'W95FA';
-  src: url('https://cdn.jsdelivr.net/gh/MadeByArne/W95FA@master/w95fa.woff2') format('woff2'),
-       url('https://cdn.jsdelivr.net/gh/MadeByArne/W95FA@master/w95fa.woff') format('woff');
+  font-family: 'HBIOS-SYS';
+  src: url('../../../win98/assets/fonts/HBIOS-SYS.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
 }

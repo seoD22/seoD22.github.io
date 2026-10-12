@@ -2,11 +2,262 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>윤서희 포트폴리오</title>
-<link rel="stylesheet" href="https://unpkg.com/98.css">
-<link rel="stylesheet" href="./css/style.min.css">
+  <link rel="stylesheet" href="../assets/default/reset.css">
+  <link rel="stylesheet" href="./css/98.css">
+  <link rel="stylesheet" href="./css/style.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@4.0.0/dist/jquery.min.js"></script>
+  <script defer src="./src/js/main.js"></script>
 </head>
 <body class="portfolio-win98">
-  얄루
+  <div class="win-content">
+    <div class="content-wrap">
+      <!-- 배경 아이콘 -->
+      <button class="win-icon bg-icon" data-target="window-mycom">
+        <figure>
+          <img src="./assets/images/window_icon/myComputer.png" alt="">
+          <figcaption>내 컴퓨터</figcaption>
+        </figure>
+      </button>
+      <button class="win-icon bg-icon" data-target="window-intro">
+        <figure>
+          <img src="./assets/images/window_icon/msn.png" alt="">
+          <figcaption>자기소개서</figcaption>
+        </figure>
+      </button>
+      <button class="win-icon bg-icon" data-target="window-resume">
+        <figure>
+          <img src="./assets/images/window_icon/resume.png" alt="">
+          <figcaption>이력서<br>설치마법사</figcaption>
+        </figure>
+      </button>
+      <button class="win-icon bg-icon" data-target="window-monkey">
+        <figure>
+          <img src="./assets/images/window_icon/monkey.jpg" alt="">
+          <figcaption>절대 바이러...</figcaption>
+        </figure>
+      </button>
+    </div>
+
+    <!-- 팝업 보드 -->
+    <div id="window-mycom" class="window window-board">
+      <div class="title-bar">
+        <div class="title-bar-text">My Computer</div>
+        <div class="title-bar-controls">
+          <button class="win-btn" aria-label="Minimize"></button>
+          <button class="win-btn" aria-label="Maximize"></button>
+          <button class="win-btn" aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body">
+        <menu role="tablist">
+          <li role="tab" data-tab="profile" aria-selected="true"><a href="#tabs">Profile</a></li>
+          <li role="tab" data-tab="techstack"><a href="#tabs">Tech Stack</a></li>
+        </menu>
+        <div class="window" role="tabpanel" data-panel="profile">
+          <div class="window-body">
+            <img src="./assets/images/profile_img.png" class="img-row" alt="">
+            <div class="info-wrap">
+              <h2>3년차 경력의 퍼블리셔 윤서희입니다.</h2>
+              <ul class="txt-wrap">
+                <li><strong>이름:</strong> 윤서희</li>
+                <li><strong>이메일:</strong> cobbt258@naver.com</li>
+                <li><strong>활용 가능 도구:</strong> HTML/CSS, SCSS, JS, jQuery, GitLab/GitHub, npm, Figma, Adobe XD, Photoshop</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="window" role="tabpanel" data-panel="techstack">
+          <div class="window-body">
+            <img src="./assets/images/img_coputer.png" class="img-row" alt="">
+            <div class="info-wrap">
+              <h2>Tech Stack</h2>
+              <ul class="stack-list">
+                <li>
+                  마크업 & 스타일
+                  <ul class="dot-list">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>SCSS</li>
+                  </ul>
+                </li>
+                <li>
+                  스크립트 & 인터랙션
+                  <ul class="stack-list">
+                    <li>JavaScript</li>
+                    <li>jQuery</li>
+                    <li>GSAP</li>
+                  </ul>
+                </li>
+                <li>
+                  도구 & 협업환경
+                  <ul class="stack-list">
+                    <li>GitLab / GitHub</li>
+                    <li>Figma</li>
+                    <li>Adobe XD</li>
+                    <li>FileZilla(FTP)</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-wrap">
+          <button class="win-btn" type="button">Cancel</button>
+          <button class="win-btn" type="button">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="window-intro" class="window window-board">
+      <div class="title-bar">
+        <div class="title-bar-text">자기소개서</span>
+      </div>
+        <div class="title-bar-controls">
+          <button class="win-btn" aria-label="Minimize"></button>
+          <button class="win-btn" aria-label="Maximize"></button>
+          <button class="win-btn" aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body">
+        <div class="msn-panel">
+          <div class="chat-wrapper">
+            <div class="chat">
+              <div class="chat-container scroll-panel">
+                <ul id="discussion"></ul>
+              </div>
+
+              <div class="write-wrap">
+                <div class="empty">
+                  <button class="win-btn" type="button" disabled>보내기</button>
+                </div>
+                <div class="is-writting">02/10/2026 나눈 대화내용</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="avatar-wrap">
+            <div class="avatar-1 field-border">
+              <img src="./assets/images/profile_dog.jpg" alt="">
+            </div>
+            <div class="avatar-2 field-border">
+              <img src="./assets/images/profile_duck.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="window-resume" class="window window-board">
+      <div class="title-bar"> 
+        <div class="title-bar-text">이력서 설치마법사</div>
+        <div class="title-bar-controls">
+          <button class="win-btn" aria-label="Minimize"></button>
+          <button class="win-btn" aria-label="Maximize"></button>
+          <button class="win-btn" aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body">
+        <p>🩵 감사합니다 🩵</p>
+        <div class="btn-wrap">
+          <button class="win-btn" type="button">Cancel</button>
+          <button class="win-btn" type="button">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="window-monkey" class="window window-board">
+      <div class="title-bar">
+        <div class="title-bar-text">속았숭</div>
+        <div class="title-bar-controls">
+          <button class="win-btn" aria-label="Minimize"></button>
+          <button class="win-btn" aria-label="Maximize"></button>
+          <button class="win-btn" aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="field-border">
+        <div class="scroll-panel">
+          <button class="win-icon" data-target="window-monkey-01">
+            <figure>
+              <img src="./assets/images/monkey/monkey_01.jpg" alt="">
+              <figcaption>원숭이 증명사진</figcaption>
+            </figure>
+          </button>
+          <button class="win-icon" data-target="window-monkey-02">
+            <figure>
+              <img src="./assets/images/monkey/monkey_02.jpg" alt="">
+              <figcaption>졸린 숭이</figcaption>
+            </figure>
+          </button>
+          <button class="win-icon" data-target="window-monkey-03">
+            <figure>
+              <img src="./assets/images/monkey/monkey_03.jpg" alt="">
+              <figcaption>어서오십숭</figcaption>
+            </figure>
+          </button>
+          <button class="win-icon" data-target="window-monkey-04">
+            <figure>
+              <img src="./assets/images/monkey/monkey_04.jpg" alt="">
+              <figcaption>실바니안 힙숭이</figcaption>
+            </figure>
+          </button>
+          <button class="win-icon" data-target="window-monkey-05">
+            <figure>
+              <img src="./assets/images/monkey/monkey_05.jpg" alt="">
+              <figcaption>아기원숭</figcaption>
+            </figure>
+          </button>
+          <button class="win-icon" data-target="window-monkey-06">
+            <figure>
+              <img src="./assets/images/monkey/monkey_06.jpg" alt="">
+              <figcaption>꽃숭이</figcaption>
+            </figure>
+          </button>
+          <button class="win-icon" data-target="window-monkey-07">
+            <figure>
+              <img src="./assets/images/monkey/monkey_07.jpg" alt="">
+              <figcaption>픽업숭이</figcaption>
+            </figure>
+          </button>
+          <button class="win-icon" data-target="window-monkey-08">
+            <figure>
+              <img src="./assets/images/monkey/monkey_08.jpg" alt="">
+              <figcaption>숭참고 다이브</figcaption>
+            </figure>
+          </button>
+          <button class="win-icon" data-target="window-monkey-09">
+            <figure>
+              <img src="./assets/images/monkey/monkey_09.jpg" alt="">
+              <figcaption>뒤숭숭</figcaption>
+            </figure>
+          </button>
+          <button class="win-icon" data-target="window-monkey-10">
+            <figure>
+              <img src="./assets/images/monkey/monkey_10.jpg" alt="">
+              <figcaption>숭떴다</figcaption>
+            </figure>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="help-puppy">
+    <div class="bubble">
+      <p>반가워요!</p>
+      <img src="./assets/images/speechBubble.png" alt="">
+    </div>
+    <img src="./assets/images/puppy.gif" class="puppy" alt="">
+  </div>
+
+  <footer>
+    <button class="win-btn btn-start">Start</button>
+    <div class="taskbar-items"></div>
+    <div class="clock"></div>
+  </footer>
 </body>
 </html>

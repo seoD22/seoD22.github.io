@@ -1,3 +1,299 @@
+@import url("https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css");
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url("../../assets/fonts/Pretendard-Thin.woff2") format("woff2"), url("../../assets/fonts/Pretendard-Thin.woff") format("woff");
+}
+/* ExtraLight (200) */
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("../../assets/fonts/Pretendard-ExtraLight.woff2") format("woff2"), url("../../assets/fonts/Pretendard-ExtraLight.woff") format("woff");
+}
+/* Light (300) */
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../../assets/fonts/Pretendard-Light.woff2") format("woff2"), url("../../assets/fonts/Pretendard-Light.woff") format("woff");
+}
+/* Regular (400) */
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../../assets/fonts/Pretendard-Regular.woff2") format("woff2"), url("../../assets/fonts/Pretendard-Regular.woff") format("woff");
+}
+/* Medium (500) */
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../../assets/fonts/Pretendard-Medium.woff2") format("woff2"), url("../../assets/fonts/Pretendard-Medium.woff") format("woff");
+}
+/* SemiBold (600) */
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../../assets/fonts/Pretendard-SemiBold.woff2") format("woff2"), url("../../assets/fonts/Pretendard-SemiBold.woff") format("woff");
+}
+/* Bold (700) */
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../../assets/fonts/Pretendard-Bold.woff2") format("woff2"), url("../../assets/fonts/Pretendard-Bold.woff") format("woff");
+}
+/* ExtraBold (800) */
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("../../assets/fonts/Pretendard-ExtraBold.woff2") format("woff2"), url("../../assets/fonts/Pretendard-ExtraBold.woff") format("woff");
+}
+/* Black (900) */
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("../../assets/fonts/Pretendard-Black.woff2") format("woff2"), url("../../assets/fonts/Pretendard-Black.woff") format("woff");
+}
+@font-face {
+  font-family: "HBIOS-SYS";
+  src: url("../../../win98/assets/fonts/HBIOS-SYS.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+html {
+  font-size: 62.5%;
+}
 
+body {
+  font-family: "Galmuri9", "Pretendard", sans-serif;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+  font-smooth: never;
+}
 
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZS5taW4uY3NzIiwic291cmNlUm9vdCI6IiJ9 */
+h2 {
+  font-family: "HBIOS-SYS", monospace !important;
+  letter-spacing: -0.1rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+.portfolio-win98 {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.win-content {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  background-color: #008080;
+  padding: 3.8rem 3.4rem;
+}
+
+.content-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.win-icon {
+  width: fit-content;
+}
+.win-icon figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  aspect-ratio: 122/99;
+}
+.win-icon figure img {
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+.win-icon figcaption {
+  font-size: 1.6rem;
+}
+.win-icon.bg-icon figure {
+  width: 11rem;
+}
+.win-icon.bg-icon figure img {
+  width: 5rem;
+}
+.win-icon.bg-icon figcaption {
+  color: #FFFFFF;
+}
+
+.window-board {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.window-board .btn-wrap {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.dot-list > li + li {
+  margin-top: 0.5rem;
+}
+
+#window-mycom [role=tabpanel] .window-body {
+  display: flex;
+  gap: 0.8rem;
+  width: 62rem;
+}
+#window-mycom [role=tabpanel] .img-row {
+  width: 16rem;
+}
+#window-mycom [role=tabpanel] .info-wrap {
+  padding: 0.8rem 0;
+}
+#window-mycom [role=tabpanel] .info-wrap .txt-wrap {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+}
+#window-mycom [role=tabpanel] .info-wrap .txt-wrap + .txt-wrap {
+  margin-top: 1rem;
+}
+#window-resume .window-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#window-monkey .scroll-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 20rem);
+  gap: 1rem;
+  max-height: 70vh;
+  padding: 1rem;
+}
+
+#window-intro .msn-panel {
+  display: flex;
+  gap: 0.8rem;
+}
+#window-intro .chat .scroll-panel {
+  min-width: 50rem;
+  height: 20rem;
+  padding: 1rem;
+}
+#window-intro .chat .host:first-child .name {
+  margin: 0;
+}
+#window-intro .chat .name {
+  margin-top: 1.2rem;
+  opacity: 0.5;
+}
+#window-intro .chat .text {
+  margin-top: 0.5rem;
+}
+#window-intro .guest .text {
+  color: red;
+}
+#window-intro .write-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 10rem;
+  margin-top: 0.8rem;
+}
+#window-intro .write-wrap > * {
+  width: 100%;
+  padding: 1rem;
+  box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+}
+#window-intro .write-wrap .empty {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+#window-intro .avatar-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#window-intro .avatar-1, #window-intro .avatar-2 {
+  max-width: 10rem;
+  aspect-ratio: 1/1;
+}
+#window-intro .avatar-1 img, #window-intro .avatar-2 img {
+  width: 100%;
+}
+
+.help-puppy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  position: absolute;
+  bottom: 5rem;
+  right: 2rem;
+}
+.help-puppy .bubble {
+  position: relative;
+  max-width: 8rem;
+}
+.help-puppy .bubble > p {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  white-space: nowrap;
+}
+footer {
+  display: flex;
+  align-items: center;
+  background-color: #C3C3C3;
+  box-shadow: inset 2px 2px 0 #F0F0F0;
+  padding: 4px;
+}
+footer .btn-start {
+  font-size: 1.4rem;
+}
+footer .taskbar-items {
+  display: flex;
+  flex: 1;
+  gap: 0.2rem;
+  min-width: 0;
+  margin-left: 0.5rem;
+}
+footer .task-btn {
+  min-width: 15rem;
+  text-align: left;
+}
+footer .clock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-left: auto;
+  padding: 0 8px;
+  white-space: nowrap;
+  box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3NyYy9zY3NzL19mb250cy5zY3NzIiwiLi4vc3JjL3Njc3MvbWFpbi5zY3NzIiwiLi4vc3JjL3Njc3MvX3ZhcmlhYmxlcy5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQTJGUTtBQTFGUjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBSUY7QUFDQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBSUY7QUFDQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBSUY7QUFDQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBSUY7QUFDQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBSUY7QUFDQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBSUY7QUFDQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBSUY7QUFDQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBSUY7QUFDQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBUUY7RUFDRTtFQUNBO0VBQ0E7RUFDQTs7QUM5RkY7RUFDRTs7O0FBR0Y7RUFDRTtFQUVBO0VBQ0E7RUFDQTs7O0FBR0Y7RUFDRTtFQUNBOzs7QUFHRjtFQUNFOzs7QUFHRjtFQUNFO0VBQ0E7RUFDQTs7O0FBSUY7RUFDRTtFQUNBO0VBQ0E7RUFDQSxrQkM3Qlk7RUQ4Qlo7OztBQUVGO0VBQ0U7RUFDQTtFQUNBOzs7QUFHRjtFQUNFOztBQUNBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFDQTtFQUNFO0VBQ0E7O0FBR0o7RUFDRTs7QUFHQTtFQUNFOztBQUNFO0VBQ0U7O0FBSVI7RUFDRSxPQzVEVTs7O0FEZ0VkO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7O0FBQ0E7RUFDRTtFQUNBO0VBQ0E7RUFDQTs7O0FBTUE7RUFDRTs7O0FBT0Y7RUFDRTtFQUNBO0VBQ0E7O0FBRUY7RUFDRTs7QUFFRjtFQUNFOztBQUNBO0VBQ0U7RUFDQTs7QUFDQTtFQUNFOztBQWtCUjtFQUNFO0VBQ0E7RUFDQTs7QUFTRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7OztBQUtGO0VBQ0U7RUFDQTs7QUFHQTtFQUNFO0VBQ0E7RUFDQTs7QUFJRTtFQUNFOztBQUlOO0VBQ0U7RUFDQTs7QUFFRjtFQUNFOztBQUlGO0VBQ0U7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTs7QUFDQTtFQUNFO0VBQ0E7RUFDQTs7QUFFRjtFQUNFO0VBQ0E7RUFDQTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBOztBQUVGO0VBQ0U7RUFDQTs7QUFDQTtFQUNFOzs7QUFLTjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUNBO0VBQ0U7RUFDQTs7QUFDQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFRTjtFQUNFO0VBQ0E7RUFDQSxrQkN0T2U7RUR1T2Y7RUFDQTs7QUFDQTtFQUNFOztBQUVGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFRjtFQUNFO0VBQ0E7O0FBRUY7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBIiwiZmlsZSI6InN0eWxlLm1pbi5jc3MiLCJzb3VyY2VSb290IjoiIn0= */
