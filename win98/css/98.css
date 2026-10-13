@@ -899,7 +899,7 @@ table>tbody>tr>* {
   border-radius: 0;
   box-shadow: inset -2px -2px #dfdfdf, inset 2px 2px grey;
   box-sizing: border-box;
-  height: 32px;
+  height: 25px;
   padding: 4px;
   position: relative
 }

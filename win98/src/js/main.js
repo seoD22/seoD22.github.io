@@ -494,6 +494,108 @@ class Clock {
 }
 
 
+/* --------------------------------------------------------------------------
+   ScrollSpy  (트리 메뉴 ↔ 스크롤 영역 연동)
+   - 링크 클릭 → 해당 섹션으로 스크롤 (창이 position: fixed 이므로
+     scrollIntoView 대신 컨테이너 scrollTop 으로만 이동)
+   - 컨테이너 스크롤 → 현재 섹션에 해당하는 링크에 .is-active
+   -------------------------------------------------------------------------- */
+class ScrollSpy {
+  /**
+   * @param {HTMLElement} menu   링크(<a href="#id">)들이 들어있는 요소 (예: .tree-view)
+   * @param {HTMLElement} container  스크롤되는 영역
+   * @param {Object} [options]
+   * @param {number} [options.offset=8]  섹션 상단 여백(px)
+   */
+  constructor(menu, container, options = {}) {
+    this.menu = menu;
+    this.container = container;
+    this.offset = options.offset ?? 8;
+    this.locked = false;
+    this.ticking = false;
+
+    this.links = [...menu.querySelectorAll('a[href^="#"]')];
+    this.items = this.links
+      .map((link) => ({
+        link,
+        section: container.querySelector(link.getAttribute('href')),
+      }))
+      .filter((item) => item.section);
+
+    if (!this.items.length) return;
+
+    this.items.forEach(({ link, section }) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();   // 주소 점프 + summary 접힘/펼침 방지
+        this.scrollTo(section);
+        this.setActive(link);
+      });
+    });
+
+    container.addEventListener('scroll', () => this.#onScroll(), { passive: true });
+    this.update();
+  }
+
+  /** 컨테이너 안에서 section 위치로 부드럽게 이동 */
+  scrollTo(section) {
+    const top =
+      section.getBoundingClientRect().top -
+      this.container.getBoundingClientRect().top +
+      this.container.scrollTop -
+      this.offset;
+
+    // 이동 중에는 스크롤 이벤트로 active가 깜빡이지 않도록 잠깐 잠금
+    this.locked = true;
+    clearTimeout(this.lockTimer);
+    this.lockTimer = setTimeout(() => (this.locked = false), 700);
+
+    this.container.scrollTo({ top, behavior: 'smooth' });
+  }
+
+  /** 현재 스크롤 위치 기준으로 active 갱신 */
+  update() {
+    if (this.locked) return;
+
+    const c = this.container;
+    const baseTop = c.getBoundingClientRect().top;
+    const atBottom = c.scrollTop + c.clientHeight >= c.scrollHeight - 2;
+
+    let current = this.items[0];
+    if (atBottom) {
+      current = this.items[this.items.length - 1];
+    } else {
+      this.items.forEach((item) => {
+        const top = item.section.getBoundingClientRect().top - baseTop;
+        if (top <= this.offset + 1) current = item;
+      });
+    }
+    this.setActive(current.link);
+  }
+
+  setActive(activeLink) {
+    this.links.forEach((link) => {
+      const on = link === activeLink;
+      link.classList.toggle('is-active', on);
+      if (on) link.setAttribute('aria-current', 'true');
+      else link.removeAttribute('aria-current');
+    });
+
+    // 접혀있는 <details> 안의 항목이 active 면 자동으로 펼침
+    const details = activeLink.closest('details');
+    if (details && !details.open) details.open = true;
+  }
+
+  #onScroll() {
+    if (this.ticking) return;
+    this.ticking = true;
+    requestAnimationFrame(() => {
+      this.update();
+      this.ticking = false;
+    });
+  }
+}
+
+
 /* ==========================================================================
    Init
    ========================================================================== */
@@ -516,6 +618,12 @@ document.addEventListener('DOMContentLoaded', () => {
   /* 바탕화면 아이콘 */
   document.querySelectorAll('.bg-icon').forEach((el) => new DesktopIcon(el, manager));
   document.addEventListener('click', () => DesktopIcon.deselectAll());
+
+  /* 스크롤 스파이: [data-scrollspy="#컨테이너id"] 인 메뉴마다 연결 */
+  document.querySelectorAll('[data-scrollspy]').forEach((menu) => {
+    const container = document.querySelector(menu.dataset.scrollspy);
+    if (container) new ScrollSpy(menu, container);
+  });v
 });
 
 

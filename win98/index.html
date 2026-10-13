@@ -54,13 +54,14 @@
       <div class="window-body">
         <menu role="tablist">
           <li role="tab" data-tab="profile" aria-selected="true"><a href="#tabs">Profile</a></li>
-          <li role="tab" data-tab="techstack"><a href="#tabs">Tech Stack</a></li>
+          <li role="tab" data-tab="techStack"><a href="#tabs">Tech Stack</a></li>
+          <li role="tab" data-tab="workExperience"><a href="#tabs">Experience</a></li>
         </menu>
         <div class="window" role="tabpanel" data-panel="profile">
           <div class="window-body">
             <img src="./assets/images/profile_img.png" class="img-row" alt="">
             <div class="info-wrap">
-              <h2>3년차 경력의 퍼블리셔,<br>윤서희입니다.</h2>
+              <h2>안녕하세요!<br> 3년차 경력의 퍼블리셔, 윤서희입니다.</h2>
               <ul class="dot-list">
                 <li>
                   <dl class="stack-term">
@@ -83,45 +84,136 @@
                 <li>
                   <dl class="stack-term">
                     <dt>퍼블리셔 경력:</dt>
-                    <dd>2년 9개월<button type="button">상세보기</button></dd>
+                    <dd>2년 9개월<button class="win-btn" type="button">상세보기</button></dd>
                   </dl>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="window" role="tabpanel" data-panel="techstack">
+        <div class="window" role="tabpanel" data-panel="techStack">
           <div class="window-body">
             <img src="./assets/images/img_coputer.png" class="img-row" alt="">
             <div class="info-wrap">
               <h2>Tech Stack</h2>
-              <ul class="stack-list">
+              <ul class="dot-list">
                 <li>
-                  마크업 & 스타일
-                  <ul class="dot-list">
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>SCSS</li>
+                  <strong>[ 마크업 & 스타일 ]</strong>
+                  <ul class="stack-list">
+                    <li>HTML/CSS (90%)
+                      <div class="progress-indicator">
+                        <span class="progress-indicator-bar" style="width: 90%;" />
+                      </div>
+                    </li>
+                    <li>SCSS (50%)
+                      <div class="progress-indicator">
+                        <span class="progress-indicator-bar" style="width: 50%;" />
+                      </div>
+                    </li>
                   </ul>
                 </li>
                 <li>
-                  스크립트 & 인터랙션
+                  <strong>[ 스크립트 & 인터랙션 ]</strong>
                   <ul class="stack-list">
-                    <li>JavaScript</li>
-                    <li>jQuery</li>
-                    <li>GSAP</li>
+                    <li>JavaScript (40%)
+                      <div class="progress-indicator">
+                        <span class="progress-indicator-bar" style="width: 40%;" />
+                      </div>
+                    </li>
+                    <li>jQuery (60%)
+                      <div class="progress-indicator">
+                        <span class="progress-indicator-bar" style="width: 60%;" />
+                      </div>
+                    </li>
                   </ul>
                 </li>
                 <li>
-                  도구 & 협업환경
+                  <strong>[ 도구 & 협업환경 ]</strong>
                   <ul class="stack-list">
-                    <li>GitLab / GitHub</li>
-                    <li>Figma</li>
-                    <li>Adobe XD</li>
-                    <li>FileZilla(FTP)</li>
+                    <li>GitLab / GitHub (80%)
+                      <div class="progress-indicator">
+                        <span class="progress-indicator-bar" style="width: 80%;" />
+                      </div>
+                    </li>
+                    <li>Figma (90%)
+                      <div class="progress-indicator">
+                        <span class="progress-indicator-bar" style="width: 90%;" />
+                      </div>
+                    </li>
+                    <li>Adobe XD (70%)
+                      <div class="progress-indicator">
+                        <span class="progress-indicator-bar" style="width: 70%;" />
+                      </div>
+                    </li>
+                    <li>FileZilla(FTP) (90)
+                      <div class="progress-indicator">
+                        <span class="progress-indicator-bar" style="width: 90%;" />
+                      </div>
+                    </li>
                   </ul>
                 </li>
               </ul>
+            </div>
+          </div>
+        </div>
+        <div class="window" role="tabpanel" data-panel="workExperience">
+          <div class="window-body">
+            <div class="exp-layout">
+              <ul class="tree-view" data-scrollspy="#exp-detail">
+                <li style="margin-bottom: 15px;"><span style="color: red; text-decoration: underline;">최근 순</span>으로 나열했습니다.</li>
+                <li>
+                  퍼블리셔
+                  <ul>
+                    <li>
+                      <details open>
+                        <summary><a href="#exp-elluo">엘루오씨앤씨</a></summary>
+                        <ul>
+                          <li><a href="#exp-kt-dotcom">KT 닷컴</a></li>
+                          <li><a href="#exp-kt-mvno">KT 마이알뜰폰</a></li>
+                          <li><a href="#exp-kt-enterprise">KT 엔터프라이즈</a></li>
+                        </ul>
+                      </details>
+                    </li>
+                    <li><a href="#exp-wakers">와커스</a></li>
+                  </ul>
+                </li>
+                <li>
+                  홍보대행사 기획자
+                  <ul>
+                    <li><a href="#exp-solab">솔랩컴퍼니</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div class="info-wrap">
+              <!-- <h2>Work Experience</h2> -->
+              <div class="exp-detail" id="exp-detail">
+                <section id="exp-elluo" class="exp-section">
+                  <h3>엘루오씨앤씨</h3>
+                  <p>재직 기간 / 담당 업무를 입력하세요.</p>
+                </section>
+                <section id="exp-kt-dotcom" class="exp-section">
+                  <h3>KT 닷컴</h3>
+                  <p>프로젝트 설명을 입력하세요.</p>
+                </section>
+                <section id="exp-kt-mvno" class="exp-section">
+                  <h3>KT 마이알뜰폰</h3>
+                  <p>프로젝트 설명을 입력하세요.</p>
+                </section>
+                <section id="exp-kt-enterprise" class="exp-section">
+                  <h3>KT 엔터프라이즈</h3>
+                  <p>프로젝트 설명을 입력하세요.</p>
+                </section>
+                <section id="exp-wakers" class="exp-section">
+                  <h3>와커스</h3>
+                  <p>재직 기간 / 담당 업무를 입력하세요.</p>
+                </section>
+                <section id="exp-solab" class="exp-section">
+                  <h3>솔랩컴퍼니</h3>
+                  <p>재직 기간 / 담당 업무를 입력하세요.</p>
+                </section>
+              </div>
             </div>
           </div>
         </div>

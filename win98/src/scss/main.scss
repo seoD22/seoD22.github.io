@@ -16,6 +16,7 @@ body {
 
 h2 {
   font-family: 'HBIOS-SYS', monospace !important;
+  font-size: 2rem;
   letter-spacing: -.1rem;
   line-height: 1.2;
 }
@@ -87,10 +88,32 @@ img {
 }
 
 .dot-list {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   > li {
+    position: relative;
+    padding-left: 1rem;
+    line-height: 2.5rem;
+    font-size: 1.2rem;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 1.1rem;
+      width: 0.2rem;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background-color: $color-black;
+    }
     & + li {
       margin-top: .5rem;
+    }
+  }
+}
+
+.tree-view {
+  > li {
+    & + li + li {
+      margin-top: 1rem;
     }
   }
 }
@@ -105,7 +128,13 @@ img {
     .img-row {
       width: 16rem;
     }
+    .stack-list {
+      > li {
+        font-size: 1.1rem;
+      }
+    }
     .info-wrap {
+      flex: 1;
       padding: .8rem 0;
       .txt-wrap {
         margin-top: 2rem;
@@ -121,23 +150,98 @@ img {
     display: flex;
     align-items: flex-start;
     gap: .8rem;
-    line-height: 1.5;
     > dt {
-      width: 8rem;
+      width: 10rem;
     }
     > dd {
       flex: 1;
     }
+    .win-btn {
+      margin-left: 1rem;
+    }
   }
 
-  [data-panel="profile"] {
+  $panel-height: 28.5rem;
+  $panel-pad: .8rem;
+
+  [data-panel="techStack"] {
     .info-wrap {
-      .txt-wrap {
+      max-height: $panel-height;
+      overflow-y: auto;
+      padding-right: $panel-pad;
+    }
+    .dot-list > li {
+      line-height: 2.2rem;
+      & + li {
+        margin-top: 1.5rem;
       }
     }
   }
-  [data-panel="techstack"] {
 
+
+  
+
+  [data-panel="workExperience"] {
+    .info-wrap {
+      flex: 1;
+      padding: 0;
+    }
+    .exp-layout {
+      display: flex;
+      gap: .8rem;
+      min-width: 0;
+    }
+    .tree-view {
+      flex: 0 0 18rem;
+      height: $panel-height;
+      overflow: auto;
+      font-size: 1.2rem;
+      line-height: 1.8rem;
+      a {
+        padding: .1rem .3rem;
+        color: inherit;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+        &:focus-visible {
+          outline: 1px dotted $color-black;
+          outline-offset: 1px;
+        }
+        &.is-active {
+          background-color: #000080;
+          color: $color-white;
+        }
+      }
+    }
+    .exp-detail {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+      height: $panel-height;
+      padding: $panel-pad;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      background-color: $color-white;
+      box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+      .exp-section {
+        min-height: calc(#{$panel-height} - #{$panel-pad} * 2);
+        h3 {
+          margin-bottom: 1rem;
+          padding-bottom: .6rem;
+          border-bottom: 1px dotted #808080;
+          font-size: 1.4rem;
+          font-weight: bold;
+        }
+        p {
+          font-size: 1.2rem;
+          line-height: 1.7;
+        }
+        p + p {
+          margin-top: .8rem;
+        }
+      }
+    }
   }
 }
 
