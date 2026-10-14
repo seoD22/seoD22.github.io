@@ -99,6 +99,7 @@ em {
 }
 
 .window-board {
+  display: none;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -429,6 +430,14 @@ em {
       display: none;
     }
     @include desktop-hover {
+      > p {
+        display: none;
+      }
+      > button {
+        display: block;
+      }
+    }
+    @include tablet {
       > p {
         display: none;
       }

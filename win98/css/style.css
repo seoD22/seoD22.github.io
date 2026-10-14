@@ -182,6 +182,7 @@ em {
 }
 
 .window-board {
+  display: none;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -511,6 +512,14 @@ em {
     display: none;
   }
   .help-puppy .bubble-txt:hover > button {
+    display: block;
+  }
+}
+@media (max-width: 1024px) {
+  .help-puppy .bubble-txt > p {
+    display: none;
+  }
+  .help-puppy .bubble-txt > button {
     display: block;
   }
 }
