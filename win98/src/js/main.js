@@ -50,6 +50,9 @@ class Win98Window {
 
     this.#bindControls();
     if (this.draggable) this.#bindDrag();
+    
+    this.maximizeBtn = this.titleBar?.querySelector('.title-bar-controls [aria-label="Maximize"]') ?? null;
+    this.applyLayoutMode();
 
     // 창 어디든 누르면 맨 앞으로
     this.el.addEventListener('pointerdown', () => this.manager.focus(this));
@@ -63,11 +66,13 @@ class Win98Window {
     if (wasClosed) {
       this.isOpen = true;
       this.el.style.display = '';
-      if (!this.hasBeenPlaced) this.#center(this.manager.nextCascadeOffset());
+      this.#placeIfNeeded();
       this.manager.taskbar?.add(this);
     } else if (this.isMinimized) {
       this.el.style.display = '';
+      this.#placeIfNeeded();
     }
+
     this.isMinimized = false;
     this.manager.focus(this);
 
@@ -93,6 +98,7 @@ class Win98Window {
   }
 
   toggleMaximize() {
+    if (this.manager.isCompact) return;
     this.isMaximized ? this.#restore() : this.#maximize();
   }
 
@@ -156,7 +162,8 @@ class Win98Window {
     };
 
     this.titleBar.addEventListener('pointerdown', (e) => {
-      if (this.isMaximized || e.target.closest('.title-bar-controls')) return;
+      // 태블릿 이하 / 최대화 상태 / 컨트롤 버튼 클릭이면 드래그 안 함
+      if (this.manager.isCompact || this.isMaximized || e.target.closest('.title-bar-controls')) return;
       e.preventDefault();
       const rect = this.el.getBoundingClientRect();
       startX = e.clientX;
@@ -167,6 +174,34 @@ class Win98Window {
       document.addEventListener('pointermove', onMove);
       document.addEventListener('pointerup', onUp);
     });
+  }
+
+  /** 화면 크기(태블릿 이하 / 데스크탑)에 맞춰 창 동작 전환 */
+  applyLayoutMode() {
+    const compact = this.manager.isCompact;
+
+    if (this.maximizeBtn) this.maximizeBtn.disabled = compact;
+
+    if (compact) this.#resetToCss();
+    else if (this.isOpen && !this.isMinimized) this.#placeIfNeeded();
+  }
+
+  /** 데스크탑에서 아직 위치를 안 잡은 창만 중앙 배치 (compact 에서는 CSS 가 담당) */
+  #placeIfNeeded() {
+    if (this.manager.isCompact || this.hasBeenPlaced) return;
+    this.#center(this.manager.nextCascadeOffset());
+  }
+
+  /** JS 가 넣은 인라인 위치/크기를 지워서 SCSS 의 가운데 정렬로 되돌림 */
+  #resetToCss() {
+    Object.assign(this.el.style, {
+      left: '', top: '', transform: '', margin: '',
+      width: '', maxWidth: '', height: '',
+    });
+    this.el.classList.remove('is-maximized', 'is-dragging');
+    this.isMaximized = false;
+    this.prevRect = null;
+    this.hasBeenPlaced = false;
   }
 
   #center(offset = 0) {
@@ -232,11 +267,21 @@ class WindowManager {
     this.cascadeIndex = 0;
     this.activeWindow = null;
     this.taskbar = null;
+
+    // 태블릿 이하(기본 1024px): 드래그/최대화 끄고 창 위치·크기 고정
+    this.compactQuery = window.matchMedia(`(max-width: ${options.compactBreakpoint ?? 1024}px)`);
+    this.compactQuery.addEventListener('change', () => {
+      this.windows.forEach((win) => win.applyLayoutMode());
+    });
   }
 
   /** "#id" / ".id" / "id" 어떤 형태로 와도 id로 통일 */
   static normalizeKey(target) {
     return String(target ?? '').trim().replace(/^[#.]/, '');
+  }
+
+  get isCompact() {
+    return this.compactQuery.matches;
   }
 
   /** selector에 일치하는 모든 창을 한 번에 등록 */
