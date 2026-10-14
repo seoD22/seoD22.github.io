@@ -1,5 +1,5 @@
 /*! 98.css v0.1.21 - https://github.com/jdan/98.css */
-@font-face {
+/* @font-face {
   font-family: "Galmuri9";
   font-style: normal;
   font-weight: 400;
@@ -13,11 +13,11 @@
   font-weight: 700;
   src: url(ms_sans_serif_bold.woff) format("woff");
   src: url(ms_sans_serif_bold.woff2) format("woff2")
-}
+} */
 
 body {
   color: #222;
-  font-family: Arial;
+  /* font-family: Arial; */
   font-size: 12px
 }
 
@@ -34,7 +34,6 @@ table,
 textarea,
 ul.tree-view {
   -webkit-font-smoothing: none;
-  font-family: "Galmuri9", Arial;
   font-size: 11px
 }
 

@@ -18,13 +18,13 @@
 	}
 }
 
-// @mixin hover-device {
-// 	@media (min-width: 1025px) {
-// 		&:hover {
-// 			@content;
-// 		}
-// 	}
-// }
+@mixin desktop-hover {
+  @media (min-width: #{$breakpoint-tablet + 1px}) {
+    &:hover {
+      @content;
+    }
+  }
+}
 
 // 예시
 // @mixin layer_width ($max-width: 1200px) {
@@ -36,22 +36,22 @@
 	width: 100%;
 	max-width: 120rem;
 	margin: 0 auto;
-
-	// @media screen and (max-width: 1200px) {
-	// 	max-width: 102.5rem;
-	// }
-
-	// @media screen and (max-width: 1045px) {
-	// 	padding: 0 2rem;
-	// }
 }
 
-// @mixin text_color {
-//   color: #21252a;
-//   html.darkMode & {
-//     color: #FFF;
-//   }
-// }
+@mixin fs($px, $alt: null) {
+  $alt-px: if($alt, $alt, map-get($font-size-map, $px));
+
+  font-size: #{$px * 0.1}rem;
+
+  @if $alt-px {
+    .font-pretendard & {
+      font-size: #{$alt-px * 0.1}rem;
+    }
+  } @else {
+    @warn "변환표($font-size-map)에 #{$px}px 가 없습니다.";
+  }
+}
+
 
 // 아이콘 - 팝업
 $windows: ("win-intro", "win-computer", "win-resume", "win-coverLetter", "win-trash", "win-project", "win-monkey");

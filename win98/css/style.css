@@ -80,22 +80,55 @@ html {
   font-size: 62.5%;
 }
 
+body * {
+  font-family: "Galmuri9", "Pretendard", sans-serif !important;
+}
 body {
-  font-family: "Galmuri9", "Pretendard", sans-serif;
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: unset;
   font-smooth: never;
+}
+body.font-pretendard button,
+body.font-pretendard input,
+body.font-pretendard .window,
+body.font-pretendard .title-bar,
+body.font-pretendard .tree-view {
+  font-size: 1.4rem;
+}
+body.font-pretendard .title-bar, body.font-pretendard .window, body.font-pretendard button, body.font-pretendard input, body.font-pretendard label, body.font-pretendard legend, body.font-pretendard li[role=tab], body.font-pretendard option, body.font-pretendard select, body.font-pretendard table, body.font-pretendard textarea, body.font-pretendard ul.tree-view {
+  font-size: 1.4rem;
+}
+body.font-pretendard * {
+  font-family: "Pretendard", sans-serif !important;
+  letter-spacing: -0.4px;
 }
 
 h2 {
   font-family: "HBIOS-SYS", monospace !important;
   font-size: 2rem;
+}
+.font-pretendard h2 {
+  font-size: 2.4rem;
+}
+h2 {
   letter-spacing: -0.1rem;
   line-height: 1.2;
 }
 
 img {
   max-width: 100%;
+}
+
+em {
+  color: red;
+  text-decoration: underline;
+  font-size: 1.2rem;
+}
+.font-pretendard em {
+  font-size: 1.5rem;
+}
+em {
+  font-weight: 400;
 }
 
 .portfolio-win98 {
@@ -135,6 +168,9 @@ img {
 .win-icon figcaption {
   font-size: 1.6rem;
 }
+.font-pretendard .win-icon figcaption {
+  font-size: 1.9rem;
+}
 .win-icon.bg-icon figure {
   width: 11rem;
 }
@@ -167,6 +203,9 @@ img {
   line-height: 2.5rem;
   font-size: 1.2rem;
 }
+.font-pretendard .dot-list > li {
+  font-size: 1.5rem;
+}
 .dot-list > li::before {
   content: "";
   position: absolute;
@@ -179,6 +218,51 @@ img {
 }
 .dot-list > li + li {
   margin-top: 0.5rem;
+}
+
+.dash-list > li {
+  position: relative;
+  padding-left: 1rem;
+  line-height: 2.5rem;
+  font-size: 1.2rem;
+}
+.font-pretendard .dash-list > li {
+  font-size: 1.5rem;
+}
+.dash-list > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.1rem;
+  width: 0.5rem;
+  height: 0.1rem;
+  background-color: #000000;
+}
+.dash-list > li + li {
+  margin-top: 0.5rem;
+}
+
+.num-list > li {
+  position: relative;
+  margin-left: 2rem;
+  line-height: 2.5rem;
+  font-size: 1.2rem;
+}
+.font-pretendard .num-list > li {
+  font-size: 1.5rem;
+}
+.num-list > li {
+  text-indent: -2rem;
+}
+.num-list > li + li {
+  margin-top: 0.5rem;
+}
+.num-list ul > li {
+  padding-left: 0;
+  text-indent: 0;
+}
+.num-list ul > li::before {
+  left: -1rem;
 }
 
 .tree-view > li + li + li {
@@ -196,6 +280,9 @@ img {
 #window-mycom [role=tabpanel] .stack-list > li {
   font-size: 1.1rem;
 }
+.font-pretendard #window-mycom [role=tabpanel] .stack-list > li {
+  font-size: 1.4rem;
+}
 #window-mycom [role=tabpanel] .info-wrap {
   flex: 1;
   padding: 0.8rem 0;
@@ -203,6 +290,9 @@ img {
 #window-mycom [role=tabpanel] .info-wrap .txt-wrap {
   margin-top: 2rem;
   font-size: 1.4rem;
+}
+.font-pretendard #window-mycom [role=tabpanel] .info-wrap .txt-wrap {
+  font-size: 1.7rem;
 }
 #window-mycom [role=tabpanel] .info-wrap .txt-wrap + .txt-wrap {
   margin-top: 1rem;
@@ -246,6 +336,11 @@ img {
   height: 28.5rem;
   overflow: auto;
   font-size: 1.2rem;
+}
+.font-pretendard #window-mycom [data-panel=workExperience] .tree-view {
+  font-size: 1.5rem;
+}
+#window-mycom [data-panel=workExperience] .tree-view {
   line-height: 1.8rem;
 }
 #window-mycom [data-panel=workExperience] .tree-view a {
@@ -278,19 +373,38 @@ img {
 #window-mycom [data-panel=workExperience] .exp-detail .exp-section {
   min-height: calc(28.5rem - 0.8rem * 2);
 }
+#window-mycom [data-panel=workExperience] .exp-detail .exp-section + .exp-section {
+  margin-top: 2rem;
+}
 #window-mycom [data-panel=workExperience] .exp-detail .exp-section h3 {
   margin-bottom: 1rem;
   padding-bottom: 0.6rem;
   border-bottom: 1px dotted #808080;
   font-size: 1.4rem;
+}
+.font-pretendard #window-mycom [data-panel=workExperience] .exp-detail .exp-section h3 {
+  font-size: 1.7rem;
+}
+#window-mycom [data-panel=workExperience] .exp-detail .exp-section h3 {
   font-weight: bold;
 }
 #window-mycom [data-panel=workExperience] .exp-detail .exp-section p {
   font-size: 1.2rem;
+}
+.font-pretendard #window-mycom [data-panel=workExperience] .exp-detail .exp-section p {
+  font-size: 1.5rem;
+}
+#window-mycom [data-panel=workExperience] .exp-detail .exp-section p {
   line-height: 1.7;
 }
 #window-mycom [data-panel=workExperience] .exp-detail .exp-section p + p {
   margin-top: 0.8rem;
+}
+#window-mycom #exp-wacus .num-list {
+  margin-top: 1rem;
+}
+#window-mycom #exp-wacus .dot-list {
+  margin-top: 0;
 }
 
 #window-resume .window-body {
@@ -372,14 +486,35 @@ img {
   position: relative;
   max-width: 8rem;
 }
-.help-puppy .bubble > p {
+.help-puppy .bubble-txt {
   position: absolute;
-  top: 1rem;
+  top: 0.8rem;
   left: 50%;
   transform: translateX(-50%);
   width: fit-content;
   white-space: nowrap;
 }
+.help-puppy .bubble-txt > p {
+  position: relative;
+  top: 0.1rem;
+  display: block;
+  font-size: 1.1rem;
+}
+.font-pretendard .help-puppy .bubble-txt > p {
+  font-size: 1.4rem;
+}
+.help-puppy .bubble-txt > button {
+  display: none;
+}
+@media (min-width: 1025px) {
+  .help-puppy .bubble-txt:hover > p {
+    display: none;
+  }
+  .help-puppy .bubble-txt:hover > button {
+    display: block;
+  }
+}
+
 footer {
   display: flex;
   align-items: center;
@@ -389,6 +524,9 @@ footer {
 }
 footer .btn-start {
   font-size: 1.4rem;
+}
+.font-pretendard footer .btn-start {
+  font-size: 1.7rem;
 }
 footer .taskbar-items {
   display: flex;
@@ -408,6 +546,12 @@ footer .clock {
   height: 100%;
   margin-left: auto;
   padding: 0 8px;
+  font-size: 1.1rem;
+}
+.font-pretendard footer .clock {
+  font-size: 1.4rem;
+}
+footer .clock {
   white-space: nowrap;
   box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
 }

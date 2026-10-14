@@ -596,6 +596,47 @@ class ScrollSpy {
 }
 
 
+/* --------------------------------------------------------------------------
+   FontToggle  (강아지 말풍선의 '폰트 바꾸기' 버튼)
+   - body 에 클래스를 토글
+   - 선택한 상태를 localStorage 에 저장해서 새로고침해도 유지
+   -------------------------------------------------------------------------- */
+class FontToggle {
+  /**
+   * @param {HTMLElement} button
+   * @param {string} [className='font-pretendard']
+   */
+  constructor(button, className = 'font-pretendard') {
+    this.button = button;
+    this.className = className;
+    this.storageKey = 'portfolio-font';
+
+    if (this.#load()) this.#apply(true);
+    else button.setAttribute('aria-pressed', 'false');
+
+    button.addEventListener('click', () => {
+      this.#apply(!document.body.classList.contains(this.className));
+    });
+  }
+
+  #apply(on) {
+    document.body.classList.toggle(this.className, on);
+    this.button.setAttribute('aria-pressed', String(on));
+    this.#save(on);
+  }
+
+  // 저장소를 못 쓰는 환경(시크릿 모드 등)에서도 에러 없이 동작
+  #load() {
+    try { return localStorage.getItem(this.storageKey) === 'on'; }
+    catch { return false; }
+  }
+  #save(on) {
+    try { localStorage.setItem(this.storageKey, on ? 'on' : 'off'); }
+    catch { /* 무시 */ }
+  }
+}
+
+
 /* ==========================================================================
    Init
    ========================================================================== */
@@ -623,7 +664,11 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-scrollspy]').forEach((menu) => {
     const container = document.querySelector(menu.dataset.scrollspy);
     if (container) new ScrollSpy(menu, container);
-  });v
+  });
+
+  /* 폰트 바꾸기 */
+  const fontBtn = document.querySelector('.help-puppy .bubble-txt button');
+  if (fontBtn) new FontToggle(fontBtn);
 });
 
 
