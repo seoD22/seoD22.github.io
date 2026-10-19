@@ -8,6 +8,7 @@ html {
 
 body {
   * {font-family: 'Galmuri9', 'Pretendard', sans-serif !important;}
+  word-break: keep-all;
 
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: unset;
@@ -55,6 +56,14 @@ em {
   height: 100vh;
 }
 
+// 98.css
+@include mobile {
+  .window {
+    min-width: unset;
+  }
+
+}
+
 // content
 .win-content {
   position: relative;
@@ -62,6 +71,9 @@ em {
   height: 100%;
   background-color: $color-green;
   padding: 3.8rem 3.4rem;
+  @include mobile {
+    padding: 2rem 1rem;
+  }
 }
 .content-wrap {
   display: flex;
@@ -103,6 +115,11 @@ em {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  @include mobile {
+    left: 1rem;
+    right: 1rem;
+    transform: translate(0, -50%);
+  }
   .btn-wrap {
     display: flex;
     justify-content: flex-end;
@@ -187,11 +204,19 @@ em {
   [role="tabpanel"] {
     .window-body {
       display: flex;
+      align-items: flex-start;
       gap: .8rem;
       width: 62rem;
+      @include mobile {
+        width: calc(100% - 1.5rem);
+      }
     }
     .img-row {
       width: 16rem;
+      aspect-ratio: 1080 / 1920;
+      @include mobile {
+        display: none;
+      }
     }
     .stack-list {
       > li {
@@ -252,6 +277,10 @@ em {
       display: flex;
       gap: .8rem;
       min-width: 0;
+      @include mobile {
+        display: block;
+        width: 100%;
+      }
     }
     .tree-view {
       flex: 0 0 18rem;
@@ -259,6 +288,9 @@ em {
       overflow: auto;
       @include fs(12);
       line-height: 1.8rem;
+      @include mobile {
+        max-height: 15rem;
+      }
       a {
         padding: .1rem .3rem;
         color: inherit;
@@ -307,6 +339,11 @@ em {
         }
       }
     }
+    @include mobile {
+      .window-body {
+        flex-direction: column;
+      }
+    }
   }
   #exp-wacus {
     .num-list {
@@ -330,9 +367,13 @@ em {
   .scroll-panel {
     display: grid;
     grid-template-columns: repeat(3, 20rem);
+    align-items: start;
     gap: 1rem;
     max-height: 70vh;
     padding: 1rem;
+    @include mobile {
+      grid-template-columns: repeat(2, calc(50% - .5rem));
+    }
   }
 }
 
@@ -341,11 +382,20 @@ em {
     display: flex;
     gap: 0.8rem;
   }
+  .chat-wrapper {
+    @include mobile {
+      width: 100%;
+    }
+  }
   .chat {
     .scroll-panel {
       min-width: 50rem;
       height: 20rem;
       padding: 1rem;
+      @include mobile {
+        width: 100%;
+        min-width: unset;
+      }
     }
     .host {
       &:first-child {
@@ -360,6 +410,7 @@ em {
     }
     .text {
       margin-top: .5rem;
+      line-height: 1.5;
     }
   }
   .guest {
@@ -390,6 +441,9 @@ em {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    @include tablet {
+      display: none;
+    }
   }
   .avatar-1, .avatar-2 {
     max-width: 10rem;

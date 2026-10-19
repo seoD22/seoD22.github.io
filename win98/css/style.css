@@ -84,6 +84,7 @@ body * {
   font-family: "Galmuri9", "Pretendard", sans-serif !important;
 }
 body {
+  word-break: keep-all;
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: unset;
   font-smooth: never;
@@ -137,12 +138,22 @@ em {
   height: 100vh;
 }
 
+@media (max-width: 768px) {
+  .window {
+    min-width: unset;
+  }
+}
 .win-content {
   position: relative;
   flex: 1;
   height: 100%;
   background-color: #008080;
   padding: 3.8rem 3.4rem;
+}
+@media (max-width: 768px) {
+  .win-content {
+    padding: 2rem 1rem;
+  }
 }
 
 .content-wrap {
@@ -186,6 +197,13 @@ em {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+@media (max-width: 768px) {
+  .window-board {
+    left: 1rem;
+    right: 1rem;
+    transform: translate(0, -50%);
+  }
 }
 .window-board .btn-wrap {
   display: flex;
@@ -271,11 +289,23 @@ em {
 
 #window-mycom [role=tabpanel] .window-body {
   display: flex;
+  align-items: flex-start;
   gap: 0.8rem;
   width: 62rem;
 }
+@media (max-width: 768px) {
+  #window-mycom [role=tabpanel] .window-body {
+    width: calc(100% - 1.5rem);
+  }
+}
 #window-mycom [role=tabpanel] .img-row {
   width: 16rem;
+  aspect-ratio: 1080/1920;
+}
+@media (max-width: 768px) {
+  #window-mycom [role=tabpanel] .img-row {
+    display: none;
+  }
 }
 #window-mycom [role=tabpanel] .stack-list > li {
   font-size: 1.1rem;
@@ -331,6 +361,12 @@ em {
   gap: 0.8rem;
   min-width: 0;
 }
+@media (max-width: 768px) {
+  #window-mycom [data-panel=workExperience] .exp-layout {
+    display: block;
+    width: 100%;
+  }
+}
 #window-mycom [data-panel=workExperience] .tree-view {
   flex: 0 0 18rem;
   height: 28.5rem;
@@ -342,6 +378,11 @@ em {
 }
 #window-mycom [data-panel=workExperience] .tree-view {
   line-height: 1.8rem;
+}
+@media (max-width: 768px) {
+  #window-mycom [data-panel=workExperience] .tree-view {
+    max-height: 15rem;
+  }
 }
 #window-mycom [data-panel=workExperience] .tree-view a {
   padding: 0.1rem 0.3rem;
@@ -400,6 +441,11 @@ em {
 #window-mycom [data-panel=workExperience] .exp-detail .exp-section p + p {
   margin-top: 0.8rem;
 }
+@media (max-width: 768px) {
+  #window-mycom [data-panel=workExperience] .window-body {
+    flex-direction: column;
+  }
+}
 #window-mycom #exp-wacus .num-list {
   margin-top: 1rem;
 }
@@ -416,19 +462,36 @@ em {
 #window-monkey .scroll-panel {
   display: grid;
   grid-template-columns: repeat(3, 20rem);
+  align-items: start;
   gap: 1rem;
   max-height: 70vh;
   padding: 1rem;
+}
+@media (max-width: 768px) {
+  #window-monkey .scroll-panel {
+    grid-template-columns: repeat(2, calc(50% - 0.5rem));
+  }
 }
 
 #window-intro .msn-panel {
   display: flex;
   gap: 0.8rem;
 }
+@media (max-width: 768px) {
+  #window-intro .chat-wrapper {
+    width: 100%;
+  }
+}
 #window-intro .chat .scroll-panel {
   min-width: 50rem;
   height: 20rem;
   padding: 1rem;
+}
+@media (max-width: 768px) {
+  #window-intro .chat .scroll-panel {
+    width: 100%;
+    min-width: unset;
+  }
 }
 #window-intro .chat .host:first-child .name {
   margin: 0;
@@ -439,6 +502,7 @@ em {
 }
 #window-intro .chat .text {
   margin-top: 0.5rem;
+  line-height: 1.5;
 }
 #window-intro .guest .text {
   color: red;
@@ -464,6 +528,11 @@ em {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+@media (max-width: 1024px) {
+  #window-intro .avatar-wrap {
+    display: none;
+  }
 }
 #window-intro .avatar-1, #window-intro .avatar-2 {
   max-width: 10rem;
