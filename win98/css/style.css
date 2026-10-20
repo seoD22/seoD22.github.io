@@ -483,14 +483,13 @@ em {
   }
 }
 #window-intro .chat .scroll-panel {
-  min-width: 50rem;
+  width: 50rem;
   height: 20rem;
   padding: 1rem;
 }
 @media (max-width: 768px) {
   #window-intro .chat .scroll-panel {
     width: 100%;
-    min-width: unset;
   }
 }
 #window-intro .chat .host:first-child .name {

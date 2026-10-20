@@ -389,12 +389,11 @@ em {
   }
   .chat {
     .scroll-panel {
-      min-width: 50rem;
+      width: 50rem;
       height: 20rem;
       padding: 1rem;
       @include mobile {
         width: 100%;
-        min-width: unset;
       }
     }
     .host {
