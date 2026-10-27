@@ -1,0 +1,88 @@
+@use 'vars' as *;
+
+:root {
+  --h: calc(6.4rem + env(safe-area-inset-top, 0px));
+  color-scheme: light
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box
+}
+
+html {
+  font-size: 62.5%; // 1rem = 10px
+  scroll-padding-top: var(--h)
+}
+
+body {
+  margin: 0;
+  font-size: 1.6rem;
+  padding-top: var(--h);
+  background: $bg;
+  color: $ink;
+  font-family: $body;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased
+}
+
+a {
+  color: inherit;
+  text-decoration: none
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid $accent;
+  outline-offset: 0.4rem
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0
+}
+
+img {
+  display: block;
+  max-width: 100%
+}
+
+ul,
+ol,
+dl {
+  margin: 0;
+  padding: 0;
+  list-style: none
+}
+
+.wrap {
+  @include pad
+}
+
+.disp {
+  font-family: $disp;
+  font-weight: 800;
+  line-height: .92;
+  margin: 0
+}
+
+.sec-t {
+  font-size: 1.4rem;
+  color: $mute;
+  margin: 0 0 2.8rem
+}
+
+.ln {
+  display: block;
+  overflow: hidden;
+  padding-bottom: .06em;
+
+  > span {
+    display: inline-block
+  }
+}

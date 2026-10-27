@@ -5,13 +5,16 @@
   "scripts": {
     "sass:main": "sass src/scss/main.scss css/main.css --watch",
     "sass:win98": "sass win98/src/scss/main.scss win98/css/style.css --watch",
-    
+    "sass:folio": "sass yun-portfolio/src/scss/main.scss yun-portfolio/css/main.css --watch",
+
     "postcss:main": "postcss css/main.css -o css/main.min.css --watch",
     "postcss:win98": "postcss win98/css/style.css -o win98/css/style.min.css --watch",
+    "postcss:folio": "postcss yun-portfolio/css/main.css -o yun-portfolio/css/main.min.css --watch",
 
-    "serve": "browser-sync start --server --files \"*.html\", \"win98/*.html\", \"css/*.css\", \"win98/css/*.css\", \"win98/src/js/*.js\"",
+    "serve": "browser-sync start --server --files \"*.html,css/*.min.css,src/js/*.js,images/*,win98/*.html,win98/css/*.min.css,win98/src/js/*.js,yun-portfolio/*.html,yun-portfolio/css/*.min.css,yun-portfolio/src/js/*.js,yun-portfolio/images/*\"",
 
-    "dev": "npm-run-all --parallel sass:main sass:win98 postcss:main postcss:win98 serve"
+    "dev": "npm-run-all --parallel sass:main sass:win98 sass:folio postcss:main postcss:win98 postcss:folio serve",
+    "dev:folio": "npm-run-all --parallel sass:folio postcss:folio serve"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.23",

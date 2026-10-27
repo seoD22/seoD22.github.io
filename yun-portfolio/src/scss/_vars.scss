@@ -1,0 +1,22 @@
+$bg: #FBFBF8;
+$ink: #17191D;
+$mute: #6C7078;
+$line: #DCDDD7;
+$accent: #8912FF;
+$sun: #FFE45C;
+$maxw: 120rem;
+$radius: 1.6rem;
+$disp: 'Inter Tight', 'Pretendard', system-ui, sans-serif;
+$body: 'Pretendard', system-ui, -apple-system, sans-serif;
+
+@mixin sp {
+  @media (max-width:760px) {
+    @content
+  }
+}
+
+// 좌우 여백: 모바일은 유동, PC는 콘텐츠 폭이 최대 120rem(1200px)이 되도록
+@mixin pad {
+  padding-left:max(clamp(2rem, 4vw, 5.6rem), calc((100% - #{$maxw}) / 2));
+  padding-right:max(clamp(2rem, 4vw, 5.6rem), calc((100% - #{$maxw}) / 2));
+}

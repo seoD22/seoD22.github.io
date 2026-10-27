@@ -1,0 +1,358 @@
+@use 'vars' as *;
+
+.visual {
+  min-height: calc(100svh - var(--h));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    font-size: clamp(4.8rem, 13.2vw, 15.8rem);
+  }
+
+  .vsub {
+    font-size: clamp(1.4rem,1.6vw,2rem);
+    font-weight: 500;
+    word-break: keep-all;
+    text-align: center;
+  }
+}
+
+.kw {
+  height: calc(100svh - var(--h));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+
+  .kw-fix,
+  .kw-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+
+    .ln {
+      font-family: $disp;
+      font-weight: 800;
+      font-size: clamp(4rem, min(11vw, 13vh), 12.8rem);
+      letter-spacing: -.04em;
+      line-height: .95;
+      transition: color .3s
+    }
+  }
+
+  .kw-row {
+    overflow: hidden;
+    .ln {
+      color: $accent;
+    }
+  }
+}
+
+.spread {
+  height: calc(100svh - var(--h));
+  overflow: hidden;
+
+  .spread-in {
+    position: relative;
+    max-width: $maxw;
+    height: 100%;
+    margin: 0 auto;
+    display: grid;
+    place-items: center
+  }
+
+  .sp-txt {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    font-size: clamp(1.8rem, 3.2vw, 4rem);
+    line-height: 1.2;
+    padding: 0 1.6rem;
+    mix-blend-mode: multiply
+  }
+
+  .sp-img {
+    position: absolute;
+    overflow: hidden;
+    border-radius: $radius;
+    background: #E6E7E1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    &:nth-child(1) {
+      top: 7%;
+      left: 3%;
+      width: min(18vw, 21.6rem);
+      aspect-ratio: 3/4
+    }
+
+    &:nth-child(2) {
+      top: 5%;
+      left: 40%;
+      width: min(13vw, 15.6rem);
+      aspect-ratio: 1
+    }
+
+    &:nth-child(3) {
+      top: 10%;
+      left: 76%;
+      width: min(16vw, 19.2rem);
+      aspect-ratio: 4/5
+    }
+
+    &:nth-child(4) {
+      top: 64%;
+      left: 9%;
+      width: min(15vw, 18rem);
+      aspect-ratio: 1
+    }
+
+    &:nth-child(5) {
+      top: 68%;
+      left: 44%;
+      width: min(12vw, 14.4rem);
+      aspect-ratio: 3/4
+    }
+
+    &:nth-child(6) {
+      top: 60%;
+      left: 72%;
+      width: min(19vw, 22.8rem);
+      aspect-ratio: 4/3
+    }
+
+    @include sp {
+      &:nth-child(n) {
+        width: 30vw
+      }
+    }
+  }
+}
+
+.sp-desc {
+  padding-bottom: clamp(8rem, 12vw, 18rem);
+
+  h3 {
+    margin: 0;
+    font-size: clamp(1.8rem, 1.8vw, 2.4rem);
+    line-height: 1.5;
+    word-break: keep-all
+  }
+
+  .sp-desc-sm {
+    margin-top: 2rem;
+  }
+
+  p {
+    margin: 0 0 1.2em;
+    color: $mute;
+    max-width: 34em;
+    word-break: keep-all
+  }
+
+  @include sp {
+    grid-template-columns: 1fr
+  }
+}
+
+.skills {
+  padding-bottom: clamp(10rem, 14vw, 20rem);
+
+  .sk-list {
+    border-top: 1px solid $ink;
+
+    li {
+      border-bottom: 1px solid $line;
+      padding: clamp(1.4rem, 2vw, 2.8rem) 0;
+      font-family: $disp;
+      font-weight: 800;
+      font-size: clamp(3.2rem, 6vw, 8rem);
+      letter-spacing: -.03em;
+      line-height: 1.1;
+      transition: padding .4s, color .3s;
+
+      &:hover {
+        padding-left: 2rem;
+        color: $accent
+      }
+    }
+  }
+}
+
+.works {
+  padding-top: clamp(8rem, 12vw, 16rem);
+  padding-bottom: clamp(8rem, 12vw, 16rem);
+
+  .wk {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(2.4rem, 6vw, 9.6rem);
+    align-items: center;
+    padding: clamp(3.2rem, 5vw, 7.2rem) 0;
+    border-top: 1px solid $line;
+
+    &:nth-child(even) {
+      grid-template-columns: 1fr 1.2fr;
+
+      .wk-img {
+        order: 2
+      }
+    }
+
+    .wk-img {
+      overflow: hidden;
+      border-radius: $radius;
+      aspect-ratio: 4/3;
+      background: #E6E7E1;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover
+      }
+    }
+
+    h3 {
+      margin: 0 0 0.6rem;
+      font-family: $disp;
+      font-weight: 800;
+      font-size: clamp(2.8rem, 4vw, 4.8rem);
+      letter-spacing: -.03em;
+      line-height: 1.05
+    }
+
+    .cp {
+      color: $accent;
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin: 0 0 2rem
+    }
+
+    p {
+      color: $mute;
+      max-width: 26em;
+      margin: 0 0 2.4rem;
+      word-break: keep-all
+    }
+
+    .more {
+      display: inline-block;
+      border-bottom: 1px solid $ink;
+      font-weight: 500;
+      transition: color .3s, border-color .3s;
+
+      &:hover {
+        color: $accent;
+        border-color: $accent
+      }
+    }
+
+    @include sp {
+      &:nth-child(n) {
+        grid-template-columns: 1fr
+      }
+
+      .wk-img {
+        order: 0 !important
+      }
+    }
+  }
+}
+
+.banner-wrap {
+  padding-bottom: clamp(8rem, 12vw, 16rem)
+}
+
+.banner {
+  position: relative;
+  isolation: isolate;
+  height: min(80svh, 64rem);
+  overflow: hidden;
+  border-radius: $radius;
+  color: #fff;
+  background: #222;
+
+  .bn-img {
+    position: absolute;
+    inset: -12% 0;
+
+    img,
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .38)
+  }
+
+  .bn-txt {
+    position: absolute;
+    z-index: 2;
+    left: clamp(2rem, 3vw, 4rem);
+    right: clamp(2rem, 3vw, 4rem);
+    bottom: clamp(2rem, 3vw, 4rem);
+
+    h2 {
+      margin: 0 0 1.4rem;
+      font-weight: 800;
+      font-size: clamp(2.6rem, 4.4vw, 5.6rem);
+      letter-spacing: -.03em;
+      line-height: 1.15;
+      word-break: keep-all
+    }
+
+    p {
+      margin: 0;
+      max-width: 34em;
+      opacity: .9;
+      word-break: keep-all
+    }
+  }
+}
+
+.marquee-container {
+  overflow: hidden;
+  padding: 2rem 0;
+  border-top: 1px solid $line;
+  border-bottom: 1px solid $line;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.marquee-item {
+  flex: none;
+  display: flex;
+  align-items: center;
+  padding-right: 4.8rem;
+  color: $line;
+  font-family: $disp;
+  font-weight: 800;
+  font-size: clamp(2.4rem, 3.4vw, 4rem);
+  letter-spacing: -0.02em;
+
+  &::after {
+    content: "";
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-left: 4.8rem;
+    border-radius: 50%;
+    background: $line;
+  }
+}

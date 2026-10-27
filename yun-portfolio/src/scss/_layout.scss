@@ -1,0 +1,130 @@
+@use 'vars' as *;
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  height: var(--h);
+  padding-top: env(safe-area-inset-top, 0px);
+  @include pad;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $bg;
+  border-bottom: 1px solid $line;
+
+  .logo {
+    font-family: $disp;
+    font-weight: 800;
+    font-size: 1.9rem;
+    letter-spacing: -.02em
+  }
+
+  nav {
+    display: flex;
+    gap: clamp(1.6rem, 3vw, 3.6rem);
+
+    a {
+      position: relative;
+      font-size: 1.4rem;
+      font-weight: 500;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -0.4rem;
+        width: 100%;
+        height: 2px;
+        background: $accent;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform .35s
+      }
+
+      &:hover::after,
+      &.on::after {
+        transform: scaleX(1);
+        transform-origin: left
+      }
+    }
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 3.2rem;
+  padding-bottom: 3.2rem;
+  @include pad;
+  font-size: 1.3rem;
+  color: $mute
+}
+
+.cover {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: $sun;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(101%);
+  pointer-events: none;
+
+  span {
+    font-family: $disp;
+    font-weight: 800;
+    font-size: clamp(3.2rem, 8vw, 9.6rem);
+    letter-spacing: -.04em
+  }
+}
+
+.is-nav .cover {
+  transform: none
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 3.2rem;
+  transform: translate(-50%, 2rem);
+  background: $ink;
+  color: $bg;
+  padding: 1.2rem 2.2rem;
+  border-radius: 999px;
+  font-size: 1.4rem;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 40
+}
+
+.ct {
+  background: $sun;
+  padding-top: clamp(7.2rem, 10vw, 14rem);
+  padding-bottom: 2.8rem;
+  min-height: 72svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h2 {
+    font-size: clamp(4.4rem, 12vw, 15rem)
+  }
+
+  .ct-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.6rem;
+    margin-top: clamp(4.8rem, 8vw, 12rem);
+    padding-top: 1.6rem;
+    border-top: 1px solid rgba($ink, .25);
+    font-size: 1.4rem;
+
+    a:hover {
+      text-decoration: underline
+    }
+  }
+}
