@@ -71,9 +71,26 @@ dl {
 }
 
 .sec-t {
-  font-size: 1.4rem;
-  color: #6C7078;
-  margin: 0 0 2.8rem;
+  margin: 0 0 clamp(2.4rem, 4vw, 4.8rem);
+  font-family: "Inter Tight", "Pretendard", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(3.2rem, 5vw, 6.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: capitalize;
+  color: #17191D;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .ln {
@@ -100,6 +117,12 @@ header {
   align-items: center;
   background: #FBFBF8;
   border-bottom: 1px solid #DCDDD7;
+}
+header h1 {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1;
 }
 header .logo {
   font-family: "Inter Tight", "Pretendard", system-ui, sans-serif;
@@ -212,7 +235,7 @@ footer {
   align-items: center;
   justify-content: center;
 }
-.visual h1 {
+.visual h2 {
   font-size: clamp(4.8rem, 13.2vw, 15.8rem);
 }
 .visual .vsub {
@@ -525,98 +548,145 @@ footer {
 }
 
 .ph {
-  padding: clamp(5.6rem, 8vw, 11.2rem) 0 clamp(3.2rem, 5vw, 6.4rem);
+  margin-top: clamp(6.4rem, 9vw, 12rem);
 }
-.ph h1 {
-  font-size: clamp(4.4rem, 12vw, 10rem);
+.ph h2 {
+  font-size: clamp(2rem, 6vw, 8rem);
 }
 .ph .ph-sub {
   margin: 2rem 0 0;
-  color: #6C7078;
-  font-size: clamp(1.6rem, 1.6vw, 2.2rem);
+  font-size: clamp(1.6rem, 1.6vw, 1.8rem);
   word-break: keep-all;
 }
 
 .me {
+  margin-top: clamp(6.4rem, 9vw, 12rem);
   padding-bottom: clamp(6.4rem, 9vw, 12rem);
 }
-.me .me-lead {
-  margin: 0 auto;
-  text-align: center;
-  max-width: 22em;
-  font-size: clamp(2rem, 2.6vw, 3.6rem);
-  line-height: 1.45;
-  font-weight: 500;
-  word-break: keep-all;
+.me .me-wrap {
+  --av: clamp(24rem, 38vw, 46rem);
+  --ring: 1.6rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--av) minmax(0, 1fr);
+  align-items: stretch;
 }
-.me .me-ring {
-  display: flex;
-  align-items: center;
-  gap: clamp(1.6rem, 3vw, 4rem);
-  margin: clamp(4rem, 6vw, 8rem) 0;
+@media (max-width: 760px) {
+  .me .me-wrap {
+    --av: min(70vw, 28rem);
+    grid-template-columns: 1fr;
+    gap: 3.2rem;
+  }
 }
-.me .me-ring .rule {
-  flex: 1;
-  height: 1px;
-  background: #B7B9B3;
-}
-.me .me-ring .rule.l {
-  transform-origin: right;
-}
-.me .me-ring .rule.r {
-  transform-origin: left;
-}
-.me .me-ring .avatar {
-  flex: 0 0 clamp(15rem, 22vw, 28rem);
+.me .avatar {
+  position: relative;
+  z-index: 1;
+  align-self: center;
+  width: var(--av);
   aspect-ratio: 1;
   border-radius: 50%;
   overflow: hidden;
   background: #E6E7E1;
+  box-shadow: 0 0 0 var(--ring) #FBFBF8;
 }
-.me .me-ring .avatar img {
+.me .avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.me .me-cols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(3.2rem, 6vw, 9.6rem);
-}
 @media (max-width: 760px) {
-  .me .me-cols {
-    grid-template-columns: 1fr;
+  .me .avatar {
+    order: -1;
+    justify-self: center;
   }
 }
+.me .col {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 3.2rem;
+}
+.me .col.l .grp > h3, .me .col.l .grp > ul {
+  max-width: 34rem;
+}
+.me .col.r .grp > h3, .me .col.r .grp > ul {
+  width: min(100%, 24rem);
+  margin-left: auto;
+}
+@media (max-width: 760px) {
+  .me .col.r .grp > h3, .me .col.r .grp > ul {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+.me .col.l .grp::before {
+  left: 0;
+  right: calc(var(--av) / -2);
+  transform-origin: right;
+}
+.me .col.r .grp::before {
+  right: 0;
+  left: calc(var(--av) / -2);
+  transform-origin: left;
+}
 .me .grp {
-  margin-bottom: clamp(3.2rem, 4vw, 5.6rem);
+  --s: 1;
+  position: relative;
+  padding-top: 2.4rem;
+}
+.me .grp::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 1px;
+  background: #B7B9B3;
+  transform: scaleX(var(--s));
 }
 .me .grp h3 {
   margin: 0 0 1.2rem;
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: #6C7078;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #17191D;
 }
 .me .grp li {
-  padding: 1.1rem 0;
-  border-bottom: 1px solid #DCDDD7;
+  padding: 0.6rem 0;
+  color: #6C7078;
+  font-size: 1.5rem;
   word-break: keep-all;
 }
-.me .grp li:first-child {
-  border-top: 1px solid #17191D;
-}
 .me .grp .nm {
-  font-family: "Inter Tight", "Pretendard", system-ui, sans-serif;
-  font-weight: 800;
-  font-size: clamp(2.6rem, 3vw, 4.4rem);
-  letter-spacing: -0.02em;
-  border-top: 0;
+  color: #17191D;
+  font-weight: 500;
+}
+.me .grp .has-dt {
+  padding-left: 8rem;
+  text-indent: -8rem;
 }
 .me .grp .dt {
   display: inline-block;
-  min-width: 7.6rem;
-  color: #6C7078;
+  width: 8rem;
+  text-indent: 0;
   font-size: 1.4rem;
+}
+.me .grp.skill ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+.me .grp.skill li {
+  padding: 0.6rem 1.4rem;
+  border: 1px solid #DCDDD7;
+  border-radius: 99.9rem;
+  color: #17191D;
+  font-size: 1.4rem;
+}
+@media (max-width: 760px) {
+  .me .col.l .grp::before,
+  .me .col.r .grp::before {
+    left: 0;
+    right: 0;
+  }
 }
 
 .likes {
@@ -627,7 +697,7 @@ footer {
   overflow: hidden;
   background: #F1F2EE;
 }
-.likes .sec-t {
+.likes > h2 {
   padding-left: max(clamp(2rem, 4vw, 5.6rem), (100% - 120rem) / 2);
   padding-right: max(clamp(2rem, 4vw, 5.6rem), (100% - 120rem) / 2);
   margin-bottom: 2.4rem;
@@ -668,9 +738,8 @@ footer {
   background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.45));
   z-index: -1;
 }
-.likes .lk b {
-  font-weight: 800;
-  font-size: clamp(3.6rem, 5vw, 8rem);
+.likes .lk > span {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
   letter-spacing: -0.03em;
   line-height: 1;
 }
@@ -706,7 +775,8 @@ footer {
 }
 
 .exp {
-  padding: clamp(8rem, 12vw, 16rem) 0;
+  padding-top: clamp(8rem, 12vw, 16rem);
+  padding-bottom: clamp(8rem, 12vw, 16rem);
   overflow: hidden;
 }
 .exp .ex-grid {
@@ -805,13 +875,13 @@ footer {
 .co .co-h {
   margin-bottom: clamp(3.2rem, 5vw, 6.4rem);
 }
-.co .co-h h2 {
+.co .co-h .co-t {
   font-size: clamp(3.6rem, 6.4vw, 8rem);
 }
 .co .pj {
   margin-bottom: clamp(5.6rem, 8vw, 11.2rem);
 }
-.co .pj h3 {
+.co .pj .pj-t {
   margin: 0 0 0.6rem;
   font-size: clamp(2.2rem, 2.6vw, 3.6rem);
 }
@@ -859,6 +929,11 @@ footer {
   border-bottom: 1px solid #DCDDD7;
 }
 .contact-pg dt {
+  color: #6C7078;
+  font-size: 1.4rem;
+}
+.contact-pg .sec-hint {
+  margin: 1.6rem 0 0;
   color: #6C7078;
   font-size: 1.4rem;
 }

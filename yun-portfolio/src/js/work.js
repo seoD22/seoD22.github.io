@@ -1,7 +1,7 @@
 $(function () {
   if (App.reduce) return;
   var d = App.delay + .1;
-  gsap.from('.ph h1, .ph .ph-sub', { yPercent: 30, opacity: 0, duration: 1, stagger: .15, ease: 'power4.out', delay: d });
+  gsap.from('.ph h2, .ph .ph-sub', { yPercent: 30, opacity: 0, duration: 1, stagger: .15, ease: 'power4.out', delay: d });
   $('.pj-g figure').each(function () {
     var st = { trigger: this, start: 'top 85%' };
     gsap.fromTo(this, { clipPath: 'inset(0% 0% 100% 0% round 16px)' }, { clipPath: 'inset(0% 0% 0% 0% round 16px)', duration: 1, ease: 'power3.inOut', clearProps: 'clipPath', scrollTrigger: st });

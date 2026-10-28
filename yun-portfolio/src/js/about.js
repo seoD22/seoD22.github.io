@@ -2,11 +2,11 @@ $(function () {
   if (App.reduce) return;
   var d = App.delay + .1, hh = $('header').outerHeight();
 
-  gsap.from('.ph h1', { yPercent: 40, opacity: 0, duration: 1, ease: 'power4.out', delay: d });
-  gsap.from('.me-lead', { opacity: 0, y: 20, duration: .9, delay: d + .2 });
-  gsap.from('.avatar', { scale: .6, opacity: 0, duration: 1, ease: 'back.out(1.5)', scrollTrigger: { trigger: '.me-ring', start: 'top 80%' } });
-  gsap.from('.me-ring .rule', { scaleX: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.me-ring', start: 'top 80%' } });
-  gsap.from('.me-cols .grp', { opacity: 0, y: 30, duration: .8, stagger: .15, scrollTrigger: { trigger: '.me-cols', start: 'top 80%' } });
+  gsap.from('.ph h2', { yPercent: 40, opacity: 0, duration: 1, ease: 'power4.out', delay: d });
+  gsap.from('.ph-sub', { opacity: 0, y: 20, duration: .9, delay: d + .2 });
+  gsap.from('.avatar', { scale: .6, opacity: 0, duration: 1, ease: 'back.out(1.5)', scrollTrigger: { trigger: '.me-wrap', start: 'top 80%' } });
+  gsap.from('.me .grp', { '--s': 0, duration: 1.2, ease: 'power3.out', stagger: .15, scrollTrigger: { trigger: '.me-wrap', start: 'top 80%' } });
+  gsap.from('.me .grp > h3, .me .grp > ul', { opacity: 0, y: 20, duration: .8, stagger: .08, scrollTrigger: { trigger: '.me-wrap', start: 'top 80%' } });
 
   // 내가 좋아하는 것: 가로 스크롤 (데스크톱)
   if (innerWidth > 760) {

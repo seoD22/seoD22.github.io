@@ -12,18 +12,18 @@
 </head>
 <body data-page="home">
 <header>
-  <a class="logo" href="index.html">Yun Seo Hee</a>
+  <h1><a class="logo" href="index.html">Yun Seo Hee</a></h1>
   <nav><a href="index.html" data-n="home">Home</a><a href="about.html" data-n="about">About</a><a href="work.html" data-n="work">Work</a><a href="contact.html" data-n="contact">Contact</a></nav>
 </header>
 <main>
 <section class="visual wrap">
   <div>
-    <h1 class="disp"><span class="ln">SEOHEE</span><span class="ln">INSIGHT</span></h1>
+    <h2 class="disp"><span class="ln">SEOHEE</span><span class="ln">INSIGHT</span></h2>
     <p class="vsub">소통, 협동, 행동하는 웹퍼블리셔</p>
   </div>
 </section>
 
-<div class="marquee-container">
+<div class="marquee-container" aria-hidden="true">
   <div class="marquee-track">
     <span class="marquee-item">1994.10.13</span>
     <span class="marquee-item">책임감</span>
@@ -33,6 +33,7 @@
 </div>
 
 <section class="kw wrap">
+  <h2 class="sr-only">나를 소개하는 키워드</h2>
   <div class="kw-fix"><span class="ln">YUNSEOHEE</span></div>
   <div class="kw-row"><span class="ln">COMMUNICATION</span></div>
   <div class="kw-row"><span class="ln">BEHAVIOR</span></div>
@@ -52,7 +53,9 @@
   </div>
 </section>
 
-<div class="marquee-container">
+<h2 class="sr-only">Skills</h2>
+<p class="sr-only">HTML/CSS, Photoshop, Javascript, Figma, GitHub/GitLab, jQuery, GSAP</p>
+<div class="marquee-container" aria-hidden="true">
   <div class="marquee-track">
     <span class="marquee-item">HTML/CSS</span>
     <span class="marquee-item">Photoshop</span>
@@ -64,13 +67,8 @@
   </div>
 </div>
 
-<!-- <section class="skills wrap">
-  <p class="sec-t">Skills</p>
-  <ul class="sk-list"><li>Html/css</li><li>Photoshop</li><li>Javascript</li><li>Figma</li><li>GitHub/GitLab</li></ul>
-</section> -->
-
 <section class="works wrap">
-  <p class="sec-t">Works</p>
+  <h2 class="sec-t">Works</h2>
     <article class="wk">
       <div class="wk-img"><img src="images/work-1.svg" alt="KT 닷컴 작업 이미지"></div>
       <div class="wk-txt"><h3>KT 닷컴</h3><p class="cp">엘루오씨앤씨</p><p>웹 접근성과 웹 표준을 고려한 퍼블리싱을 담당했습니다.</p><a class="more" href="work.html">경력기술 보기</a></div>
