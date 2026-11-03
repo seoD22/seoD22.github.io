@@ -1,0 +1,312 @@
+@use 'vars' as *;
+
+// ───────── 회사 헤더 ─────────
+.co {
+  .co-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem 2.4rem;
+    margin: 1.6rem 0 0;
+    color: $mute;
+    font-size: clamp(1.5rem, 1.6vw, 1.8rem);
+
+    span:first-child {
+      color: $ink;
+      font-weight: 500
+    }
+  }
+
+  .co-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+    margin-top: 2.4rem;
+
+    li {
+      padding: .6rem 1.6rem;
+      border: 1px solid $ink;
+      border-radius: 99.9rem;
+      font-size: 1.4rem;
+      font-weight: 500
+    }
+  }
+}
+
+.sub-t {
+  margin: 0 0 2.4rem;
+  font-family: $disp;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 2.6vw, 3.6rem);
+  letter-spacing: -.02em
+}
+
+// ───────── 공통 개선 활동 ─────────
+.impact {
+  margin-bottom: clamp(6.4rem, 9vw, 11.2rem);
+
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); // 위 3개(2칸씩) + 아래 2개(3칸씩)
+    gap: clamp(1.2rem, 2vw, 2rem);
+
+    @include sp {
+      grid-template-columns: 1fr
+    }
+  }
+
+  li {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    min-height: 19rem;
+    padding: 2.4rem;
+    border-radius: $radius;
+    background: #F1F2EE;
+    transition: background .3s;
+
+    &:nth-child(n+4) {
+      grid-column: span 3
+    }
+
+    &:hover {
+      background: $sun
+    }
+
+    @include sp {
+      &:nth-child(n) {
+        grid-column: auto;
+        min-height: 0
+      }
+    }
+  }
+
+  b {
+    font-family: $disp;
+    font-size: 1.4rem;
+    color: $accent
+  }
+
+  strong {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.3;
+    word-break: keep-all
+  }
+
+  span {
+    margin-top: auto;
+    color: $mute;
+    word-break: keep-all
+  }
+}
+
+// ───────── 프로젝트 카드 ─────────
+.pj {
+  .pj-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+  }
+
+  .pj-g+.pj-stats {
+    margin-top: clamp(2.4rem, 4vw, 4.8rem)
+  }
+
+  .pj-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: clamp(1.6rem, 3vw, 4rem);
+  }
+
+  .stat {
+    padding-top: 1.6rem;
+    border-top: 1px solid $ink;
+
+    strong {
+      display: block;
+      font-family: $disp;
+      font-weight: 800;
+      font-size: clamp(4.8rem, 7vw, 8.8rem);
+      line-height: 1;
+      letter-spacing: -.04em
+    }
+
+    em {
+      margin-left: .2rem;
+      font-style: normal;
+      font-size: .5em;
+      color: $accent
+    }
+
+    p {
+      margin: .8rem 0 0;
+      font-weight: 700
+    }
+
+    small {
+      display: block;
+      color: $mute;
+      font-size: 1.4rem
+    }
+  }
+
+  .task-list code {
+    padding: .1rem .6rem;
+    border-radius: .6rem;
+    background: #F1F2EE;
+    color: $ink;
+    font-size: .9em
+  }
+}
+
+.btn-more {
+  padding: 1rem 2.4rem;
+  border: 1px solid $ink;
+  border-radius: 99.9rem;
+  background: $bg;
+  font-size: 1.4rem;
+  font-weight: 500;
+  transition: background .3s, color .3s;
+
+  &:hover {
+    background: $ink;
+    color: $bg
+  }
+}
+
+// ───────── 팝업 (dialog) ─────────
+html.modal-open {
+  overflow: hidden
+}
+
+.md {
+  width: min(92vw, 80rem);
+  max-height: 86svh;
+  padding: 0;
+  border: 0;
+  border-radius: $radius;
+  background: $bg;
+  color: $ink;
+  overflow: hidden;
+
+  &[open] {
+    animation: mdIn .35s cubic-bezier(.2, .8, .2, 1)
+  }
+
+  &::backdrop {
+    background: rgba($ink, .55)
+  }
+
+  .md-close {
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+    z-index: 2;
+    padding: .8rem 1.6rem;
+    border: 1px solid $ink;
+    border-radius: 99.9rem;
+    background: $bg;
+    font-size: 1.4rem
+  }
+
+  .md-in {
+    max-height: 86svh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: clamp(2.4rem, 4vw, 4.8rem)
+  }
+
+  .md-eyebrow {
+    margin: 0 0 .8rem;
+    color: $mute;
+    font-size: 1.4rem
+  }
+
+  .md-t {
+    margin: 0 0 2.4rem;
+    font-family: $disp;
+    font-weight: 800;
+    font-size: clamp(2.8rem, 4vw, 4.8rem);
+    letter-spacing: -.03em;
+    line-height: 1.1
+  }
+
+  .md-body {
+    h4 {
+      margin: 3.2rem 0 1.2rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid $ink;
+      font-size: 1.8rem
+    }
+
+    ul {
+      margin: 0
+    }
+
+    li {
+      position: relative;
+      padding: .4rem 0 .4rem 1.6rem;
+      color: $mute;
+      word-break: keep-all;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 1.3rem;
+        width: .5rem;
+        height: .5rem;
+        border-radius: 50%;
+        background: $accent
+      }
+    }
+
+    li ul {
+      margin-top: .4rem
+    }
+
+    strong {
+      margin-right: .6rem;
+      color: $ink
+    }
+
+    code {
+      padding: .1rem .6rem;
+      border-radius: .6rem;
+      background: #F1F2EE;
+      color: $ink;
+      font-size: .9em
+    }
+  }
+
+  .md-link[hidden] {
+    display: none
+  }
+
+  .md-link {
+    display: inline-block;
+    margin-top: 3.2rem;
+    border-bottom: 1px solid $ink;
+    font-weight: 500;
+
+    &:hover {
+      color: $accent;
+      border-color: $accent
+    }
+  }
+}
+
+@keyframes mdIn {
+  from {
+    opacity: 0;
+    transform: translateY(2.4rem)
+  }
+
+  to {
+    opacity: 1;
+    transform: none
+  }
+}

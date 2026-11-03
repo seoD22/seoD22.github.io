@@ -1,9 +1,19 @@
 /* 공통: 부드러운 스크롤 / 페이지 전환 / 이메일 복사 */
 window.App = { reduce: matchMedia('(prefers-reduced-motion: reduce)').matches, entering: false, delay: 0 };
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 try { if (sessionStorage.getItem('nav') === '1') { App.entering = true; App.delay = .75; } } catch (e) {}
 
 $(function () {
   gsap.registerPlugin(ScrollTrigger);
+
+  window.scrollTo(0, 0);
+
+  // 폰트/이미지 로딩 등으로 레이아웃이 바뀐 뒤 스크롤 위치를 다시 계산
+  function refresh() { ScrollTrigger.refresh(); }
+  $(window).on('load', function () { setTimeout(refresh, 100); });
+  if (document.fonts) document.fonts.ready.then(function () { setTimeout(refresh, 100); });
+  $(window).on('pageshow', function (e) { if (e.originalEvent.persisted) refresh(); });
+
   var $cover = $('#cover');
 
   // 현재 페이지 메뉴 활성화
@@ -29,7 +39,8 @@ $(function () {
   $(document).on('click', 'a[href$=".html"]', function (e) {
     if (e.metaKey || e.ctrlKey || e.shiftKey || App.reduce) return;
     var href = $(this).attr('href');
-    if (href === location.pathname.split('/').pop()) { e.preventDefault(); return; }
+    var curPage = location.pathname.split('/').pop() || 'index.html';
+    if (href === curPage) { e.preventDefault(); return; }
     e.preventDefault();
     try { sessionStorage.setItem('nav', '1'); } catch (err) {}
     gsap.fromTo($cover, { y: '101%' }, { y: 0, duration: .6, ease: 'power3.inOut', onComplete: function () { location.href = href; } });
@@ -63,6 +74,7 @@ $(function () {
       if (App.reduce) return;
       var speed = Number($c.data('speed')) || 80;                // px/초
       tween = gsap.fromTo($track[0], { xPercent: -50 }, { xPercent: 0, duration: ($track.width() / 2) / speed, ease: 'none', repeat: -1 });
+      ScrollTrigger.refresh();
     }
 
     (document.fonts ? document.fonts.ready : Promise.resolve()).then(build);  // 웹폰트 로딩 후 폭 계산

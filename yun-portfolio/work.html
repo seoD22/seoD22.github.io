@@ -16,21 +16,152 @@
   <nav><a href="index.html" data-n="home">Home</a><a href="about.html" data-n="about">About</a><a href="work.html" data-n="work">Work</a><a href="contact.html" data-n="contact">Contact</a></nav>
 </header>
 <main>
-<section class="ph wrap"><h2 class="disp">MY WORK EXPERIENCE</h2><p class="ph-sub">기본툴 활용부터 웹접근/표준성을 고려한 작업까지</p></section>
+<section class="ph wrap"><h2 class="disp">WORK EXPERIENCE</h2><p class="ph-sub">기본툴 활용부터 웹접근/표준성을 고려한 작업까지</p></section>
 <section class="co wrap">
-  <div class="co-h"><h3 class="disp co-t">엘루오씨앤씨</h3></div>
-  <div class="pj"><h4 class="pj-t">KT 닷컴</h4><p class="pj-d">웹 접근성과 웹 표준을 고려한 퍼블리싱</p><div class="pj-g"><figure class="full"><img src="images/ktcom-1.svg" alt=""></figure><figure><img src="images/ktcom-2.svg" alt=""></figure><figure><img src="images/ktcom-3.svg" alt=""></figure></div></div>
-  <div class="pj"><h4 class="pj-t">KT MVNO (마이알뜰폰)</h4><p class="pj-d">반응형 마크업과 UI 구현</p><div class="pj-g"><figure><img src="images/mvno-1.svg" alt=""></figure><figure><img src="images/mvno-2.svg" alt=""></figure><figure class="full"><img src="images/mvno-3.svg" alt=""></figure></div></div>
-  <div class="pj"><h4 class="pj-t">KT 엔터프라이즈</h4><p class="pj-d">공통 컴포넌트와 페이지 퍼블리싱</p><div class="pj-g"><figure class="full"><img src="images/ent-1.svg" alt=""></figure><figure><img src="images/ent-2.svg" alt=""></figure><figure><img src="images/ent-3.svg" alt=""></figure></div></div>
+  <div class="co-h">
+    <h3 class="disp co-t">엘루오씨앤씨</h3>
+    <p class="co-meta"><span>2024.09.02 – 2026.10.31</span><span>KT 계열 대형 플랫폼 운영 및 유지보수</span></p>
+    <ul class="co-tags"><li>KT 닷컴</li><li>KT 마이알뜰폰</li><li>KT 엔터프라이즈</li></ul>
+  </div>
+
+  <div class="impact">
+    <h4 class="sub-t">주요 개선 활동</h4>
+    <ul class="impact-grid">
+      <li><b>01</b><strong>AI 도구 도입</strong><span>Claude Code, Gemini, ChatGPT 등 AI 업무 도입으로 퍼블리싱 생산성 향상</span></li>
+      <li><b>02</b><strong>Git 형상관리 · 코딩 컨벤션</strong><span>Git 기반 형상관리 프로세스 및 코딩 컨벤션 수립·도입으로 협업 체계 표준화</span></li>
+      <li><b>03</b><strong>Dart Sass 환경 표준화</strong><span>CSS 컴파일 자동화로 유지보수 효율 개선</span></li>
+      <li><b>04</b><strong>공통 UI 컴포넌트 가이드</strong><span>가이드 구축으로 화면 품질 일관성 확보 및 생산성 향상</span></li>
+      <li><b>05</b><strong>웹표준 · 웹접근성</strong><span>모든 작업에서 웹표준·웹접근성 고려</span></li>
+    </ul>
+  </div>
+
+  <!-- KT 닷컴 -->
+  <div class="pj">
+    <div class="pj-head">
+      <div><h4 class="pj-t">KT 닷컴</h4><p class="pj-d">상품 · 혜택 · 소상공인 페이지 담당</p></div>
+      <button type="button" class="btn-more" data-modal="m-ktcom" aria-haspopup="dialog">자세히 보기</button>
+    </div>
+    <div class="pj-g"><figure class="full"><img src="images/ktcom_01.png" alt="KT 닷컴 상품·혜택 페이지 화면 모음"></figure></div>
+    <div class="pj-stats"><div class="stat"><strong>70<em>%</em></strong><p>작업 시간 감소</p><small>KDS 가이드 기반 퍼블 에셋 적용</small></div></div>
+    <ul class="task-list">
+      <li><b>담당 범위</b><span>KT 닷컴 내 상품, 혜택, 소상공인 페이지</span></li>
+      <li><b>KDS 퍼블 에셋</b><span>KDS(KT UX Design System) 디자인 가이드 기반 에셋 세팅·적용, <code>nsprod-</code> · <code>nsbnft-</code> 등 접두사로 신규 스타일(CSS/JS) 파일 분리</span></li>
+      <li><b>CMS 운영</b><span>CMS 내 대부분 페이지 관리 및 HTML 직접 수정</span></li>
+      <li><b>배포 일정</b><span>직접 파일 업로드·배포가 필요한 페이지(다수의 혜택 페이지)는 시간 엄수</span></li>
+      <li><b>협업</b><span>외부 기획자와 직접 소통</span></li>
+      <li><b>검수</b><span>외부 기획자와의 협업 특성상 꼼꼼한 검수가 핵심, 줄어든 작업 시간만큼 검수 시간 추가 확보</span></li>
+    </ul>
+  </div>
+
+  <!-- KT 마이알뜰폰 -->
+  <div class="pj">
+    <div class="pj-head">
+      <div><h4 class="pj-t">KT 마이알뜰폰</h4><p class="pj-d">반응형 웹 · 빌드/개발 프로세스 개선 · 주요 페이지 리뉴얼</p></div>
+      <button type="button" class="btn-more" data-modal="m-mvno" aria-haspopup="dialog">자세히 보기</button>
+    </div>
+    <div class="pj-g"><figure><img src="images/mvno_1.png" alt=""></figure><figure><img src="images/mvno_2.png" alt=""></figure><figure class="full"><img src="images/mvno_3.png" alt=""></figure></div>
+    <div class="pj-stats">
+      <div class="stat"><strong>90<em>%</em></strong><p>코드 충돌 감소</p><small>Git/GitLab 형상 관리 체계 구축</small></div>
+      <div class="stat"><strong>80<em>%</em></strong><p>크로스 브라우징 이슈 감소</p><small>Dart Sass 환경 도입</small></div>
+      <div class="stat"><strong>30<em>%</em></strong><p>작업 시간 단축 (약)</p><small>npm 기반 자동화 빌드 환경 구축</small></div>
+    </div>
+    <ul class="task-list">
+      <li><b>환경</b><span>반응형 웹 (Responsive Web)</span></li>
+      <li><b>빌드 · 개발 환경</b><span>npm 기반 자동화 빌드 환경 구축 (Sass/SCSS 컴파일러, PostCSS, Autoprefixer), 브라우저 호환성 문제 해결</span></li>
+      <li><b>형상 관리</b><span>Git/GitLab 체계 구축, Git Flow 적용, 수동 파일 공유를 Git 기반으로 전환, 내부망/외부망 분리 관리 체계 수립</span></li>
+      <li><b>공통 UI</b><span>data-attribute 기반 공통 UI 체계</span></li>
+      <li><b>주요 리뉴얼</b><span>메인 페이지(기여도 70%) · 마이알뜰폰 홈(70%) · 셀프개통 프로세스(70%) · 마이페이지(50%)</span></li>
+      <li><b>웹 접근성(VOS)</b><span>K-WAX로 접근성 항목 진단, 미준수 항목 일괄 보수, WAI-ARIA 속성 도입</span></li>
+    </ul>
+  </div>
+
+  <!-- KT 엔터프라이즈 -->
+  <div class="pj">
+    <div class="pj-head">
+      <div><h4 class="pj-t">KT 엔터프라이즈</h4><p class="pj-d">메인·서브페이지 리뉴얼 · 유지 및 관리 · 인사이트 콘텐츠 관리</p></div>
+    </div>
+    <div class="pj-g"><figure class="full"><img src="images/ent_1.png" alt="KT 엔터프라이즈 메인 및 서브페이지 화면"></figure></div>
+    <ul class="task-list">
+      <!-- 확인: TortoiseVPN 표기가 맞는지 (TortoiseSVN 아닌지) -->
+      <li><b>작업 환경</b><span>TortoiseVPN 활용</span></li>
+      <li><b>페이지 리뉴얼</b><span>메인 및 서브페이지 리뉴얼</span></li>
+      <li><b>유지 · 관리</b><span>관리자 페이지를 활용한 유지 및 관리</span></li>
+      <li><b>콘텐츠 관리</b><span>인사이트 콘텐츠 관리 (언론보도, AX 스토리 등)</span></li>
+    </ul>
+  </div>
 </section>
 <section class="co wrap">
   <div class="co-h"><h3 class="disp co-t">와커스</h3></div>
-  <div class="pj"><h4 class="pj-t">다수의 병원 사이트 제작</h4><p class="pj-d">병원별 브랜드에 맞춘 사이트 퍼블리싱</p><div class="pj-g"><figure><img src="images/hosp-1.svg" alt=""></figure><figure><img src="images/hosp-2.svg" alt=""></figure><figure class="full"><img src="images/hosp-3.svg" alt=""></figure></div></div>
+  <div class="pj"><h4 class="pj-t">병원 사이트 및 CMS 페이지 제작</h4><p class="pj-d">병원별 브랜드에 맞춘 사이트 퍼블리싱</p><div class="pj-g"><figure class="full"><img src="images/hosp_03.png" alt=""></figure></div></div>
+</section>
+<section class="ct wrap">
+  <h2 class="disp"><span class="ln"><span>Web Publisher</span></span><span class="ln"><span>Portfolio</span></span></h2>
+  <div class="ct-meta"><a href="mailto:cobbt258@naver.com">Email cobbt258@naver.com</a><a href="tel:01054805732">Tel. 010-5480-5732</a></div>
 </section>
 </main>
+<dialog class="md" id="m-ktcom" aria-labelledby="m-ktcom-t">
+  <button type="button" class="md-close">닫기</button>
+  <div class="md-in" data-lenis-prevent>
+    <p class="md-eyebrow">엘루오씨앤씨 · 2024.09 - 2026.10</p>
+    <h3 class="md-t" id="m-ktcom-t">KT 닷컴</h3>
+    <div class="md-body">
+      <h4>담당 범위</h4>
+      <ul><li>KT 닷컴 내 상품, 혜택, 소상공인 페이지 담당</li></ul>
+      <h4>KDS 기반 퍼블 에셋</h4>
+      <ul><li>KDS(KT UX Design System) 디자인 가이드에 기반한 퍼블 에셋 세팅 및 적용
+        <ul><li><code>nsprod-</code>, <code>nsbnft-</code> 등</li><li><code>nsprod-.css</code>, js 등으로 신규 스타일 파일 분리</li></ul></li></ul>
+      <h4>운영 방식</h4>
+      <ul><li>대부분의 페이지를 CMS 내에서 관리
+        <ul><li>HTML 직접 수정</li></ul></li>
+        <li>직접 파일 업로드 및 배포해야 되는 페이지는 시간 엄수
+        <ul><li>다수의 혜택 페이지</li></ul></li>
+        <li>외부에 있는 기획자와 직접 소통
+        <ul><li>기획자가 외부에 있어 꼼꼼한 확인이 특히 중요</li></ul></li></ul>
+      <h4>성과</h4>
+      <ul><li><strong>KDS 가이드에 맞춘 퍼블 에셋으로 작업 시간 70% 감소</strong></li><li><strong>줄어든 작업 시간만큼 검수 시간을 더 확보</strong></li></ul>
+    </div>
+    <a class="md-link" href="#" target="_blank" rel="noopener" hidden>Notion에서 더 보기</a>
+  </div>
+</dialog>
+<dialog class="md" id="m-mvno" aria-labelledby="m-mvno-t">
+  <button type="button" class="md-close">닫기</button>
+  <div class="md-in" data-lenis-prevent>
+    <p class="md-eyebrow">엘루오씨앤씨 · 2024.09 – 2026.10</p>
+    <h3 class="md-t" id="m-mvno-t">KT 마이알뜰폰</h3>
+    <div class="md-body">
+      <h4>환경</h4>
+      <ul><li>반응형 웹 (Responsive Web)</li></ul>
+      <h4>빌드/개발 프로세스 개선</h4>
+      <ul>
+        <li>개발 환경 최적화
+          <ul><li>npm 기반 자동화 빌드 환경 구축 (Sass/SCSS 컴파일러, PostCSS, Autoprefixer 등 적용)</li><li>브라우저 호환성 문제 해결 및 작업 시간 약 30% 단축</li></ul></li>
+        <li>Git/GitLab 형상 관리 체계 구축
+          <ul><li>버전 관리 표준화 (Git Flow 적용)</li><li>수동 파일 공유(이메일/압축파일) 방식을 Git 기반 버전 관리로 전환</li><li>내부망/외부망 분리 관리 체계를 수립하여 소스 코드 충돌 방지 및 이력 관리 효율화</li></ul></li>
+        <li>data-attribute 기반 공통 UI 체계</li>
+      </ul>
+      <h4>주요 페이지 리뉴얼</h4>
+      <ul>
+        <li><strong>메인 페이지 (기여도 70%)</strong> 반응형 그리드 및 컴포넌트 재사용성을 고려한 마크업 구조 설계</li>
+        <li><strong>마이알뜰폰 홈 (기여도 70%)</strong> 대용량 마이데이터 인터페이스 정돈 및 UX 개선</li>
+        <li><strong>셀프개통 프로세스 (기여도 70%)</strong> 회원 상태(유형)별 UI/UX, 동적 팝업 및 복합 폼 모듈 구현</li>
+        <li><strong>마이페이지 (기여도 50%)</strong> 탭 구조, 회원 케이스별(정회원/준회원/미인증 등) 조건부 UI 마크업 및 분기 처리</li>
+      </ul>
+      <h4>웹 접근성(VOS) 품질 검증 및 보수</h4>
+      <ul>
+        <li>KT 사내 웹 접근성 검증 도구(K-WAX)를 활용하여 주요 서비스 페이지의 접근성 항목 진단 진행</li>
+        <li>대체 텍스트, 명료성, 입력 도움, 예측 가능성 등의 미준수 항목 일괄 보수 및 마크업 개선</li>
+        <li>스크린 리더 지원 강화를 위한 WAI-ARIA 속성 적극 도입</li>
+      </ul>
+      <h4>성과</h4>
+      <ul><li><strong>Git/GitLab 형상 관리 체계 구축으로 코드 충돌 90% 감소</strong></li><li><strong>Dart Sass 환경 도입으로 크로스 브라우징 이슈 80% 감소</strong></li></ul>
+    </div>
+    <a class="md-link" href="#" target="_blank" rel="noopener" hidden>Notion에서 더 보기</a>
+  </div>
+</dialog>
+
 <footer><span>© 2026 Yun Seo Hee</span><span>Web Publisher</span></footer>
-<div class="cover" id="cover"><span>Yun Seo Hee</span></div>
-<div class="toast" id="toast">이메일 주소를 복사했어요</div>
+<div class="cover" id="cover"></div>
+<div class="toast" id="toast">이메일 주소 복사 완료</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>

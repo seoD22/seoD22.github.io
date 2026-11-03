@@ -20,12 +20,6 @@ $(function () {
   });
   kwTl.to({}, { duration: 0.5 }); // 마지막 키워드가 올라온 뒤 잠깐 머물렀다가 고정 해제
 
-  // 2. 키워드: 등장 + 좌우 패럴럭스
-  $('.kw-row').each(function (i) {
-    gsap.from($(this).find('.ln')[0], { yPercent: 110, duration: 1.5, ease: 'power4.out', scrollTrigger: { trigger: this, start: 'top 88%' } });
-    gsap.to(this, { y: 0, ease: 'none', scrollTrigger: { trigger: this, start: 'top bottom', end: 'bottom top', scrub: true } });
-  });
-
   // 3. about intro: 가운데 모여 있던 이미지가 스크롤에 따라 퍼짐
   var $s = $('.spread-in');
   gsap.from($s.find('.sp-img').toArray(), {
@@ -36,10 +30,7 @@ $(function () {
   });
   gsap.from('.sp-desc > *', { opacity: 0, y: 30, duration: .9, stagger: .15, scrollTrigger: { trigger: '.sp-desc', start: 'top 80%' } });
 
-  // 4. skills
-  gsap.from('.sk-list li', { opacity: 0, y: 30, duration: .7, stagger: .1, scrollTrigger: { trigger: '.sk-list', start: 'top 80%' } });
-
-  // 5. works: 이미지/텍스트 교차
+  // 4. works: 이미지/텍스트 교차
   $('.wk').each(function () {
     var st = { trigger: this, start: 'top 75%' };
     gsap.fromTo($(this).find('.wk-img')[0], { clipPath: 'inset(0% 0% 100% 0% round 16px)' }, { clipPath: 'inset(0% 0% 0% 0% round 16px)', duration: 1.1, ease: 'power3.inOut', clearProps: 'clipPath', scrollTrigger: st });
